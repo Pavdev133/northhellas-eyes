@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700;800&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261008b">
+  <link rel="stylesheet" href="styles.css?v=20261008c">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -57,6 +57,7 @@
         <a href="#cams" data-i18n="nav.cams">Κάμερες</a>
         <a href="#regions" data-i18n="nav.regions">Περιοχές</a>
         <a href="#map" data-i18n="nav.map">Χάρτης</a>
+        <a href="#gallery" data-i18n="nav.gallery">Γκαλερί</a>
         <a href="#weather" data-i18n="nav.weather">Καιρός</a>
         <a href="#about" data-i18n="nav.about">Η ομάδα</a>
         <a href="#contact" data-i18n="nav.contact">Επικοινωνία</a>
@@ -163,6 +164,21 @@
           </div>
           <p class="cammap__hint" id="mapHint" data-i18n="map.hint">Πάτησε μια κουκκίδα για να ανοίξεις την κάμερα.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ═════════ GALLERY ═════════ -->
+    <section class="section gallery" id="gallery">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="gal.eyebrow">Γκαλερί</p>
+            <h2><span data-i18n="gal.title1">Στιγμές</span> <em data-i18n="gal.title2">από τις κάμερές μας</em></h2>
+          </div>
+          <p class="muted narrow" data-i18n="gal.text">Χιόνια, καταιγίδες και ανατολές που έπιασαν οι κάμερες του δικτύου.</p>
+        </div>
+        <div class="chips gal-years reveal" id="galYears" role="tablist"><span class="chips__pill" id="galPill" aria-hidden="true"></span></div>
+        <div class="gal" id="galGrid"></div>
       </div>
     </section>
 
@@ -304,10 +320,32 @@
     </div>
   </dialog>
 
+  <dialog class="lb" id="lb" aria-label="Gallery">
+    <div class="lb__top">
+      <span class="lb__count" id="lbCount"></span>
+      <button type="button" class="lb__btn" id="lbClose" aria-label="Κλείσιμο"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="lb__stage" id="lbStage">
+      <button type="button" class="lb__btn lb__nav lb__nav--prev" id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
+      <img class="lb__img" id="lbImg" alt="">
+      <button type="button" class="lb__btn lb__nav lb__nav--next" id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
+    </div>
+    <div class="lb__cap">
+      <span class="gal__tag" id="lbTag"></span>
+      <h3 id="lbPlace"></h3>
+      <p id="lbText"></p>
+      <div class="lb__meta">
+        <time id="lbDate"></time>
+        <button type="button" class="lb__live" id="lbCam"><i class="pulse"></i> <span id="lbLiveText">Δες την κάμερα ζωντανά</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </dialog>
+
   <div class="toast" id="toast" role="status"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js" defer></script>
-  <script src="cams.js?v=20261008b" defer></script>
-  <script src="app.js?v=20261008b" defer></script>
+  <script src="cams.js?v=20261008c" defer></script>
+  <script src="gallery.js?v=20261008c" defer></script>
+  <script src="app.js?v=20261008c" defer></script>
 </body>
 </html>

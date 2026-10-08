@@ -12,7 +12,11 @@
   // ── i18n ────────────────────────────────────────────────
   const T = {
     el: {
-      'nav.cams': 'Κάμερες', 'nav.regions': 'Περιοχές', 'nav.map': 'Χάρτης', 'nav.weather': 'Καιρός', 'nav.about': 'Η ομάδα', 'nav.contact': 'Επικοινωνία',
+      'nav.cams': 'Κάμερες', 'nav.regions': 'Περιοχές', 'nav.map': 'Χάρτης', 'nav.weather': 'Καιρός', 'nav.about': 'Η ομάδα', 'nav.contact': 'Επικοινωνία', 'nav.gallery': 'Γκαλερί',
+      'gal.eyebrow': 'Γκαλερί', 'gal.title1': 'Στιγμές', 'gal.title2': 'από τις κάμερές μας',
+      'gal.text': 'Χιόνια, καταιγίδες και ανατολές που έπιασαν οι κάμερες του δικτύου. Διάλεξε χρονιά και πάτησε μια φωτογραφία για να τη δεις σε όλη την οθόνη.',
+      'gal.photos': 'φωτογραφίες', 'gal.live': 'Δες την κάμερα ζωντανά', 'gal.close': 'Κλείσιμο',
+      'gal.tag.snow': 'Χιόνι', 'gal.tag.storm': 'Καταιγίδα', 'gal.tag.sunrise': 'Ανατολή',
       'hero.kicker': 'ζωντανές κάμερες · Βόρεια Ελλάδα',
       'hero.t1': 'Τα μάτια', 'hero.t2': 'της Βόρειας Ελλάδας',
       'hero.lead': 'Από τις Πρέσπες ως τον Έβρο, από τον Όλυμπο ως τη Χαλκιδική. Δες τον καιρό όπως είναι αυτή τη στιγμή, δωρεάν, 24 ώρες το 24ωρο.',
@@ -83,7 +87,11 @@
       dirs: ['Β', 'ΒΑ', 'Α', 'ΝΑ', 'Ν', 'ΝΔ', 'Δ', 'ΒΔ']
     },
     en: {
-      'nav.cams': 'Cameras', 'nav.regions': 'Regions', 'nav.map': 'Map', 'nav.weather': 'Weather', 'nav.about': 'About', 'nav.contact': 'Contact',
+      'nav.cams': 'Cameras', 'nav.regions': 'Regions', 'nav.map': 'Map', 'nav.weather': 'Weather', 'nav.about': 'About', 'nav.contact': 'Contact', 'nav.gallery': 'Gallery',
+      'gal.eyebrow': 'Gallery', 'gal.title1': 'Moments', 'gal.title2': 'from our cameras',
+      'gal.text': 'Snow, storms and sunrises caught by the network\'s cameras. Pick a year and tap a photo to see it full screen.',
+      'gal.photos': 'photos', 'gal.live': 'Watch this camera live', 'gal.close': 'Close',
+      'gal.tag.snow': 'Snow', 'gal.tag.storm': 'Storm', 'gal.tag.sunrise': 'Sunrise',
       'hero.kicker': 'live cameras · Northern Greece',
       'hero.t1': 'The eyes', 'hero.t2': 'of Northern Greece',
       'hero.lead': 'From Prespes to Evros, from Mount Olympus to Chalkidiki. See the weather exactly as it is right now, free, around the clock.',
@@ -1163,7 +1171,133 @@
     updateChips();
     if (viewer.open && current) fillViewerText(current);
     if (camMap) mapLang();
+    renderGallery();
     stampRefresh();
+  }
+
+
+  // ── Gallery ─────────────────────────────────────────────
+  const GALLERY = window.NHE_GALLERY || {};
+  const galYears = Object.keys(GALLERY).sort((a, b) => b - a);
+  let galYear = galYears[0];
+  let lbIndex = 0;
+  const galPhotos = () => GALLERY[galYear] || [];
+  const galSrc = (p, sm) => `img/gallery/${galYear}/${p.img}${sm ? '-sm' : ''}.webp`;
+  const galDate = (p) => {
+    const d = new Date(p.at);
+    return d.toLocaleDateString(locale(), { day: 'numeric', month: 'long', year: 'numeric' })
+      + ' · ' + d.toLocaleTimeString(locale(), { hour: '2-digit', minute: '2-digit', hour12: false });
+  };
+
+  function renderGallery() {
+    const years = $('#galYears');
+    if (!years || !galYears.length) return;
+    years.querySelectorAll('.chip').forEach((c) => c.remove());
+    galYears.forEach((y) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip' + (y === galYear ? ' is-on' : '');
+      b.dataset.year = y;
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', y === galYear);
+      b.innerHTML = `<span>${y}</span> <small>${GALLERY[y].length}</small>`;
+      years.appendChild(b);
+    });
+    $('#galGrid').innerHTML = galPhotos().map((p, i) => `
+      <button type="button" class="gal__item" data-i="${i}" style="--i:${i}">
+        <img src="${galSrc(p, true)}" alt="${L(p.place)}: ${L(p.text)}" loading="lazy" decoding="async">
+        <span class="gal__tag gal__tag--${p.tag}">${t('gal.tag.' + p.tag)}</span>
+        <span class="gal__cap"><b>${L(p.place)}</b><small>${galDate(p)}</small></span>
+        <span class="gal__zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+      </button>`).join('');
+    requestAnimationFrame(moveGalPill);
+    const lb = $('#lb');
+    if (lb && lb.open) fillLightbox();
+  }
+
+  function moveGalPill() {
+    const on = $('#galYears .chip.is-on');
+    const pill = $('#galPill');
+    if (!on || !pill) return;
+    pill.style.width = on.offsetWidth + 'px';
+    pill.style.transform = `translateX(${on.offsetLeft}px)`;
+  }
+
+  function fillLightbox(dir = 0) {
+    const p = galPhotos()[lbIndex];
+    if (!p) return;
+    const img = $('#lbImg');
+    img.classList.remove('is-in', 'from-l', 'from-r');
+    if (dir) img.classList.add(dir > 0 ? 'from-r' : 'from-l');
+    img.onload = () => requestAnimationFrame(() => img.classList.add('is-in'));
+    img.src = galSrc(p, false);
+    img.alt = `${L(p.place)}: ${L(p.text)}`;
+    if (img.complete) requestAnimationFrame(() => img.classList.add('is-in'));
+    $('#lbTag').textContent = t('gal.tag.' + p.tag);
+    $('#lbTag').className = 'gal__tag gal__tag--' + p.tag;
+    $('#lbPlace').textContent = L(p.place);
+    $('#lbText').textContent = L(p.text);
+    $('#lbDate').textContent = galDate(p);
+    $('#lbCount').textContent = `${lbIndex + 1} / ${galPhotos().length}`;
+    $('#lbLiveText').textContent = t('gal.live');
+    $('#lbCam').hidden = !p.cam || !CAMS.some((c) => c.id === p.cam);
+    $('#lbClose').setAttribute('aria-label', t('gal.close'));
+    const next = galPhotos()[(lbIndex + 1) % galPhotos().length];
+    if (next) new Image().src = galSrc(next, false);
+  }
+
+  function stepLightbox(d) {
+    const n = galPhotos().length;
+    if (n < 2) return;
+    lbIndex = (lbIndex + d + n) % n;
+    fillLightbox(d);
+  }
+
+  function openLightbox(i) {
+    const lb = $('#lb');
+    lbIndex = i;
+    fillLightbox();
+    if (!lb.open) lb.showModal();
+    document.documentElement.classList.add('lb-open');
+  }
+
+  function initGallery() {
+    const lb = $('#lb');
+    if (!lb || !galYears.length) return;
+    $('#galYears').addEventListener('click', (e) => {
+      const chip = e.target.closest('.chip');
+      if (!chip || chip.dataset.year === galYear) return;
+      galYear = chip.dataset.year;
+      renderGallery();
+    });
+    $('#galGrid').addEventListener('click', (e) => {
+      const item = e.target.closest('.gal__item');
+      if (item) openLightbox(+item.dataset.i);
+    });
+    addEventListener('resize', moveGalPill);
+    lb.addEventListener('close', () => document.documentElement.classList.remove('lb-open'));
+    $('#lbClose').addEventListener('click', () => lb.close());
+    $('#lbPrev').addEventListener('click', () => stepLightbox(-1));
+    $('#lbNext').addEventListener('click', () => stepLightbox(1));
+    lb.addEventListener('click', (e) => { if (e.target === lb || e.target.id === 'lbStage') lb.close(); });
+    lb.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') stepLightbox(1);
+      else if (e.key === 'ArrowLeft') stepLightbox(-1);
+    });
+    $('#lbCam').addEventListener('click', () => {
+      const p = galPhotos()[lbIndex];
+      lb.close();
+      if (p && p.cam) openViewer(p.cam);
+    });
+    let x0 = null, y0 = 0;
+    lb.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+      if (x0 == null) return;
+      const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      x0 = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) stepLightbox(dx < 0 ? 1 : -1);
+      else if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) lb.close();
+    }, { passive: true });
   }
 
   // ── Wire up ─────────────────────────────────────────────
@@ -1257,6 +1391,7 @@
     });
 
     initMap();
+    initGallery();
 
     window.addEventListener('popstate', routeFromHash);
     routeFromHash();
