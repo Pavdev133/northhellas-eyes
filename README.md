@@ -34,3 +34,8 @@ hls: 'https://mediawp.alphastream.eu/<name>/<name>/playlist.m3u8'
 ```
 
 The stream must allow cross-origin requests (CORS) from the site's domain for Chrome/Android; Safari plays HLS natively either way.
+
+## SEO pages
+
+The camera pages in `kameres/`, `sitemap.xml` and the footer camera links in `index.html` are generated from `cams.js`.
+After adding or editing a camera, run `node scripts/build-seo.mjs` and commit the result.
