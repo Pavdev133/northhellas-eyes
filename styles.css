@@ -787,3 +787,11 @@ html.lb-open { overflow: hidden; }
   .gal__item, .lb[open] { animation: none; }
   .gal__item img, .lb__img { transition: none; }
 }
+
+/* Year chips share the row on phones so every year stays visible */
+@media (max-width: 640px) {
+  .gal-years { width: 100%; }
+  .gal-years .chip { flex: 1 1 0; justify-content: center; gap: 4px; padding: 10px 4px; }
+  .gal-years .chip span { font-size: .98rem; }
+  .gal-years .chip small { font-size: .66rem; }
+}
