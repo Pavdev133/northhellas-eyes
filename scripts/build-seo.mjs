@@ -62,7 +62,10 @@ const head = ({ title, desc, canonical, image, jsonld }) => `<!doctype html>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
 ${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -174,7 +177,7 @@ const faqLd = { '@type': 'FAQPage', mainEntity: FAQ.map(([q, a, cams]) => ({ '@t
 // ── All cameras ─────────────────────────────────────────────────
 function listPage() {
   const canonical = SITE + '/kameres/';
-  const title = `Κάμερες Ελλάδα live · ${CAMS.length} κάμερες καιρού στη Βόρεια Ελλάδα | ${BRAND}`;
+  const title = `${BRAND} | Κάμερες Ελλάδα live · ${CAMS.length} κάμερες καιρού στη Βόρεια Ελλάδα`;
   const desc = `Κάμερες Ελλάδα live: ${CAMS.length} ζωντανές κάμερες καιρού σε Μακεδονία και Θράκη: Πρέσπες, Καστοριά, Όλυμπος, Θεσσαλονίκη, Χαλκιδική, Αλεξανδρούπολη, Έβρος.`;
   const jsonld = {
     '@context': 'https://schema.org',

@@ -1162,8 +1162,8 @@
     $$('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
     $$('[data-i18n-ph]').forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
     document.title = lang === 'el'
-      ? 'Κάμερες Ελλάδα live · Ζωντανές κάμερες καιρού στη Βόρεια Ελλάδα | Northellas.eyes'
-      : 'Greece live webcams · Live weather cams in Northern Greece | Northellas.eyes';
+      ? 'Northellas.eyes | Κάμερες Ελλάδα live · Ζωντανές κάμερες καιρού'
+      : 'Northellas.eyes | Greece live webcams · Weather cams in Northern Greece';
     renderGrid();
     renderRegions();
     renderRecords();
