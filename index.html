@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Northellas.eyes · Ζωντανές κάμερες καιρού στη Βόρεια Ελλάδα</title>
+  <meta name="description" content="Δωρεάν ενημέρωση για τις καιρικές συνθήκες στη Βόρεια Ελλάδα με 29 κάμερες, από τις Πρέσπες έως τον Έβρο.">
+  <meta name="theme-color" content="#070d1a">
+  <link rel="canonical" href="https://northhellas-eyes.pages.dev/">
+  <meta property="og:site_name" content="Northellas.eyes">
+  <meta property="og:title" content="Northellas.eyes · Τα μάτια της Βόρειας Ελλάδας">
+  <meta property="og:description" content="29 κάμερες καιρού, ζωντανά και δωρεάν: Πρέσπες, Όλυμπος, Θεσσαλονίκη, Χαλκιδική, Θράκη.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://northhellas-eyes.pages.dev/">
+  <meta property="og:locale" content="el_GR">
+  <meta property="og:image" content="https://northhellas-eyes.pages.dev/img/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Northellas.eyes: Τα μάτια της Βόρειας Ελλάδας">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Northellas.eyes">
+  <link rel="preload" as="image" href="img/logo-256.webp" type="image/webp">
+  <link rel="preconnect" href="https://mediacp.alphastream.eu" crossorigin>
+  <link rel="preconnect" href="https://mediawp.alphastream.eu" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700;800&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261008b">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__logo">
+      <span class="intro__ring"></span>
+      <img src="img/logo-256.webp" srcset="img/logo-256.webp 1x, img/logo-512.webp 2x" width="168" height="168" alt="">
+      <span class="intro__shutter"></span>
+    </div>
+    <span>Northellas<b>.eyes</b></span>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="topbar" id="top">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="#top" aria-label="Northellas.eyes">
+        <img class="brand__logo" src="img/logo-128.webp" srcset="img/logo-128.webp 1x, img/logo-256.webp 2x" width="40" height="40" alt="">
+        <span>Northellas<b>.eyes</b></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#cams" data-i18n="nav.cams">Κάμερες</a>
+        <a href="#regions" data-i18n="nav.regions">Περιοχές</a>
+        <a href="#map" data-i18n="nav.map">Χάρτης</a>
+        <a href="#weather" data-i18n="nav.weather">Καιρός</a>
+        <a href="#about" data-i18n="nav.about">Η ομάδα</a>
+        <a href="#contact" data-i18n="nav.contact">Επικοινωνία</a>
+      </nav>
+      <div class="topbar__end">
+        <span class="clock" id="clock" title="Ώρα Ελλάδας">--:--</span>
+        <button class="lang" id="langBtn" type="button" aria-label="Change language"><span data-l="el">ΕΛ</span><span data-l="en">EN</span></button>
+        <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ═════════ HERO ═════════ -->
+    <section class="hero" id="hero">
+      <div class="sky" aria-hidden="true">
+        <canvas id="stars"></canvas>
+        <div class="aurora"><i></i><i></i><i></i></div>
+        <svg class="range range--4" viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 300 L90 250 L170 270 L260 190 L340 230 L430 170 L520 220 L610 150 L690 200 L780 140 L870 210 L960 160 L1060 230 L1150 170 L1250 240 L1340 190 L1440 230 V400 H0Z"/></svg>
+        <svg class="range range--3" viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 320 L120 260 L220 300 L330 220 L420 270 L540 180 L600 205 L660 120 L700 140 L735 95 L770 130 L820 110 L900 200 L1010 160 L1110 240 L1220 190 L1330 260 L1440 220 V400 H0Z"/><path class="snow" d="M660 120 L700 140 L735 95 L770 130 L820 110 L800 140 L770 150 L735 125 L705 160 L680 140Z"/></svg>
+        <div class="fog fog--1"></div>
+        <svg class="range range--2" viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 340 L150 290 L290 330 L430 270 L560 315 L700 260 L860 320 L1000 280 L1160 330 L1300 290 L1440 320 V400 H0Z"/></svg>
+        <div class="fog fog--2"></div>
+        <svg class="range range--1" viewBox="0 0 1440 400" preserveAspectRatio="none"><path d="M0 370 L200 340 L380 365 L560 330 L760 368 L960 335 L1160 365 L1320 345 L1440 360 V400 H0Z"/></svg>
+      </div>
+
+      <div class="wrap hero__grid hero__grid--regions">
+        <div class="hero__copy">
+          <p class="kicker reveal"><span class="pulse"></span> <span id="heroCount">29</span> <span data-i18n="hero.kicker">ζωντανές κάμερες · Βόρεια Ελλάδα</span></p>
+          <h1 class="hero__title">
+            <span class="line"><span data-i18n="hero.t1">Τα μάτια</span></span>
+            <span class="line"><em data-i18n="hero.t2">της Βόρειας Ελλάδας</em></span>
+          </h1>
+          <p class="lead reveal" data-i18n="hero.lead">Από τις Πρέσπες ως τον Έβρο, από τον Όλυμπο ως τη Χαλκιδική. Δες τον καιρό όπως είναι αυτή τη στιγμή, δωρεάν, 24 ώρες το 24ωρο.</p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--primary magnetic" href="#cams"><span data-i18n="hero.cta">Όλες οι κάμερες</span> <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <button class="btn btn--ghost magnetic" type="button" id="heroOpen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg> <span data-i18n="hero.open">Δες ζωντανά</span></button>
+          </div>
+        </div>
+
+        <div class="hero__regions" id="regions">
+          <div class="regions regions--hero" id="regionCards"></div>
+        </div>
+      </div>
+
+      <a class="scroll-hint" href="#strip" aria-label="Scroll"><span></span></a>
+    </section>
+
+    <!-- ═════════ MARQUEE ═════════ -->
+    <div class="strip" id="strip" aria-hidden="true"><div class="strip__track" id="stripTrack"></div></div>
+
+    <!-- ═════════ STATS ═════════ -->
+    <section class="stats-band">
+      <div class="wrap stats">
+        <div class="stat reveal"><b data-count="29" id="statCams">29</b><span data-i18n="stats.cams">κάμερες σε λειτουργία</span></div>
+        <div class="stat reveal"><b data-count="3">3</b><span data-i18n="stats.regions">περιφέρειες, από τις Πρέσπες ως τον Έβρο</span></div>
+        <div class="stat reveal"><b data-count="2918">2918</b><span data-i18n="stats.olympus">μέτρα, ο Μύτικας που βλέπουμε κάθε μέρα</span></div>
+        <div class="stat reveal"><b data-count="2022">2022</b><span data-i18n="stats.since">η χρονιά που ξεκινήσαμε</span></div>
+      </div>
+    </section>
+
+    <!-- ═════════ CAMERAS ═════════ -->
+    <section class="section" id="cams">
+      <div class="wrap">
+        <div class="section__head">
+          <div class="reveal">
+            <p class="eyebrow" data-i18n="cams.eyebrow">Το δίκτυο</p>
+            <h2><span data-i18n="cams.title1">Οι κάμερές</span> <em data-i18n="cams.title2">μας</em></h2>
+          </div>
+          <label class="search reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="search" type="search" autocomplete="off" data-i18n-ph="cams.search" placeholder="Αναζήτηση τοποθεσίας…">
+            <kbd>/</kbd>
+          </label>
+        </div>
+        <div class="chips reveal" id="chips" role="tablist">
+          <span class="chips__pill" id="chipPill" aria-hidden="true"></span>
+          <button class="chip is-on" data-region="all"><span data-i18n="region.all">Όλες</span> <small id="cAll"></small></button>
+          <button class="chip" data-region="west"><span data-i18n="region.west">Δυτική Μακεδονία</span> <small id="cWest"></small></button>
+          <button class="chip" data-region="central"><span data-i18n="region.central">Κεντρική Μακεδονία</span> <small id="cCentral"></small></button>
+          <button class="chip" data-region="east"><span data-i18n="region.east">Αν. Μακεδονία &amp; Θράκη</span> <small id="cEast"></small></button>
+          <button class="chip" data-region="live"><i class="pulse"></i> <span data-i18n="region.live">Ζωντανό βίντεο</span> <small id="cLive"></small></button>
+          <button class="chip chip--fav" data-region="fav" id="chipFav" hidden><svg viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg> <span data-i18n="region.fav">Αγαπημένα</span> <small id="cFav"></small></button>
+        </div>
+        <div class="grid" id="grid" aria-live="polite"></div>
+        <p class="empty" id="empty" hidden data-i18n="cams.empty">Δεν βρέθηκε κάμερα με αυτό το όνομα.</p>
+        <p class="refresh-note"><span class="pulse"></span> <span data-i18n="cams.refresh">Οι εικόνες ανανεώνονται αυτόματα κάθε λεπτό.</span> <span id="lastRefresh"></span></p>
+      </div>
+    </section>
+
+    <!-- ═════════ MAP ═════════ -->
+    <section class="section" id="map">
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="map.eyebrow">Πού βρίσκονται</p>
+          <h2><span data-i18n="map.title1">Ο χάρτης</span> <em data-i18n="map.title2">των καμερών</em></h2>
+          <p class="muted" data-i18n="map.text">Κάθε σημείο στον χάρτη είναι μια κάμερα του δικτύου. Πάτησε πάνω του για να δεις πού βρίσκεται και πού κοιτάζει.</p>
+          <h3 class="sub" data-i18n="map.records">Ξεχωριστά σημεία του δικτύου</h3>
+          <ul class="compass-list" id="dirList"></ul>
+        </div>
+        <div class="cammap-wrap reveal">
+          <div class="cammap" id="camMap" role="region" aria-label="Χάρτης καμερών">
+            <p class="cammap__msg" data-i18n="map.loading">Φόρτωση χάρτη…</p>
+          </div>
+          <p class="cammap__hint" id="mapHint" data-i18n="map.hint">Πάτησε μια κουκκίδα για να ανοίξεις την κάμερα.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ WEATHER ═════════ -->
+    <section class="section section--alt" id="weather">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="weather.eyebrow">Πρόγνωση</p>
+            <h2><span data-i18n="weather.title1">Βροχή, άνεμος</span> <em data-i18n="weather.title2">και θερμοκρασία</em></h2>
+          </div>
+          <p class="muted narrow" data-i18n="weather.text">Ο ζωντανός χάρτης του Windy με το μοντέλο ECMWF. Άλλαξε επίπεδο από το μενού του χάρτη.</p>
+        </div>
+        <div class="embed embed--weather reveal" data-src="https://embed.windy.com/embed2.html?lat=40.45&lon=23.2&detailLat=40.640&detailLon=22.930&zoom=7&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=true&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1" data-title="Windy">
+          <button class="embed__load" type="button" data-i18n="weather.load">Φόρτωση χάρτη καιρού</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ ABOUT ═════════ -->
+    <section class="section" id="about">
+      <div class="wrap about">
+        <div class="about__text reveal">
+          <p class="eyebrow" data-i18n="about.eyebrow">Η ιστορία μας</p>
+          <h2><span data-i18n="about.title1">Τρεις φίλοι,</span> <em data-i18n="about.title2">μία ιδέα</em></h2>
+          <p class="about__lead" data-i18n="about.p1">Τον Μάιο του 2022, τρεις φίλοι από τρεις διαφορετικούς επαγγελματικούς κόσμους συνέλαβαν την ιδέα της δημιουργίας ενός ενημερωτικού account στο Facebook, με στόχο τη δωρεάν και live ενημέρωση αγροτών, τουριστών και κάθε άλλου ενδιαφερόμενου για τις μετεωρολογικές συνθήκες στη Βόρεια Ελλάδα σε πραγματικό χρόνο.</p>
+          <p data-i18n="about.p2">Με γνώμονα την πρόθεσή τους να στηρίξουν, στο μέτρο που τους αναλογεί, την αγροτική παραγωγή, αλλά και να διευκολύνουν τις τουριστικές εισροές στη χώρα, ξεκίνησαν στις 15 Ιουνίου το «northellas.eyes»: ένα δίκτυο μετεωρολογικών καμερών που εντάσσονται σταδιακά και δίνουν live εικόνα για τον καιρό σε διάφορες περιοχές της Βόρειας Ελλάδας.</p>
+          <p data-i18n="about.p3">Η πρώτη κάμερα εγκαταστάθηκε στις 15 Ιουνίου 2022 στη Λητή Θεσσαλονίκης. Σήμερα το δίκτυο έχει 29 κάμερες. Οι κάμερες αποτελούν μέρος του ευρύτερου δικτύου meteolive.gr, με διαχειριστή τον Χρήστο Δημητρούλη.</p>
+          <div class="pillars">
+            <div class="pillar reveal"><svg viewBox="0 0 24 24"><path d="M12 22c4-4 7-7.5 7-11a7 7 0 0 0-14 0c0 3.5 3 7 7 11z"/><path d="M12 7v6M9 10h6"/></svg><b data-i18n="pillar.1t">Για τους αγρότες</b><span data-i18n="pillar.1">Ο καιρός στο χωράφι, πριν βγεις από το σπίτι.</span></div>
+            <div class="pillar reveal"><svg viewBox="0 0 24 24"><path d="M3 20l6-12 4 7 3-4 5 9z"/><circle cx="17" cy="6" r="2"/></svg><b data-i18n="pillar.2t">Για τους ταξιδιώτες</b><span data-i18n="pillar.2">Χιόνι στο βουνό ή ήλιος στη θάλασσα; Δες πριν φύγεις.</span></div>
+            <div class="pillar reveal"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg><b data-i18n="pillar.3t">Δωρεάν, πάντα</b><span data-i18n="pillar.3">Χωρίς συνδρομές και χωρίς διαφημίσεις στην εικόνα.</span></div>
+          </div>
+        </div>
+        <ol class="timeline reveal" id="timeline">
+          <li><b>05.2022</b><span data-i18n="tl.1">Τρεις φίλοι, μία ιδέα: ενημέρωση για τον καιρό στη Βόρεια Ελλάδα, live και δωρεάν.</span></li>
+          <li><b>15.06.2022</b><span data-i18n="tl.2">Η πρώτη κάμερα ανάβει στη Λητή Θεσσαλονίκης.</span></li>
+          <li><b>2022</b><span data-i18n="tl.3">Φωτεινά, Νέος Παντελεήμονας, Κατερίνη, Ν.Ο. Κατερίνης, Δερβένι, Σουφλί, Δίκαια, Νεράιδα, Μακρύγιαλος, Κερκίνη, Ν.Ο. Θεσσαλονίκης, Ξινό Νερό.</span></li>
+          <li><b>2023</b><span data-i18n="tl.4">Καστοριά, Φλώρινα, Ψαράδες, Αλεξανδρούπολη, Νέοι Πόροι, Νάουσα, Άφυτος.</span></li>
+          <li><b>2024</b><span data-i18n="tl.5">Παλαιοχώρι, Ουρανούπολη, Παλιός Άγιος Αθανάσιος.</span></li>
+          <li><b>2025</b><span data-i18n="tl.6">Νεστόριο, Λιτόχωρο, Καστανιά Σερβίων, λιμάνι Αλεξανδρούπολης.</span></li>
+          <li class="tl-next"><b data-i18n="tl.nextT">Συνεχίζεται…</b><span data-i18n="tl.next">Η επόμενη κάμερα μπορεί να είναι στο δικό σου μέρος.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═════════ PARTNERS ═════════ -->
+    <section class="section section--alt partners" id="hosts">
+      <div class="wrap reveal">
+        <p class="eyebrow" data-i18n="hosts.eyebrow">Ευχαριστούμε</p>
+        <h2><span data-i18n="hosts.title1">Φιλοξενούν</span> <em data-i18n="hosts.title2">τις κάμερές μας</em></h2>
+        <p class="muted" data-i18n="hosts.text">Κάθε κάμερα υπάρχει χάρη σε έναν άνθρωπο ή μια επιχείρηση που της έδωσε μια θέση με θέα.</p>
+      </div>
+      <div class="marquee" aria-label="Partners">
+        <div class="marquee__row" id="partnersA"></div>
+        <div class="marquee__row marquee__row--rev" id="partnersB"></div>
+      </div>
+      <div class="wrap">
+        <p class="partners__cta reveal"><span data-i18n="hosts.cta">Θέλεις κάμερα στο κατάλυμα ή στην επιχείρησή σου;</span> <a href="https://www.facebook.com/northellas.eyes" target="_blank" rel="noopener" data-i18n="hosts.ctaLink">Στείλε μας μήνυμα</a></p>
+      </div>
+    </section>
+
+    <!-- ═════════ CONTACT ═════════ -->
+    <section class="section section--cta" id="contact">
+      <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="wrap contact">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Επικοινωνία</p>
+          <h2><span data-i18n="contact.title1">Μείνε</span> <em data-i18n="contact.title2">συνδεδεμένος</em></h2>
+          <p data-i18n="contact.text">Καθημερινά στιγμιότυπα, χιόνια, καταιγίδες και ηλιοβασιλέματα από όλη τη Βόρεια Ελλάδα. Για συνεργασίες, νέες κάμερες ή οτιδήποτε άλλο, γράψε μας στα social.</p>
+        </div>
+        <div class="socials reveal">
+          <a href="https://www.facebook.com/northellas.eyes" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9h3l.5-4h-3.5V8.8c0-.5.3-.8.5-.8z"/></svg><span><b>Facebook</b><small>northellas.eyes</small></span></a>
+          <a href="https://www.facebook.com/groups/548049000326818" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M10 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg><span><b data-i18n="contact.group">Ομάδα Facebook</b><small data-i18n="contact.groupSub">Μοιράσου τις φωτογραφίες σου</small></span></a>
+          <a href="https://www.instagram.com/northellas.eyes/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span><b>Instagram</b><small>@northellas.eyes</small></span></a>
+          <a href="https://www.youtube.com/channel/UChcbRTYWrl70zrdIo4EsHFg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg><span><b>YouTube</b><small>Time-lapse &amp; videos</small></span></a>
+          <a href="https://www.tiktok.com/@northellas.eyes" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3-3.46M14 3c.5 2.7 2.3 4.5 5 5"/></svg><span><b>TikTok</b><small>@northellas.eyes</small></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ DEDICATION ═════════ -->
+    <section class="section section--alt dedication" id="meteolive">
+      <div class="wrap">
+        <div class="dedication__card reveal">
+          <p class="eyebrow" data-i18n="ded.eyebrow">Αφιέρωση</p>
+          <h2><span data-i18n="ded.title1">Ένα μεγάλο ευχαριστώ</span> <em data-i18n="ded.title2">στο meteolive.gr</em></h2>
+          <p data-i18n="ded.text">Οι κάμερές μας αποτελούν μέρος του δικτύου meteolive.gr. Χάρη στη στήριξη του Χρήστου Δημητρούλη και της ομάδας του, η ζωντανή εικόνα από τη Βόρεια Ελλάδα φτάνει σε όλους, κάθε μέρα, δωρεάν. Τους αφιερώνουμε αυτή τη σελίδα.</p>
+          <a class="btn btn--primary" href="https://www.meteolive.gr/" target="_blank" rel="noopener"><span data-i18n="ded.cta">Επισκέψου το meteolive.gr</span> <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__brand">
+        <span class="brand"><img class="brand__logo brand__logo--lg" src="img/logo-256.webp" srcset="img/logo-256.webp 1x, img/logo-512.webp 2x" width="84" height="84" alt=""><span>Northellas<b>.eyes</b></span></span>
+        <p data-i18n="footer.tag">Δωρεάν ενημέρωση για τις μετεωρολογικές συνθήκες στη Βόρεια Ελλάδα με live κάμερες.</p>
+      </div>
+      <p class="footer__note" data-i18n="footer.note">Δεν επιτρέπεται η αποθήκευση ή/και αναπαραγωγή εικόνας από τις κάμερες του δικτύου μας σε άλλα μέσα χωρίς τη σύμφωνη γνώμη μας.</p>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> Northellas.eyes</span>
+        <span><span data-i18n="footer.partner">Σε συνεργασία με</span> <a href="https://www.meteolive.gr/" target="_blank" rel="noopener">meteolive.gr</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═════════ VIEWER ═════════ -->
+  <dialog class="viewer" id="viewer" aria-labelledby="vName">
+    <div class="viewer__bar">
+      <div class="viewer__title">
+        <strong id="vName"></strong>
+        <span id="vArea"></span>
+      </div>
+      <div class="viewer__tabs" id="vTabs" role="tablist"></div>
+      <div class="viewer__actions">
+        <button type="button" id="vFav" class="v-fav" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></button>
+        <button type="button" id="vShare" aria-label="Share" title="Share"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+        <button type="button" id="vFull" aria-label="Fullscreen" title="Fullscreen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        <button type="button" id="vClose" aria-label="Close" title="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+    </div>
+    <div class="viewer__body">
+      <div class="viewer__stage" id="vStage">
+        <span class="badge v-status" id="vStatus" hidden></span>
+        <button type="button" class="viewer__nav viewer__nav--prev" id="vPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
+        <div class="viewer__media" id="vMedia"></div>
+        <button type="button" class="viewer__nav viewer__nav--next" id="vNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
+      </div>
+      <aside class="viewer__info" id="vInfo">
+        <div class="facts" id="vFacts"></div>
+        <h3 data-i18n="v.view">Τι βλέπουμε;</h3>
+        <p id="vView"></p>
+        <h3 data-i18n="v.about">Επίσης…</h3>
+        <p id="vAbout"></p>
+        <div class="viewer__meta" id="vMeta"></div>
+      </aside>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js" defer></script>
+  <script src="cams.js?v=20261008b" defer></script>
+  <script src="app.js?v=20261008b" defer></script>
+</body>
+</html>
