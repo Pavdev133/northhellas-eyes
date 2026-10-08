@@ -720,6 +720,7 @@ a.cammap__msg { color: var(--glacier); }
 .gal__tag--snow { --c: #cfe6ff; }
 .gal__tag--storm { --c: #8f9bff; }
 .gal__tag--sunrise { --c: var(--dawn); }
+.gal__tag--rainbow::before { background: conic-gradient(#ff5b5b, #ffb24a, #ffe66b, #5be37a, #4eabe8, #9a7bff, #ff5b5b); box-shadow: 0 0 10px rgba(255, 178, 74, .6); }
 .gal__item .gal__tag { position: absolute; top: 14px; left: 14px; z-index: 2; }
 .gal__zoom { position: absolute; top: 12px; right: 12px; z-index: 2; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(7, 13, 26, .5); border: 1px solid rgba(255, 255, 255, .18); opacity: 0; transform: scale(.8); transition: opacity .4s, transform .4s var(--ease); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .gal__zoom svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
