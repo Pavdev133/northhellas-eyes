@@ -5,7 +5,7 @@ Static site served at the root of its own domain (Cloudflare Pages, no build ste
 
 ## Changing the domain
 
-The site's own address appears only in three tags at the top of `index.html` (`canonical`, `og:url`, `og:image`). Replace `https://northellaseyes.gr/` there with the real domain; everything else uses relative paths.
+The site's own address appears only in three tags at the top of `index.html` (`canonical`, `og:url`, `og:image`). Change `https://northellaseyes.gr/` there if the domain ever changes; everything else uses relative paths.
 
 ## Files
 
