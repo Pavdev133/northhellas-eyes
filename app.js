@@ -14,9 +14,9 @@
     el: {
       'nav.cams': 'Κάμερες', 'nav.regions': 'Περιοχές', 'nav.map': 'Χάρτης', 'nav.weather': 'Καιρός', 'nav.about': 'Η ομάδα', 'nav.contact': 'Επικοινωνία', 'nav.gallery': 'Γκαλερί',
       'gal.eyebrow': 'Γκαλερί', 'gal.title1': 'Στιγμές', 'gal.title2': 'από τις κάμερές μας',
-      'gal.text': 'Χιόνια, καταιγίδες, ουράνια τόξα και ανατολές που έπιασαν οι κάμερες του δικτύου. Διάλεξε χρονιά και πάτησε μια φωτογραφία για να τη δεις σε όλη την οθόνη.',
+      'gal.text': 'Χιόνια, καταιγίδες, κεραυνοί, ουράνια τόξα και ανατολές που έπιασαν οι κάμερες του δικτύου. Διάλεξε χρονιά και πάτησε μια φωτογραφία για να τη δεις σε όλη την οθόνη.',
       'gal.photos': 'φωτογραφίες', 'gal.live': 'Δες την κάμερα ζωντανά', 'gal.close': 'Κλείσιμο',
-      'gal.tag.snow': 'Χιόνι', 'gal.tag.storm': 'Καταιγίδα', 'gal.tag.sunrise': 'Ανατολή', 'gal.tag.rainbow': 'Ουράνιο τόξο',
+      'gal.tag.snow': 'Χιόνι', 'gal.tag.storm': 'Καταιγίδα', 'gal.tag.sunrise': 'Ανατολή', 'gal.tag.rainbow': 'Ουράνιο τόξο', 'gal.tag.lightning': 'Κεραυνός', 'gal.tag.sunset': 'Ηλιοβασίλεμα', 'gal.tag.clouds': 'Σύννεφα',
       'hero.kicker': 'ζωντανές κάμερες · Βόρεια Ελλάδα',
       'hero.t1': 'Τα μάτια', 'hero.t2': 'της Βόρειας Ελλάδας',
       'hero.lead': 'Από τις Πρέσπες ως τον Έβρο, από τον Όλυμπο ως τη Χαλκιδική. Δες τον καιρό όπως είναι αυτή τη στιγμή, δωρεάν, 24 ώρες το 24ωρο.',
@@ -89,9 +89,9 @@
     en: {
       'nav.cams': 'Cameras', 'nav.regions': 'Regions', 'nav.map': 'Map', 'nav.weather': 'Weather', 'nav.about': 'About', 'nav.contact': 'Contact', 'nav.gallery': 'Gallery',
       'gal.eyebrow': 'Gallery', 'gal.title1': 'Moments', 'gal.title2': 'from our cameras',
-      'gal.text': 'Snow, storms, rainbows and sunrises caught by the network\'s cameras. Pick a year and tap a photo to see it full screen.',
+      'gal.text': 'Snow, storms, lightning, rainbows and sunrises caught by the network\'s cameras. Pick a year and tap a photo to see it full screen.',
       'gal.photos': 'photos', 'gal.live': 'Watch this camera live', 'gal.close': 'Close',
-      'gal.tag.snow': 'Snow', 'gal.tag.storm': 'Storm', 'gal.tag.sunrise': 'Sunrise', 'gal.tag.rainbow': 'Rainbow',
+      'gal.tag.snow': 'Snow', 'gal.tag.storm': 'Storm', 'gal.tag.sunrise': 'Sunrise', 'gal.tag.rainbow': 'Rainbow', 'gal.tag.lightning': 'Lightning', 'gal.tag.sunset': 'Sunset', 'gal.tag.clouds': 'Clouds',
       'hero.kicker': 'live cameras · Northern Greece',
       'hero.t1': 'The eyes', 'hero.t2': 'of Northern Greece',
       'hero.lead': 'From Prespes to Evros, from Mount Olympus to Chalkidiki. See the weather exactly as it is right now, free, around the clock.',
