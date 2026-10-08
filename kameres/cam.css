@@ -69,3 +69,9 @@ main > section:has(.grid) { max-width: none; }
 }
 @media (max-width: 360px) { .top nav a:last-child { display: none; } }
 @media (prefers-reduced-motion: reduce) { .badge i { animation: none; } .shot img, .near a, .grid a { transition: none; } }
+.faq details { margin: 0 0 10px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); }
+.faq summary { cursor: pointer; padding: 14px 16px; font-weight: 600; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; float: right; color: var(--dawn); font-weight: 700; }
+.faq details[open] summary::after { content: '–'; }
+.faq p { padding: 0 16px 14px; margin: 0; }

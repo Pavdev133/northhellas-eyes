@@ -19,7 +19,7 @@
       'gal.tag.snow': 'Χιόνι', 'gal.tag.storm': 'Καταιγίδα', 'gal.tag.sunrise': 'Ανατολή', 'gal.tag.rainbow': 'Ουράνιο τόξο', 'gal.tag.lightning': 'Κεραυνός', 'gal.tag.sunset': 'Ηλιοβασίλεμα', 'gal.tag.clouds': 'Σύννεφα',
       'hero.kicker': 'ζωντανές κάμερες · Βόρεια Ελλάδα',
       'hero.t1': 'Τα μάτια', 'hero.t2': 'της Βόρειας Ελλάδας',
-      'hero.lead': 'Από τις Πρέσπες ως τον Έβρο, από τον Όλυμπο ως τη Χαλκιδική. Δες τον καιρό όπως είναι αυτή τη στιγμή, δωρεάν, 24 ώρες το 24ωρο.',
+      'hero.lead': 'Live κάμερες Ελλάδας από τις Πρέσπες ως τον Έβρο, από τον Όλυμπο ως τη Χαλκιδική. Δες τον καιρό όπως είναι αυτή τη στιγμή, δωρεάν, 24 ώρες το 24ωρο.',
       'hero.cta': 'Όλες οι κάμερες', 'hero.open': 'Δες ζωντανά',
       'stats.cams': 'κάμερες σε λειτουργία', 'stats.regions': 'περιφέρειες, από τις Πρέσπες ως τον Έβρο',
       'stats.olympus': 'μέτρα, ο Μύτικας που βλέπουμε κάθε μέρα', 'stats.since': 'η χρονιά που ξεκινήσαμε',
@@ -1162,8 +1162,8 @@
     $$('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
     $$('[data-i18n-ph]').forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
     document.title = lang === 'el'
-      ? 'Northellas.eyes · Ζωντανές κάμερες καιρού στη Βόρεια Ελλάδα | Live webcams Northern Greece'
-      : 'Northellas.eyes · Live weather cams in Northern Greece';
+      ? 'Κάμερες Ελλάδα live · Ζωντανές κάμερες καιρού στη Βόρεια Ελλάδα | Northellas.eyes'
+      : 'Greece live webcams · Live weather cams in Northern Greece | Northellas.eyes';
     renderGrid();
     renderRegions();
     renderRecords();

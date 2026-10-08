@@ -79,7 +79,7 @@ ${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <lin
 
 const foot = `
   <footer class="foot"><div class="wrap">
-    <p><a href="/">${BRAND}</a> · Δωρεάν ενημέρωση για τον καιρό στη Βόρεια Ελλάδα με ζωντανές κάμερες.</p>
+    <p><a href="/">${BRAND}</a> · Live κάμερες Ελλάδα: δωρεάν ενημέρωση για τον καιρό στη Βόρεια Ελλάδα.</p>
     <p><a href="/kameres/">Όλες οι κάμερες</a> · Σε συνεργασία με <a href="https://www.meteolive.gr/" rel="noopener">meteolive.gr</a></p>
     <p class="small">Δεν επιτρέπεται η αποθήκευση ή/και αναπαραγωγή εικόνας από τις κάμερες του δικτύου μας σε άλλα μέσα χωρίς τη σύμφωνη γνώμη μας.</p>
   </div></footer>`;
@@ -95,8 +95,8 @@ function camPage(c) {
   const region = REGIONS[c.region];
   const still = stillOf(c);
   const canonical = SITE + url(c);
-  const title = `${name} Κάμερα live · ${c.name.en} live webcam | ${BRAND}`;
-  const desc = clip(`Ζωντανή κάμερα ${name} (${c.area.el}): δες τον καιρό τώρα. ${c.view.el}`, 158);
+  const title = `Κάμερα ${name} live · Καιρός τώρα | ${c.name.en} webcam`;
+  const desc = clip(`Κάμερα καιρού ${name} (${c.area.el}) ζωντανά: δες τον καιρό τώρα. ${c.view.el}`, 158);
   const facts = [
     `<li><span>Περιοχή</span>${esc(c.area.el)}</li>`,
     `<li><span>Περιφέρεια</span>${esc(region.el)}</li>`,
@@ -159,11 +159,23 @@ function camPage(c) {
 `;
 }
 
+// Questions people search for, answered with links to the matching cameras.
+const byId = Object.fromEntries(CAMS.map((c) => [c.id, c]));
+const FAQ = [
+  ['Πού μπορώ να δω χιόνι τώρα;', 'Οι ορεινές κάμερες δείχνουν πρώτες το χιόνι:', ['agiosathanasios', 'psarades', 'nestorio', 'kastania', 'florina', 'xinonero', 'palaiochori']],
+  ['Υπάρχει κάμερα στον Όλυμπο;', 'Ναι, ο Όλυμπος φαίνεται από τέσσερις κάμερες:', ['litochoro', 'fotina', 'panteleimonas', 'platamonas']],
+  ['Υπάρχει live κάμερα στη Θεσσαλονίκη;', 'Ναι, στον Θερμαϊκό και γύρω από την πόλη:', ['noth', 'derveni', 'liti']],
+  ['Υπάρχουν κάμερες σε θάλασσα και παραλίες;', 'Ναι, για να δεις τον καιρό και τη θάλασσα τώρα:', ['makrigialos', 'afytos', 'ouranoupoli', 'neoiporoi', 'nokat', 'alexfaros', 'alexport']]
+].map(([q, a, ids]) => [q, a, ids.filter((id) => byId[id]).map((id) => byId[id])]);
+FAQ.push(['Είναι δωρεάν οι κάμερες;', `Ναι. Και οι ${CAMS.length} κάμερες καιρού του Northellas.eyes είναι δωρεάν, χωρίς εγγραφή, 24 ώρες το 24ωρο.`, []]);
+const faqHtml = `<section class="faq"><h2>Συχνές ερωτήσεις</h2>${FAQ.map(([q, a, cams]) => `<details><summary>${esc(q)}</summary><p>${esc(a)} ${cams.map((c) => `<a href="${url(c)}">${esc(c.name.el)}</a>`).join(', ')}${cams.length ? '.' : ''}</p></details>`).join('')}</section>`;
+const faqLd = { '@type': 'FAQPage', mainEntity: FAQ.map(([q, a, cams]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: `${a} ${cams.map((c) => c.name.el).join(', ')}`.trim() } })) };
+
 // ── All cameras ─────────────────────────────────────────────────
 function listPage() {
   const canonical = SITE + '/kameres/';
-  const title = `Όλες οι κάμερες καιρού στη Βόρεια Ελλάδα · ${CAMS.length} live κάμερες | ${BRAND}`;
-  const desc = `${CAMS.length} ζωντανές κάμερες καιρού σε Μακεδονία και Θράκη: Πρέσπες, Καστοριά, Όλυμπος, Θεσσαλονίκη, Χαλκιδική, Αλεξανδρούπολη, Έβρος.`;
+  const title = `Κάμερες Ελλάδα live · ${CAMS.length} κάμερες καιρού στη Βόρεια Ελλάδα | ${BRAND}`;
+  const desc = `Κάμερες Ελλάδα live: ${CAMS.length} ζωντανές κάμερες καιρού σε Μακεδονία και Θράκη: Πρέσπες, Καστοριά, Όλυμπος, Θεσσαλονίκη, Χαλκιδική, Αλεξανδρούπολη, Έβρος.`;
   const jsonld = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -172,7 +184,8 @@ function listPage() {
         isPartOf: { '@id': SITE + '/#website' },
         mainEntity: { '@type': 'ItemList', itemListElement: CAMS.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name.el, url: SITE + url(c) })) }
       },
-      breadcrumb([[BRAND, SITE + '/'], ['Κάμερες', canonical]])
+      breadcrumb([[BRAND, SITE + '/'], ['Κάμερες', canonical]]),
+      faqLd
     ]
   };
   const groups = Object.keys(REGIONS).map((r) => {
@@ -185,9 +198,10 @@ function listPage() {
   return `${head({ title, desc, canonical, jsonld })}
   <main class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Αρχική</a> › <span>Κάμερες</span></nav>
-    <h1>Κάμερες καιρού <em>στη Βόρεια Ελλάδα</em></h1>
-    <p class="lead">${CAMS.length} κάμερες από τις Πρέσπες ως τον Έβρο. Διάλεξε μια κάμερα για να δεις την εικόνα τώρα.</p>
+    <h1>Κάμερες Ελλάδα <em>ζωντανά, από τη Βόρεια Ελλάδα</em></h1>
+    <p class="lead">${CAMS.length} live κάμερες καιρού στην Ελλάδα, από τις Πρέσπες ως τον Έβρο. Διάλεξε μια κάμερα για να δεις την εικόνα τώρα.</p>
     ${groups}
+    ${faqHtml}
   </main>${foot}
 </body>
 </html>
