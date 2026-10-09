@@ -553,6 +553,7 @@ a.cammap__msg { color: var(--glacier); }
   border-radius: 26px; background: #080e1e; color: var(--snow); overflow: hidden; box-shadow: 0 50px 140px rgba(0, 0, 0, .8);
 }
 .viewer::backdrop { background: rgba(3, 6, 12, .85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.viewer:focus { outline: none; }
 .viewer[open] { display: flex; flex-direction: column; animation: pop .45s var(--ease); }
 @keyframes pop { from { opacity: 0; transform: translateY(20px) scale(.97); } }
 .viewer__bar { display: flex; align-items: center; gap: 14px; padding: 12px 14px 12px 22px; border-bottom: 1px solid var(--line); }
@@ -658,7 +659,7 @@ a.cammap__msg { color: var(--glacier); }
 
 /* ── Responsive ────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .viewer__body { grid-template-columns: 1fr; overflow-y: auto; }
+  .viewer__body { grid-template-columns: 1fr; overflow-y: auto; overscroll-behavior: contain; }
   .viewer__info { border-left: 0; border-top: 1px solid var(--line); max-height: none; overflow: visible; }
   .viewer__media { max-height: 62dvh; }
 }
@@ -788,7 +789,7 @@ a.cammap__msg { color: var(--glacier); }
 }
 .lb[open] { display: flex; animation: lbIn .45s var(--ease) both; }
 .lb::backdrop { background: rgba(3, 6, 12, .94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-html.lb-open { overflow: hidden; }
+html.lb-open, html.viewer-open { overflow: hidden; }
 .lb__top { display: flex; align-items: center; justify-content: space-between; padding: calc(14px + env(safe-area-inset-top, 0px)) 18px 8px; }
 .lb__count { font: 600 .85rem var(--ui); letter-spacing: .12em; color: var(--mist); }
 .lb__btn { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .16); background: rgba(255, 255, 255, .07); color: #fff; transition: background .3s, transform .3s var(--ease); }

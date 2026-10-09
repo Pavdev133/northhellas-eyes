@@ -787,15 +787,30 @@
     current = cam;
     tab = tabsFor(cam)[0];
     fillViewerText(cam);
-    if (!viewer.open) viewer.showModal();
-    $('#vInfo').scrollTop = 0;
+    if (!viewer.open) {
+      document.documentElement.classList.add('viewer-open');
+      viewer.showModal();
+      // focus the dialog itself, not the first tab (iPhone drew an orange ring around it)
+      viewer.focus({ preventScroll: true });
+    }
     showTab(tab);
+    toViewerTop();
     if (push && location.hash !== '#cam/' + id) { history.pushState({ cam: id }, '', '#cam/' + id); pushedEntry = true; }
+  }
+
+  // Every camera opens at the very top, with the video in view. On phones the
+  // whole body scrolls (on computers only the side text), so reset both, now
+  // and once more after layout, since the old scroll survives closing.
+  function toViewerTop() {
+    const reset = () => { $('.viewer__body').scrollTop = 0; $('#vInfo').scrollTop = 0; };
+    reset();
+    requestAnimationFrame(reset);
   }
 
   function closeViewer({ pop = false } = {}) {
     stopMedia();
     if (viewer.open) viewer.close();
+    document.documentElement.classList.remove('viewer-open');
     current = null;
     // Step back over the entry we added, so the phone's Back button doesn't
     // reopen the camera that was just closed.
@@ -1449,6 +1464,7 @@
 
     $('#vClose').addEventListener('click', () => closeViewer());
     viewer.addEventListener('cancel', (e) => { e.preventDefault(); closeViewer(); });
+    viewer.addEventListener('close', () => document.documentElement.classList.remove('viewer-open'));
     viewer.addEventListener('click', (e) => { if (e.target === viewer) closeViewer(); });
     $('#vPrev').addEventListener('click', () => step(-1));
     $('#vNext').addEventListener('click', () => step(1));
@@ -1458,12 +1474,16 @@
       if (e.key === 'ArrowRight') step(1);
     });
     let touchX = null;
-    $('#vStage').addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    let touchY = null;
+    $('#vStage').addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; touchY = e.touches[0].clientY; }, { passive: true });
     $('#vStage').addEventListener('touchend', (e) => {
-      if (touchX == null || tab === 'timelapse') return;
-      const dx = e.changedTouches[0].clientX - touchX;
-      if (Math.abs(dx) > 60) step(dx < 0 ? 1 : -1);
+      const x0 = touchX;
       touchX = null;
+      if (x0 == null || tab === 'timelapse') return;
+      const dx = e.changedTouches[0].clientX - x0;
+      const dy = e.changedTouches[0].clientY - touchY;
+      // only a clearly sideways swipe changes camera; scrolling down the text must not
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
     });
     $('#vFull').addEventListener('click', () => {
       const el = $('#vStage');
