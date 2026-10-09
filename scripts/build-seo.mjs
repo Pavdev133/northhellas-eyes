@@ -71,7 +71,7 @@ const head = ({ title, desc, canonical, image, jsonld }) => `<!doctype html>
 ${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/kameres/cam.css?v=${today.replace(/-/g, '')}">
+  <link rel="stylesheet" href="/kameres/cam.css?v=20261009c">
   <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 </head>
 <body>
