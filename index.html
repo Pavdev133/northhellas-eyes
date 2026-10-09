@@ -36,7 +36,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/fonts/commissioner-greek-7d3487.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/noto-serif-display-greek-86ce46.woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=20261009h">
+  <link rel="stylesheet" href="styles.css?v=20261010a">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -198,6 +198,19 @@
         </div>
         <div class="embed embed--weather reveal" data-src="https://embed.windy.com/embed2.html?lat=40.45&lon=23.2&detailLat=40.640&detailLon=22.930&zoom=7&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=true&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1" data-title="Windy">
           <button class="embed__load" type="button" data-i18n="weather.load">Φόρτωση χάρτη καιρού</button>
+        </div>
+        <div class="moon reveal" id="moon">
+          <div class="moon__disc"><svg id="moonSvg" viewBox="0 0 200 200" role="img" aria-label="Φάση της Σελήνης"></svg></div>
+          <div class="moon__info">
+            <p class="eyebrow" data-i18n="moon.eyebrow">Η Σελήνη τώρα</p>
+            <h3 class="moon__name" id="moonName">&nbsp;</h3>
+            <div class="moon__facts">
+              <div><b id="moonIllum">–</b><span data-i18n="moon.illum">φωτισμένη</span></div>
+              <div><b id="moonAge">–</b><span data-i18n="moon.age">ηλικία</span></div>
+            </div>
+            <p class="moon__label" data-i18n="moon.next">Επόμενες φάσεις · ώρα Ελλάδας</p>
+            <ol class="moon__next" id="moonNext"></ol>
+          </div>
         </div>
       </div>
     </section>
@@ -384,6 +397,7 @@
 
   <script src="cams.js?v=20261009f" defer></script>
   <script src="gallery.js?v=20261009e" defer></script>
-  <script src="app.js?v=20261009f" defer></script>
+  <script src="moon.js?v=20261010a" defer></script>
+  <script src="app.js?v=20261010a" defer></script>
 </body>
 </html>

@@ -47,6 +47,10 @@
       'weather.eyebrow': 'Πρόγνωση', 'weather.title1': 'Βροχή, άνεμος', 'weather.title2': 'και θερμοκρασία',
       'weather.text': 'Ο ζωντανός χάρτης του Windy με το μοντέλο ECMWF. Άλλαξε επίπεδο από το μενού του χάρτη.',
       'weather.load': 'Φόρτωση χάρτη καιρού',
+      'moon.eyebrow': 'Η Σελήνη τώρα', 'moon.illum': 'φωτισμένη', 'moon.age': 'ηλικία', 'moon.days': 'ημ.',
+      'moon.next': 'Επόμενες φάσεις · ώρα Ελλάδας',
+      'moon.0': 'Νέα Σελήνη', 'moon.1': 'Αύξων μηνίσκος', 'moon.2': 'Πρώτο τέταρτο', 'moon.3': 'Αύξουσα αμφίκυρτη',
+      'moon.4': 'Πανσέληνος', 'moon.5': 'Φθίνουσα αμφίκυρτη', 'moon.6': 'Τελευταίο τέταρτο', 'moon.7': 'Φθίνων μηνίσκος',
       'about.eyebrow': 'Η ιστορία μας', 'about.title1': 'Τρεις φίλοι,', 'about.title2': 'μία ιδέα',
       'about.p1': 'Τον Μάιο του 2022, τρεις φίλοι από τρεις διαφορετικούς επαγγελματικούς κόσμους συνέλαβαν την ιδέα της δημιουργίας ενός ενημερωτικού account στο Facebook, με στόχο τη δωρεάν και live ενημέρωση αγροτών, τουριστών και κάθε άλλου ενδιαφερόμενου για τις μετεωρολογικές συνθήκες στη Βόρεια Ελλάδα σε πραγματικό χρόνο.',
       'about.p2': 'Με γνώμονα την πρόθεσή τους να στηρίξουν, στο μέτρο που τους αναλογεί, την αγροτική παραγωγή, αλλά και να διευκολύνουν τις τουριστικές εισροές στη χώρα, ξεκίνησαν στις 15 Ιουνίου το «northellas.eyes»: ένα δίκτυο μετεωρολογικών καμερών που εντάσσονται σταδιακά και δίνουν live εικόνα για τον καιρό σε διάφορες περιοχές της Βόρειας Ελλάδας.',
@@ -123,6 +127,10 @@
       'weather.eyebrow': 'Forecast', 'weather.title1': 'Rain, wind', 'weather.title2': 'and temperature',
       'weather.text': 'Windy’s live map with the ECMWF model. Switch layers from the map menu.',
       'weather.load': 'Load weather map',
+      'moon.eyebrow': 'The Moon now', 'moon.illum': 'illuminated', 'moon.age': 'age', 'moon.days': 'd',
+      'moon.next': 'Next phases · Greece time',
+      'moon.0': 'New Moon', 'moon.1': 'Waxing crescent', 'moon.2': 'First quarter', 'moon.3': 'Waxing gibbous',
+      'moon.4': 'Full Moon', 'moon.5': 'Waning gibbous', 'moon.6': 'Last quarter', 'moon.7': 'Waning crescent',
       'about.eyebrow': 'Our story', 'about.title1': 'Three friends,', 'about.title2': 'one idea',
       'about.p1': 'In May 2022, three friends from three different walks of life came up with the idea of a Facebook page offering free, live, real-time weather updates for Northern Greece, for farmers, tourists and anyone else who needs them.',
       'about.p2': 'Wanting to support farming in whatever way they could, and to make travel to the region easier, they launched “northellas.eyes” on 15 June: a network of weather cameras, added one by one, that gives a live picture of the weather across Northern Greece.',
@@ -1315,9 +1323,41 @@
     if (viewer.open && current) fillViewerText(current);
     if (camMap) mapLang();
     renderGallery();
+    renderMoon();
     stampRefresh();
   }
 
+
+  // ── Moon ────────────────────────────────────────────────
+  // Lit side on the right while waxing (as seen from Greece); craters only show on the lit part.
+  const CRATERS = [[72, 70, 15], [118, 58, 10], [128, 112, 18], [84, 128, 12], [104, 92, 7], [62, 104, 8], [140, 82, 6], [102, 146, 9]];
+  function moonSvg(elong, small, illum = 1) {
+    const MN = window.NHE_MOON;
+    const lit = MN.litPath(elong, 100, 100, 90);
+    if (small) return `<svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="90" class="moon-dark"/><path d="${lit}" class="moon-lit-s"/><circle cx="100" cy="100" r="90" class="moon-rim"/></svg>`;
+    return `<defs><radialGradient id="mLit" cx="38%" cy="34%" r="75%"><stop offset="0" stop-color="#fffaf0"/><stop offset=".65" stop-color="#ece5d3"/><stop offset="1" stop-color="#bdb6a6"/></radialGradient>`
+      + `<radialGradient id="mGlow"><stop offset=".55" stop-color="rgba(255,236,190,.28)"/><stop offset="1" stop-color="rgba(255,236,190,0)"/></radialGradient>`
+      + `<clipPath id="mClip"><path d="${lit}"/></clipPath></defs>`
+      + `<circle cx="100" cy="100" r="100" fill="url(#mGlow)" opacity="${(0.25 + 0.75 * illum).toFixed(2)}"/>`
+      + `<circle cx="100" cy="100" r="90" class="moon-dark"/>`
+      + `<path d="${lit}" fill="url(#mLit)"/>`
+      + `<g clip-path="url(#mClip)" class="moon-craters">${CRATERS.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>`
+      + `<circle cx="100" cy="100" r="90" class="moon-rim"/>`;
+  }
+  function renderMoon() {
+    const MN = window.NHE_MOON;
+    if (!MN || !$('#moon')) return;
+    const m = MN.moonNow();
+    const svg = $('#moonSvg');
+    svg.innerHTML = moonSvg(m.elong, false, m.illum);
+    svg.setAttribute('aria-label', t('moon.' + m.phase));
+    $('#moonName').textContent = t('moon.' + m.phase);
+    $('#moonIllum').textContent = Math.round(m.illum * 100) + '%';
+    $('#moonAge').textContent = m.age == null ? '–' : m.age.toLocaleString(locale(), { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + ' ' + t('moon.days');
+    const day = new Intl.DateTimeFormat(locale(), { timeZone: 'Europe/Athens', weekday: 'short', day: 'numeric', month: 'short' });
+    const hm = new Intl.DateTimeFormat(locale(), { timeZone: 'Europe/Athens', hour: '2-digit', minute: '2-digit', hour12: false });
+    $('#moonNext').innerHTML = m.next.map((e) => `<li>${moonSvg(e.type * 90, true)}<span><b>${t('moon.' + e.type * 2)}</b><small>${day.format(e.date)} · ${hm.format(e.date)}</small></span></li>`).join('');
+  }
 
   // ── Gallery ─────────────────────────────────────────────
   const GALLERY = window.NHE_GALLERY || {};
@@ -1539,11 +1579,12 @@
     routeFromHash();
 
     setInterval(refreshImages, REFRESH_MS);
+    setInterval(renderMoon, 10 * 60 * 1000);
     checkStatus();
     setInterval(checkStatus, STATUS_MS);
     stampRefresh(new Date());
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') { refreshImages(); if (Date.now() - lastCheck > 60000) checkStatus(); }
+      if (document.visibilityState === 'visible') { refreshImages(); renderMoon(); if (Date.now() - lastCheck > 60000) checkStatus(); }
     });
   }
 
