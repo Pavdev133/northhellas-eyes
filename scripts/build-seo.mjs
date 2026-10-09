@@ -68,9 +68,9 @@ const head = ({ title, desc, canonical, image, jsonld }) => `<!doctype html>
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
-${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <link rel="preload" as="font" type="font/woff2" href="/fonts/commissioner-greek-7d3487.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/noto-serif-display-greek-86ce46.woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css?v=1">
   <link rel="stylesheet" href="/kameres/cam.css?v=20261009e">
   <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 </head>

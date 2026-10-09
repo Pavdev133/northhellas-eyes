@@ -223,6 +223,22 @@
   }
 
   // ── HLS ─────────────────────────────────────────────────
+  // hls.js is only fetched when a stream needs it (computers without native
+  // HLS); phones play streams natively and never download it.
+  const HLSJS = 'https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
+  let hlsJsLoad = null;
+  function loadHlsJs() {
+    if (window.Hls) return Promise.resolve();
+    hlsJsLoad = hlsJsLoad || new Promise((ok, fail) => {
+      const s = document.createElement('script');
+      s.src = HLSJS;
+      s.onload = () => (window.Hls ? ok() : fail());
+      s.onerror = () => { hlsJsLoad = null; fail(); };
+      document.head.appendChild(s);
+    });
+    return hlsJsLoad;
+  }
+
   // Plays a live stream and keeps it alive: network and decode errors are
   // recovered in place, stalls jump back to the live edge, and a stream that
   // dies is reloaded a few times before we give up and show the fallback.
@@ -235,7 +251,7 @@
     let startTimer = null;
     let stallTimer = null;
     const nativeHls = !!video.canPlayType('application/vnd.apple.mpegurl');
-    const hlsJsOk = !!(window.Hls && window.Hls.isSupported());
+    const hlsJsOk = !!(window.MediaSource || window.ManagedMediaSource);
     // Prefer the browser's own HLS player (iPhone, Safari, Android): it needs
     // no CORS headers from the stream server. When both engines exist, each
     // reload switches to the other one, so a stream one engine can't play
@@ -274,6 +290,14 @@
     function start() {
       clearTimers();
       startTimer = setTimeout(restart, timeout);
+      if (useHlsJs && !window.Hls) {
+        loadHlsJs().then(() => { if (!done) start(); }, () => {
+          useHlsJs = false;
+          if (done) return;
+          if (nativeHls) start(); else giveUp();
+        });
+        return;
+      }
       if (useHlsJs) {
         let mediaRecoveries = 0;
         hls = new window.Hls({
@@ -903,6 +927,7 @@
     const url = shareUrl;
     loadQr().then(() => { if (url === shareUrl) box.innerHTML = qrSvg(url); }).catch(() => { box.textContent = url; });
     if (!dlg.open) dlg.showModal();
+    document.documentElement.classList.add('qr-open');
   }
 
   async function copyShare() {
@@ -917,6 +942,7 @@
   function initShare() {
     const dlg = $('#qr');
     $('#qrClose').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('close', () => document.documentElement.classList.remove('qr-open'));
     dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
     $('#qrCopy').addEventListener('click', copyShare);
     $('#qrShare').addEventListener('click', async () => {
@@ -1269,8 +1295,8 @@
       observeReveals();
     };
     if (reduced || seen || location.hash.startsWith('#cam/')) { el.remove(); finish(); return; }
-    setTimeout(finish, 1900);
-    setTimeout(() => el.remove(), 2900);
+    setTimeout(finish, 1100);
+    setTimeout(() => el.remove(), 1600);
   }
 
   // ── Language ────────────────────────────────────────────
