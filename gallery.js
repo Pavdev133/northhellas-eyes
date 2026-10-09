@@ -102,7 +102,7 @@ window.NHE_GALLERY = {
       text: { el: 'Ένα τεράστιο shelf cloud έρχεται από τη θάλασσα πάνω από τον φάρο.', en: 'A huge shelf cloud rolls in from the sea over the lighthouse.' } },
     { img: 'neraida', cam: 'neraida', at: '2023-01-21T08:29', tag: 'sunrise',
       place: { el: 'Νεράιδα, Λίμνη Πολυφύτου', en: 'Neraida, Lake Polyfytos' },
-      text: { el: 'Ο πρωινός ήλιος σπάει τα σύννεφα και λάμπει πάνω στη λίμνη και τη γέφυρα.', en: 'The morning sun breaks through the clouds and shines on the lake and the bridge.' } },
+      text: { el: 'Σύννεφα Kelvin-Helmholtz (ή Fluctus), πάνω από τα Πιέρια όρη όπως φαίνονται από την λίμνη Πολυφύτου.', en: 'Kelvin-Helmholtz (or Fluctus) clouds over the Pieria mountains, as seen from Lake Polyfytos.' } },
     { img: 'nymfaio', at: '2023-01-29T07:58', tag: 'snow',
       place: { el: 'Νυμφαίο, Φλώρινα', en: 'Nymfaio, Florina' },
       text: { el: 'Χιονισμένο ξημέρωμα στα 1.350 μέτρα, με το πρώτο φως να βάφει χρυσά τα σπίτια.', en: 'A snowy dawn at 1,350 m, with the first light turning the houses gold.' } },
