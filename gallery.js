@@ -99,7 +99,7 @@ window.NHE_GALLERY = {
   2023: [
     { img: 'alexandroupoli', cam: 'alexfaros', at: '2023-06-18T16:29', tag: 'storm',
       place: { el: 'Φάρος Αλεξανδρούπολης, Έβρος', en: 'Alexandroupoli lighthouse, Evros' },
-      text: { el: 'Ένα τεράστιο «ράφι» καταιγίδας έρχεται από τη θάλασσα πάνω από τον φάρο.', en: 'A huge shelf cloud rolls in from the sea over the lighthouse.' } },
+      text: { el: 'Ένα τεράστιο shelf cloud έρχεται από τη θάλασσα πάνω από τον φάρο.', en: 'A huge shelf cloud rolls in from the sea over the lighthouse.' } },
     { img: 'neraida', cam: 'neraida', at: '2023-01-21T08:29', tag: 'sunrise',
       place: { el: 'Νεράιδα, Λίμνη Πολυφύτου', en: 'Neraida, Lake Polyfytos' },
       text: { el: 'Ο πρωινός ήλιος σπάει τα σύννεφα και λάμπει πάνω στη λίμνη και τη γέφυρα.', en: 'The morning sun breaks through the clouds and shines on the lake and the bridge.' } },
@@ -128,7 +128,7 @@ window.NHE_GALLERY = {
   2022: [
     { img: 'liti', cam: 'liti', at: '2022-09-17T19:08', tag: 'storm',
       place: { el: 'Λητή, Θεσσαλονίκη', en: 'Liti, Thessaloniki' },
-      text: { el: 'Ένα τεράστιο «ράφι» καταιγίδας σκεπάζει τον κάμπο πάνω από τη Λητή.', en: 'A huge shelf cloud rolls over the plain above Liti.' } },
+      text: { el: 'Ένα τεράστιο shelf cloud σκεπάζει τον κάμπο πάνω από τη Λητή Θεσσαλονίκης.', en: 'A huge shelf cloud rolls over the plain above Liti.' } },
     { img: 'soufli', cam: 'soufli', at: '2022-01-12T10:53', tag: 'snow',
       place: { el: 'Σουφλί, Έβρος', en: 'Soufli, Evros' },
       text: { el: 'Χιονισμένο πρωινό στο Σουφλί, δίπλα στις γραμμές του τρένου.', en: 'A snowy morning in Soufli, next to the railway line.' } },
