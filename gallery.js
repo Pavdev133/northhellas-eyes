@@ -134,7 +134,7 @@ window.NHE_GALLERY = {
       text: { el: 'Χιονισμένο πρωινό στο Σουφλί, δίπλα στις γραμμές του τρένου.', en: 'A snowy morning in Soufli, next to the railway line.' } },
     { img: 'dikaia', cam: 'dikaia', at: '2022-02-03T07:24', tag: 'snow',
       place: { el: 'Δίκαια, Έβρος', en: 'Dikaia, Evros' },
-      text: { el: 'Η Δίκαια ξυπνά κάτω από ένα λευκό πάπλωμα χιονιού.', en: 'Dikaia wakes up under a white blanket of snow.' } },
+      text: { el: 'Τα Δίκαια ξυπνάνε κάτω από ένα λευκό πάπλωμα χιονιού.', en: 'Dikaia wakes up under a white blanket of snow.' } },
     { img: 'panteleimonas', cam: 'panteleimonas', at: '2022-03-09T06:35', tag: 'snow',
       place: { el: 'Νέος Παντελεήμονας, Πιερία', en: 'Neos Panteleimonas, Pieria' },
       text: { el: 'Χιονοθύελλα πριν το ξημέρωμα, με τα φώτα να λάμπουν μέσα στην ομίχλη.', en: 'A blizzard before dawn, with lights glowing through the fog.' } },
