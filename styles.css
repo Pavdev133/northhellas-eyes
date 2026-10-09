@@ -769,6 +769,7 @@ a.cammap__msg { color: var(--glacier); }
 .gal__tag::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--c, var(--glacier)); box-shadow: 0 0 10px var(--c, var(--glacier)); }
 .gal__tag--snow { --c: #cfe6ff; }
 .gal__tag--storm { --c: #8f9bff; }
+.gal__tag--shelf { --c: #9fb4d8; }
 .gal__tag--sunrise { --c: var(--dawn); }
 .gal__tag--sunset { --c: #ff7aa8; }
 .gal__tag--lightning { --c: #fff36b; }

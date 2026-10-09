@@ -97,7 +97,7 @@ window.NHE_GALLERY = {
       text: { el: 'Φακοειδή σύννεφα σαν καπέλο πάνω από τις χιονισμένες κορυφές του Ολύμπου.', en: 'Lenticular clouds sit like a hat over the snowy peaks of Olympus.' } }
   ],
   2023: [
-    { img: 'alexandroupoli', cam: 'alexfaros', at: '2023-06-18T16:29', tag: 'storm',
+    { img: 'alexandroupoli', cam: 'alexfaros', at: '2023-06-18T16:29', tag: 'shelf',
       place: { el: 'Φάρος Αλεξανδρούπολης, Έβρος', en: 'Alexandroupoli lighthouse, Evros' },
       text: { el: 'Ένα τεράστιο shelf cloud έρχεται από τη θάλασσα πάνω από τον φάρο.', en: 'A huge shelf cloud rolls in from the sea over the lighthouse.' } },
     { img: 'neraida', cam: 'neraida', at: '2023-01-21T08:29', tag: 'sunrise',
@@ -115,18 +115,18 @@ window.NHE_GALLERY = {
     { img: 'derveni-rainbow', cam: 'derveni', at: '2023-04-01T17:41', tag: 'rainbow',
       place: { el: 'Δερβένι, Θεσσαλονίκη', en: 'Derveni, Thessaloniki' },
       text: { el: 'Ξανά ουράνιο τόξο, λίγες μέρες μετά, πάνω από τον πράσινο κάμπο.', en: 'Another rainbow a few days later, over the green plain.' } },
-    { img: 'dikaia', cam: 'dikaia', at: '2023-04-04T17:06', tag: 'storm',
+    { img: 'dikaia', cam: 'dikaia', at: '2023-04-04T17:06', tag: 'shelf',
       place: { el: 'Δίκαια, Έβρος', en: 'Dikaia, Evros' },
-      text: { el: 'Βαριά σύννεφα καταιγίδας στροβιλίζονται πάνω από τα κεραμίδια του χωριού.', en: 'Heavy storm clouds swirl over the village rooftops.' } },
-    { img: 'kalamaria', cam: 'noth', at: '2023-04-22T18:11', tag: 'storm',
+      text: { el: 'Ένα shelf cloud απλώνεται πάνω από τα κεραμίδια του χωριού.', en: 'A shelf cloud spreads over the village rooftops.' } },
+    { img: 'kalamaria', cam: 'noth', at: '2023-04-22T18:11', tag: 'shelf',
       place: { el: 'Ν.Ο. Θεσσαλονίκης, Καλαμαριά', en: 'Thessaloniki Nautical Club, Kalamaria' },
-      text: { el: 'Η καταιγίδα σκεπάζει τον Θερμαϊκό, λίγο πριν φτάσει στα σκάφη του ομίλου.', en: 'The storm covers the Thermaic Gulf, just before it reaches the club’s boats.' } },
-    { img: 'makrigialos', cam: 'makrigialos', at: '2023-04-22T19:07', tag: 'storm',
+      text: { el: 'Ένα shelf cloud σκεπάζει τον Θερμαϊκό, λίγο πριν φτάσει στα σκάφη του ομίλου.', en: 'A shelf cloud covers the Thermaic Gulf, just before it reaches the club’s boats.' } },
+    { img: 'makrigialos', cam: 'makrigialos', at: '2023-04-22T19:07', tag: 'shelf',
       place: { el: 'Μακρύγιαλος, Πιερία', en: 'Makrygialos, Pieria' },
-      text: { el: 'Την ίδια μέρα, μια ώρα αργότερα, το ίδιο σύστημα απλώνεται πάνω από τη θάλασσα.', en: 'The same day, an hour later, the same system stretches across the sea.' } }
+      text: { el: 'Την ίδια μέρα, μια ώρα αργότερα, το ίδιο shelf cloud απλώνεται πάνω από τη θάλασσα.', en: 'The same day, an hour later, the same shelf cloud stretches across the sea.' } }
   ],
   2022: [
-    { img: 'liti', cam: 'liti', at: '2022-09-17T19:08', tag: 'storm',
+    { img: 'liti', cam: 'liti', at: '2022-09-17T19:08', tag: 'shelf',
       place: { el: 'Λητή, Θεσσαλονίκη', en: 'Liti, Thessaloniki' },
       text: { el: 'Ένα τεράστιο shelf cloud σκεπάζει τον κάμπο πάνω από τη Λητή Θεσσαλονίκης.', en: 'A huge shelf cloud rolls over the plain above Liti.' } },
     { img: 'soufli', cam: 'soufli', at: '2022-01-12T10:53', tag: 'snow',
