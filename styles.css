@@ -854,3 +854,6 @@ html.lb-open { overflow: hidden; }
 .footer__cams a { color: var(--mist); font-size: .86rem; text-decoration: none; transition: color .25s; }
 .footer__cams a:hover { color: var(--snow); }
 @media (max-width: 640px) { .footer__cams { grid-template-columns: 1fr; gap: 18px; } }
+
+.flagcounter { margin: 22px 0 0; text-align: center; line-height: 0; }
+.flagcounter img { display: inline-block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .8); }

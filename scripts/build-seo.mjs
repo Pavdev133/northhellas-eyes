@@ -71,7 +71,7 @@ const head = ({ title, desc, canonical, image, jsonld }) => `<!doctype html>
 ${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&family=Noto+Serif+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/kameres/cam.css?v=20261009c">
+  <link rel="stylesheet" href="/kameres/cam.css?v=20261009e">
   <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 </head>
 <body>
@@ -85,6 +85,7 @@ const foot = `
     <p><a href="/">${BRAND}</a> · Live κάμερες Ελλάδα: δωρεάν ενημέρωση για τον καιρό στη Βόρεια Ελλάδα.</p>
     <p><a href="/kameres/">Όλες οι κάμερες</a> · Σε συνεργασία με <a href="https://www.meteolive.gr/" rel="noopener">meteolive.gr</a></p>
     <p class="small">Δεν επιτρέπεται η αποθήκευση ή/και αναπαραγωγή εικόνας από τις κάμερες του δικτύου μας σε άλλα μέσα χωρίς τη σύμφωνη γνώμη μας.</p>
+    <p class="flagcounter"><a href="https://s01.flagcounter.com/more/tin" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/tin/bg_111D3A/txt_F2F5FB/border_111D3A/columns_4/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" loading="lazy"></a></p>
     <p class="small">design by <a href="https://pavdev.gr/" rel="noopener">pavdev</a></p>
   </div></footer>`;
 
