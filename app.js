@@ -12,15 +12,16 @@
   // ── i18n ────────────────────────────────────────────────
   const T = {
     el: {
-      'nav.cams': 'Κάμερες', 'nav.regions': 'Περιοχές', 'nav.map': 'Χάρτης', 'nav.weather': 'Καιρός', 'nav.about': 'Η ομάδα', 'nav.contact': 'Επικοινωνία', 'nav.gallery': 'Γκαλερί',
-      'gal.eyebrow': 'Γκαλερί', 'gal.title1': 'Στιγμές', 'gal.title2': 'από τις κάμερές μας',
+      'nav.cams': 'Κάμερες', 'nav.regions': 'Περιοχές', 'nav.map': 'Χάρτης', 'nav.weather': 'Καιρός', 'nav.about': 'Η ομάδα', 'nav.contact': 'Επικοινωνία', 'nav.gallery': 'Συλλογή',
+      'gal.eyebrow': 'Συλλογή', 'gal.title1': 'Στιγμές', 'gal.title2': 'από τις κάμερές μας',
       'gal.text': 'Χιόνια, καταιγίδες, κεραυνοί, ουράνια τόξα και ανατολές που έπιασαν οι κάμερες του δικτύου. Διάλεξε χρονιά και πάτησε μια φωτογραφία για να τη δεις σε όλη την οθόνη.',
       'gal.photos': 'φωτογραφίες', 'gal.live': 'Δες την κάμερα ζωντανά', 'gal.close': 'Κλείσιμο',
       'gal.tag.snow': 'Χιόνι', 'gal.tag.storm': 'Καταιγίδα', 'gal.tag.sunrise': 'Ανατολή', 'gal.tag.rainbow': 'Ουράνιο τόξο', 'gal.tag.lightning': 'Κεραυνός', 'gal.tag.sunset': 'Ηλιοβασίλεμα', 'gal.tag.clouds': 'Σύννεφα',
       'hero.kicker': 'ζωντανές κάμερες · Βόρεια Ελλάδα',
       'hero.t1': 'Τα μάτια', 'hero.t2': 'της Βόρειας Ελλάδας',
       'hero.lead': 'Live κάμερες Ελλάδας από τις Πρέσπες ως τον Έβρο, από τον Όλυμπο ως τη Χαλκιδική. Δες τον καιρό όπως είναι αυτή τη στιγμή, δωρεάν, 24 ώρες το 24ωρο.',
-      'hero.cta': 'Όλες οι κάμερες', 'hero.open': 'Δες ζωντανά',
+      'hero.cta': 'Όλες οι κάμερες', 'hero.open': 'Κοινοποίηση',
+      'qr.site': 'ζωντανές κάμερες · Βόρεια Ελλάδα', 'qr.scan': 'Σκάναρε με την κάμερα του κινητού', 'qr.share': 'Κοινοποίηση', 'qr.copy': 'Αντιγραφή', 'qr.copied': 'Αντιγράφηκε',
       'stats.cams': 'κάμερες σε λειτουργία', 'stats.regions': 'περιφέρειες, από τις Πρέσπες ως τον Έβρο',
       'stats.olympus': 'μέτρα, ο Μύτικας που βλέπουμε κάθε μέρα', 'stats.since': 'η χρονιά που ξεκινήσαμε',
       'cams.eyebrow': 'Το δίκτυο', 'cams.title1': 'Οι κάμερές', 'cams.title2': 'μας', 'cams.search': 'Αναζήτηση τοποθεσίας…',
@@ -95,7 +96,8 @@
       'hero.kicker': 'live cameras · Northern Greece',
       'hero.t1': 'The eyes', 'hero.t2': 'of Northern Greece',
       'hero.lead': 'From Prespes to Evros, from Mount Olympus to Chalkidiki. See the weather exactly as it is right now, free, around the clock.',
-      'hero.cta': 'All cameras', 'hero.open': 'Watch live',
+      'hero.cta': 'All cameras', 'hero.open': 'Share',
+      'qr.site': 'live cameras · Northern Greece', 'qr.scan': 'Scan with your phone camera', 'qr.share': 'Share', 'qr.copy': 'Copy', 'qr.copied': 'Copied',
       'stats.cams': 'cameras online', 'stats.regions': 'regions, from Prespes to Evros',
       'stats.olympus': 'metres: Mytikas, which we see every day', 'stats.since': 'the year we started',
       'cams.eyebrow': 'The network', 'cams.title1': 'Our', 'cams.title2': 'cameras', 'cams.search': 'Search a place…',
@@ -636,7 +638,6 @@
   }
 
   // Camera the hero's "watch live" button opens.
-  const featureCam = camById('litochoro') || CAMS.find((c) => c.hls) || CAMS[0];
 
   // ── Viewer ──────────────────────────────────────────────
   const viewer = $('#viewer');
@@ -807,6 +808,102 @@
     const next = list[(i + dir + list.length) % list.length];
     openViewer(next.id, { push: false });
     history.replaceState({ cam: next.id }, '', '#cam/' + next.id);
+  }
+
+  // ── Share card with QR code ─────────────────────────────
+  // The hero "Share" button shares the whole site, the viewer's share button
+  // the open camera's own page. The QR library loads on first use.
+  const SITE = 'https://northellaseyes.gr/';
+  let shareUrl = '';
+  let shareTitle = '';
+  let qrLib = null;
+
+  function loadQr() {
+    if (window.qrcode) return Promise.resolve();
+    qrLib = qrLib || new Promise((ok, fail) => {
+      const s = document.createElement('script');
+      s.src = 'qr.js?v=20261009a';
+      s.onload = ok;
+      s.onerror = () => { qrLib = null; fail(); };
+      document.head.appendChild(s);
+    });
+    return qrLib;
+  }
+
+  // Dark rounded modules on white, rounded finder eyes, a clear centre for the logo.
+  function qrSvg(text) {
+    const qr = window.qrcode(0, 'H');
+    qr.addData(text);
+    qr.make();
+    const n = qr.getModuleCount();
+    const hole = Math.ceil(n * 0.24) | 1;
+    const h0 = (n - hole) / 2;
+    const inEye = (r, c) => (r < 7 && c < 7) || (r < 7 && c >= n - 7) || (r >= n - 7 && c < 7);
+    const inHole = (r, c) => r >= h0 - 0.5 && r < h0 + hole && c >= h0 - 0.5 && c < h0 + hole;
+    let d = '';
+    for (let r = 0; r < n; r++) {
+      for (let c = 0; c < n; c++) {
+        if (qr.isDark(r, c) && !inEye(r, c) && !inHole(r, c)) d += `M${c + 0.08} ${r + 0.08}h0.84v0.84h-0.84z`;
+      }
+    }
+    const eye = (x, y) => `<rect x="${x + 0.5}" y="${y + 0.5}" width="6" height="6" rx="1.8" fill="none" stroke="currentColor"/>`
+      + `<rect x="${x + 2}" y="${y + 2}" width="3" height="3" rx="0.9" class="qr__eye"/>`;
+    return `<svg viewBox="-1 -1 ${n + 2} ${n + 2}" role="img" aria-label="QR"><path d="${d}" fill="currentColor" stroke="none"/>`
+      + eye(0, 0) + eye(n - 7, 0) + eye(0, n - 7) + '</svg>';
+  }
+
+  function openShare(cam) {
+    const dlg = $('#qr');
+    const img = $('#qrImg');
+    img.onerror = () => { img.hidden = true; };
+    img.hidden = !cam;
+    $('#qr').classList.toggle('qr--site', !cam);
+    if (cam) {
+      shareUrl = `${SITE}kameres/${cam.id}/`;
+      shareTitle = `${L(cam.name)} · Northellas.eyes`;
+      if (snapOf(cam)) img.src = bust(snapOf(cam)); else img.hidden = true;
+      $('#qrTag').innerHTML = statusBadge(cam);
+      $('#qrName').textContent = L(cam.name);
+      const bits = [L(cam.area), t('regionShort.' + cam.region)];
+      if (cam.alt) bits.push(`${num(cam.alt)} ${m()}`);
+      $('#qrArea').textContent = bits.filter(Boolean).join(' · ');
+    } else {
+      shareUrl = SITE;
+      shareTitle = 'Northellas.eyes · ' + t('hero.t1') + ' ' + t('hero.t2');
+      $('#qrTag').innerHTML = `<span class="badge badge--live"><i></i> ${t('card.live')}</span>`;
+      $('#qrName').innerHTML = 'Northellas<b>.eyes</b>';
+      $('#qrArea').textContent = `${CAMS.length} ${t('qr.site')}`;
+    }
+    $('#qrUrl').textContent = shareUrl.replace('https://', '').replace(/\/$/, '');
+    $('#qrHint').textContent = t('qr.scan');
+    $('#qrShareText').textContent = t('qr.share');
+    $('#qrCopyText').textContent = t('qr.copy');
+    const box = $('#qrCode');
+    box.innerHTML = '<div class="spinner"></div>';
+    const url = shareUrl;
+    loadQr().then(() => { if (url === shareUrl) box.innerHTML = qrSvg(url); }).catch(() => { box.textContent = url; });
+    if (!dlg.open) dlg.showModal();
+  }
+
+  async function copyShare() {
+    // The popup sits above the toast, so the copy button itself confirms.
+    try { await navigator.clipboard.writeText(shareUrl); } catch { return; }
+    const el = $('#qrCopyText');
+    el.textContent = '✓ ' + t('qr.copied');
+    clearTimeout(copyShare.t);
+    copyShare.t = setTimeout(() => { el.textContent = t('qr.copy'); }, 2200);
+  }
+
+  function initShare() {
+    const dlg = $('#qr');
+    $('#qrClose').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    $('#qrCopy').addEventListener('click', copyShare);
+    $('#qrShare').addEventListener('click', async () => {
+      if (navigator.share) {
+        try { await navigator.share({ title: shareTitle, url: shareUrl }); } catch { /* cancelled */ }
+      } else copyShare();
+    });
   }
 
   function toast(text) {
@@ -1343,7 +1440,7 @@
       if (e.key === '/' && !viewer.open && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); $('#search').focus(); }
     });
 
-    $('#heroOpen').addEventListener('click', () => openViewer(featureCam.id));
+    $('#heroOpen').addEventListener('click', () => openShare());
 
     $('#vClose').addEventListener('click', () => closeViewer());
     viewer.addEventListener('cancel', (e) => { e.preventDefault(); closeViewer(); });
@@ -1371,14 +1468,8 @@
       else if (video && video.webkitEnterFullscreen) video.webkitEnterFullscreen();
     });
     $('#vFav').addEventListener('click', () => { if (current) toggleFav(current); });
-    $('#vShare').addEventListener('click', async () => {
-      const url = location.href;
-      if (navigator.share) {
-        try { await navigator.share({ title: `${L(current.name)} · Northellas.eyes`, url }); } catch { /* cancelled */ }
-      } else {
-        try { await navigator.clipboard.writeText(url); toast(t('v.share')); } catch { /* blocked */ }
-      }
-    });
+    $('#vShare').addEventListener('click', () => { if (current) openShare(current); });
+    initShare();
 
     const io = 'IntersectionObserver' in window
       ? new IntersectionObserver((entries) => entries.forEach((en) => {

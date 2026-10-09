@@ -77,7 +77,7 @@ ${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <lin
 <body>
   <header class="top"><div class="wrap">
     <a class="brand" href="/"><img src="/img/logo-128.webp" width="36" height="36" alt=""><span>Northellas<b>.eyes</b></span></a>
-    <nav><a href="/#cams">Κάμερες</a><a href="/#map">Χάρτης</a><a href="/#gallery">Γκαλερί</a></nav>
+    <nav><a href="/#cams">Κάμερες</a><a href="/#map">Χάρτης</a><a href="/#gallery">Συλλογή</a></nav>
   </div></header>`;
 
 const foot = `

@@ -606,6 +606,54 @@ a.cammap__msg { color: var(--glacier); }
 }
 .toast.is-on { opacity: 1; transform: translate(-50%, 0); }
 
+/* ── Share card with QR code ───────────────────────────── */
+/* Same fixed size on every phone; only very short screens scroll. */
+.qr {
+  width: min(360px, 100vw - 32px); max-height: calc(100dvh - 24px); padding: 0; border: 1px solid var(--line); border-radius: 28px;
+  background: linear-gradient(180deg, #0d1730, #080e1e 60%); color: var(--snow); overflow: hidden auto; box-shadow: 0 50px 140px rgba(0, 0, 0, .85);
+}
+.qr::backdrop { background: rgba(3, 6, 12, .82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.qr[open] { animation: pop .45s var(--ease); }
+.qr svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.qr__head {
+  position: relative; height: 150px; overflow: hidden;
+  background: radial-gradient(120% 90% at 85% 0%, rgba(255, 178, 74, .35), transparent 55%), radial-gradient(90% 80% at 0% 100%, rgba(78, 171, 232, .3), transparent 60%), #10203f;
+}
+.qr__head > #qrImg { position: relative; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+.qr__head > #qrImg[hidden] { display: none; }
+.qr__mark { display: none; }
+.qr--site .qr__mark { display: block; position: absolute; right: 18px; bottom: 16px; width: 72px; height: 72px; border-radius: 50%; box-shadow: 0 10px 30px rgba(0, 0, 0, .5); }
+.qr--site .qr__head::after { display: none; }
+.qr--site .qr__title { right: 104px; }
+.qr--site .qr__area { white-space: normal; }
+.qr__head::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7, 13, 26, .1) 20%, rgba(13, 23, 48, .95)); }
+.qr__close {
+  position: absolute; top: 12px; right: 12px; z-index: 2; width: 36px; height: 36px; display: grid; place-items: center;
+  border: 0; border-radius: 50%; background: rgba(0, 0, 0, .45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.qr__close svg { width: 18px; height: 18px; }
+.qr__title { position: absolute; left: 20px; right: 20px; bottom: 12px; z-index: 1; }
+.qr__title .badge { position: static; margin-bottom: 8px; }
+.qr__title strong { display: block; font: 700 1.45rem/1.15 var(--display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 2px 12px rgba(0, 0, 0, .6); }
+.qr__title strong b { color: var(--dawn); font-weight: 700; }
+.qr__area { display: block; margin-top: 3px; font-size: .84rem; color: #cdd6ec; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.qr__body { padding: 18px 20px 20px; text-align: center; }
+.qr__frame {
+  position: relative; width: 210px; margin: 0 auto; padding: 3px; border-radius: 24px;
+  background: linear-gradient(135deg, var(--dawn), var(--ember) 55%, var(--glacier));
+  box-shadow: 0 20px 50px -20px rgba(255, 130, 60, .6);
+}
+.qr__code { display: grid; place-items: center; aspect-ratio: 1; padding: 10px; border-radius: 21px; background: #fff; color: #0d1730; }
+.qr__code svg { width: 100%; height: 100%; stroke-width: 1; }
+.qr__code .qr__eye { fill: #c2410c; stroke: none; }
+.qr__code .spinner { margin: 0; border-color: rgba(13, 23, 48, .12); border-top-color: var(--ember); }
+.qr__logo { position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; transform: translate(-50%, -50%); border-radius: 12px; background: #fff; padding: 3px; box-shadow: 0 0 0 3px #fff; }
+.qr__hint { margin: 16px 0 2px; font-size: .9rem; color: var(--mist); }
+.qr__url { margin: 0; font: 600 .95rem var(--ui); color: var(--dawn); word-break: break-all; }
+.qr__actions { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; margin-top: 18px; }
+.qr__actions .btn { padding: 13px 10px; gap: 8px; font-size: .92rem; white-space: nowrap; }
+.qr__actions .btn:hover svg { transform: none; }
+
 /* ── Responsive ────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .viewer__body { grid-template-columns: 1fr; overflow-y: auto; }
