@@ -695,6 +695,11 @@
     if (cam.windy) add(t('v.windy') + ' ↗', `https://windy.com/webcams/${cam.windy}`);
     if (cam.blog) add(t('v.blog') + ' ↗', cam.blog);
 
+    // each camera has its own Flag Counter (cam.fc); the image hit is what counts the visit
+    const flag = $('#vFlag');
+    flag.hidden = !cam.fc;
+    flag.innerHTML = cam.fc ? `<a href="https://s01.flagcounter.com/more/${cam.fc}" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/${cam.fc}/bg_111D3A/txt_F2F5FB/border_111D3A/columns_4/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter"></a>` : '';
+
     const tabs = $('#vTabs');
     tabs.innerHTML = '';
     tabsFor(cam).forEach((k) => {
