@@ -542,6 +542,8 @@ a.cammap__msg { color: var(--glacier); }
 .footer__brand .brand { color: var(--snow); }
 .footer__brand p { margin: 0; max-width: 34em; }
 .footer__note { margin: 0; padding: 14px 18px; border-radius: 12px; border: 1px dashed var(--line); font-size: .84rem; }
+.footer__credit { margin: 14px 0 0; text-align: center; font-size: .72rem; letter-spacing: .04em; color: var(--mist); opacity: .7; }
+.footer__credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .footer__bottom { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); }
 .footer a { color: var(--dawn); text-decoration: none; }
 

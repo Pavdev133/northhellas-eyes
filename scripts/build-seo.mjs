@@ -85,6 +85,7 @@ const foot = `
     <p><a href="/">${BRAND}</a> · Live κάμερες Ελλάδα: δωρεάν ενημέρωση για τον καιρό στη Βόρεια Ελλάδα.</p>
     <p><a href="/kameres/">Όλες οι κάμερες</a> · Σε συνεργασία με <a href="https://www.meteolive.gr/" rel="noopener">meteolive.gr</a></p>
     <p class="small">Δεν επιτρέπεται η αποθήκευση ή/και αναπαραγωγή εικόνας από τις κάμερες του δικτύου μας σε άλλα μέσα χωρίς τη σύμφωνη γνώμη μας.</p>
+    <p class="small">design by <a href="https://pavdev.gr/" rel="noopener">pavdev</a></p>
   </div></footer>`;
 
 const breadcrumb = (items) => ({
