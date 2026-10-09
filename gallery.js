@@ -120,7 +120,7 @@ window.NHE_GALLERY = {
       text: { el: 'Ένα shelf cloud απλώνεται πάνω από τα κεραμίδια του χωριού.', en: 'A shelf cloud spreads over the village rooftops.' } },
     { img: 'kalamaria', cam: 'noth', at: '2023-04-22T18:11', tag: 'shelf',
       place: { el: 'Ν.Ο. Θεσσαλονίκης, Καλαμαριά', en: 'Thessaloniki Nautical Club, Kalamaria' },
-      text: { el: 'Ένα shelf cloud σκεπάζει τον Θερμαϊκό, λίγο πριν φτάσει στα σκάφη του ομίλου.', en: 'A shelf cloud covers the Thermaic Gulf, just before it reaches the club’s boats.' } },
+      text: { el: 'Shelf cloud στον Θερμαϊκό, λίγο πριν φτάσει στα σκάφη του ομίλου.', en: 'A shelf cloud covers the Thermaic Gulf, just before it reaches the club’s boats.' } },
     { img: 'makrigialos', cam: 'makrigialos', at: '2023-04-22T19:07', tag: 'shelf',
       place: { el: 'Μακρύγιαλος, Πιερία', en: 'Makrygialos, Pieria' },
       text: { el: 'Την ίδια μέρα, μια ώρα αργότερα, το ίδιο shelf cloud απλώνεται πάνω από τη θάλασσα.', en: 'The same day, an hour later, the same shelf cloud stretches across the sea.' } }
