@@ -80,12 +80,13 @@ ${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <lin
     <nav><a href="/#cams">Κάμερες</a><a href="/#map">Χάρτης</a><a href="/#gallery">Συλλογή</a></nav>
   </div></header>`;
 
-const foot = `
+// Flag Counter: each camera page has its own counter (cam.fc), other pages the site-wide one ('tin', from the old blogspot).
+const foot = (fc = 'tin') => `
   <footer class="foot"><div class="wrap">
     <p><a href="/">${BRAND}</a> · Live κάμερες Ελλάδα: δωρεάν ενημέρωση για τον καιρό στη Βόρεια Ελλάδα.</p>
     <p><a href="/kameres/">Όλες οι κάμερες</a> · Σε συνεργασία με <a href="https://www.meteolive.gr/" rel="noopener">meteolive.gr</a></p>
     <p class="small">Δεν επιτρέπεται η αποθήκευση ή/και αναπαραγωγή εικόνας από τις κάμερες του δικτύου μας σε άλλα μέσα χωρίς τη σύμφωνη γνώμη μας.</p>
-    <p class="flagcounter"><a href="https://s01.flagcounter.com/more/tin" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/tin/bg_111D3A/txt_F2F5FB/border_111D3A/columns_4/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" loading="lazy"></a></p>
+    <p class="flagcounter"><a href="https://s01.flagcounter.com/more/${fc}" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/${fc}/bg_111D3A/txt_F2F5FB/border_111D3A/columns_4/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" loading="lazy"></a></p>
     <p class="small">design by <a href="https://pavdev.gr/" rel="noopener">pavdev</a></p>
   </div></footer>`;
 
@@ -149,7 +150,7 @@ function camPage(c) {
     <section><h2>Λίγα λόγια για την περιοχή</h2><p>${esc(c.about.el)}</p>${host}</section>
     <section lang="en" class="en"><h2>${esc(c.name.en)} live webcam</h2><p>${esc(c.view.en)}</p><p>${esc(c.about.en)}</p></section>
     ${near.length ? `<section><h2>Κοντινές κάμερες</h2><ul class="near">${near.map(([o, d]) => `<li><a href="${url(o)}"><b>${esc(o.name.el)}</b><small>${esc(o.area.el)} · ${Math.round(d)} χλμ.</small></a></li>`).join('')}</ul></section>` : ''}
-  </main>${foot}
+  </main>${foot(c.fc)}
   <script>
     // Keep the still image fresh while the page is open, like the main site does.
     (function () {
@@ -207,7 +208,7 @@ function listPage() {
     <p class="lead">${CAMS.length} live κάμερες καιρού στην Ελλάδα, από τις Πρέσπες ως τον Έβρο. Διάλεξε μια κάμερα για να δεις την εικόνα τώρα.</p>
     ${groups}
     ${faqHtml}
-  </main>${foot}
+  </main>${foot()}
 </body>
 </html>
 `;

@@ -17,7 +17,7 @@
 window.NHE_CAMS = [
   // ── Δυτική Μακεδονία ──────────────────────────────────────────
   {
-    id: 'psarades', region: 'west', ll: [40.8285759, 21.0292886], dir: 285, hls: 'https://mediacp.alphastream.eu/psarades/index.m3u8',
+    id: 'psarades', fc: '21fb', region: 'west', ll: [40.8285759, 21.0292886], dir: 285, hls: 'https://mediacp.alphastream.eu/psarades/index.m3u8',
     snap: 'https://cams.elaticam.com/output/psarades/webcamimage.jpg', windy: 1683478857, meteo: 'psarades', pop: [100, 'καλοκαίρι'],
     name: { el: 'Ψαράδες – Πρέσπες', en: 'Psarades – Prespes' },
     area: { el: 'Φλώρινα', en: 'Florina' },
@@ -33,7 +33,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2023/05/psarades-prespes-florina-camera.html'
   },
   {
-    id: 'kastoria', region: 'west', ll: [40.5218713, 21.2738511], hls: 'https://mediacp.alphastream.eu/kastoria/index.m3u8',
+    id: 'kastoria', fc: 'sOow', region: 'west', ll: [40.5218713, 21.2738511], hls: 'https://mediacp.alphastream.eu/kastoria/index.m3u8',
     windy: 1675614049, meteo: 'kastoria', dir: 315,
     name: { el: 'Ντολτσό Καστοριάς', en: 'Doltso, Kastoria' },
     area: { el: 'Καστοριά', en: 'Kastoria' },
@@ -49,7 +49,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2023/02/kastoria-kamera.html'
   },
   {
-    id: 'kastorialake', region: 'west', ll: [40.5125, 21.279], hls: 'https://mediawp.alphastream.eu/kastoria/kastoria/playlist.m3u8',
+    id: 'kastorialake', fc: 'Qk0F', region: 'west', ll: [40.5125, 21.279], hls: 'https://mediawp.alphastream.eu/kastoria/kastoria/playlist.m3u8',
     windy: 1760738363, meteo: 'kastoria',
     name: { el: 'Λίμνη Καστοριάς', en: 'Lake Kastoria' },
     area: { el: 'Καστοριά', en: 'Kastoria' },
@@ -64,7 +64,7 @@ window.NHE_CAMS = [
     host: { name: '', url: '' }
   },
   {
-    id: 'nestorio', region: 'west', ll: [40.4094424, 21.0633327], hls: 'https://mediacp.alphastream.eu/nestorio/index.m3u8',
+    id: 'nestorio', fc: '1LzK', region: 'west', ll: [40.4094424, 21.0633327], hls: 'https://mediacp.alphastream.eu/nestorio/index.m3u8',
     snap: 'https://cams.elaticam.com/output/nestorio/webcamimage.jpg', meteo: 'nestorio', dir: 45, alt: 890,
     name: { el: 'Νεστόριο', en: 'Nestorio' },
     area: { el: 'Καστοριά', en: 'Kastoria' },
@@ -80,7 +80,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2025/03/blog-post.html'
   },
   {
-    id: 'florina', region: 'west', ll: [40.7780824, 21.4064385], hls: 'https://mediawp.alphastream.eu/florina/florina/playlist.m3u8',
+    id: 'florina', fc: 'MKTw', region: 'west', ll: [40.7780824, 21.4064385], hls: 'https://mediawp.alphastream.eu/florina/florina/playlist.m3u8',
     windy: 1793907840, meteo: 'florinacity', alt: 678, dir: 158,
     name: { el: 'Φλώρινα', en: 'Florina' },
     area: { el: 'Πόλη', en: 'City' },
@@ -96,7 +96,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2023/04/florina-camera.html'
   },
   {
-    id: 'xinonero', region: 'west', ll: [40.6902579, 21.6232138], dir: 115, hls: 'https://mediacp.alphastream.eu/xinonero/index.m3u8',
+    id: 'xinonero', fc: 'gv96', region: 'west', ll: [40.6902579, 21.6232138], dir: 115, hls: 'https://mediacp.alphastream.eu/xinonero/index.m3u8',
     snap: 'https://cams.elaticam.com/output/xinonero/webcamimage.jpg', windy: 1669560756, meteo: 'xinonero', alt: 550, pop: [1081, 2011],
     name: { el: 'Ξινό Νερό', en: 'Xino Nero' },
     area: { el: 'Φλώρινα', en: 'Florina' },
@@ -112,7 +112,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/11/xino-nero-florina-camera.html'
   },
   {
-    id: 'kastania', region: 'west', ll: [40.1745938, 22.0223649], hls: 'https://mediawp.alphastream.eu/kastaniacam/kastaniacam/playlist.m3u8',
+    id: 'kastania', fc: 'tZm3', region: 'west', ll: [40.1745938, 22.0223649], hls: 'https://mediawp.alphastream.eu/kastaniacam/kastaniacam/playlist.m3u8',
     windy: 1753028277, meteo: 'kastaniacam', alt: 966, dir: 335,
     name: { el: 'Καστανιά Σερβίων', en: 'Kastania Servion' },
     area: { el: 'Κοζάνη', en: 'Kozani' },
@@ -128,7 +128,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2025/07/Kastania-Servia-Kozani-Camera.html'
   },
   {
-    id: 'neraida', region: 'west', ll: [40.2391024, 21.9674823], hls: 'https://mediacp.alphastream.eu/neraidacam/index.m3u8',
+    id: 'neraida', fc: 'YdV2', region: 'west', ll: [40.2391024, 21.9674823], hls: 'https://mediacp.alphastream.eu/neraidacam/index.m3u8',
     windy: 1657478253, meteo: 'neraida', dir: 125,
     name: { el: 'Νεράιδα', en: 'Neraida' },
     area: { el: 'Λίμνη Πολυφύτου, Κοζάνη', en: 'Lake Polyfytos, Kozani' },
@@ -146,7 +146,7 @@ window.NHE_CAMS = [
 
   // ── Κεντρική Μακεδονία ────────────────────────────────────────
   {
-    id: 'fotina', region: 'central', ll: [40.2204401, 22.3138468], hls: 'https://mediacp.alphastream.eu/foteina/index.m3u8',
+    id: 'fotina', fc: 'Con9', region: 'central', ll: [40.2204401, 22.3138468], hls: 'https://mediacp.alphastream.eu/foteina/index.m3u8',
     windy: 1656105641, snap: 'https://cams.elaticam.com/output/fotina/webcamimage.jpg', meteo: 'fotina',
     dir: 155, pop: [396, 2011],
     name: { el: 'Όλυμπος – Φωτεινά', en: 'Olympus – Fotina' },
@@ -163,7 +163,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/fotina-pieria-camera.html'
   },
   {
-    id: 'panteleimonas', region: 'central', ll: [40.0034254, 22.5898999], hls: 'https://mediacp.alphastream.eu/panteleimonas2/index.m3u8',
+    id: 'panteleimonas', fc: '02cU', region: 'central', ll: [40.0034254, 22.5898999], hls: 'https://mediacp.alphastream.eu/panteleimonas2/index.m3u8',
     snap: 'https://cams.elaticam.com/output/panteleimonas/webcamimage.jpg', windy: 1656359959, meteo: 'panteleimonas', dir: 0,
     name: { el: 'Όλυμπος Νότια', en: 'Olympus South' },
     area: { el: 'Νέος Παντελεήμονας, Πιερία', en: 'Neos Panteleimonas, Pieria' },
@@ -179,7 +179,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/neos-panteleimonas-camera.html'
   },
   {
-    id: 'platamonas', region: 'central', ll: [40.0034254, 22.5915], hls: 'https://mediacp.alphastream.eu/penteleimonas1/index.m3u8',
+    id: 'platamonas', fc: 'wGgT', region: 'central', ll: [40.0034254, 22.5915], hls: 'https://mediacp.alphastream.eu/penteleimonas1/index.m3u8',
     snap: 'https://cams.elaticam.com/output/panteleimonasb/webcamimage.jpg', windy: 1656360060, meteo: 'panteleimonas', dir: 70,
     name: { el: 'Κάστρο Πλαταμώνα', en: 'Platamonas Castle' },
     area: { el: 'Νέος Παντελεήμονας, Πιερία', en: 'Neos Panteleimonas, Pieria' },
@@ -195,7 +195,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/neos-panteleimonas-camera.html'
   },
   {
-    id: 'katerini', region: 'central', ll: [40.2742921, 22.5413063], hls: 'https://mediacp.alphastream.eu/peristasi/index.m3u8',
+    id: 'katerini', fc: 'XKf9', region: 'central', ll: [40.2742921, 22.5413063], hls: 'https://mediacp.alphastream.eu/peristasi/index.m3u8',
     snap: 'https://cams.elaticam.com/output/peristasi/webcamimage.jpg', windy: 1655651149, meteo: 'peristasi', dir: 250,
     name: { el: 'Κατερίνη', en: 'Katerini' },
     area: { el: 'Περίσταση, Πιερία', en: 'Peristasi, Pieria' },
@@ -211,7 +211,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/Peristasi-Pieria-Camera.html'
   },
   {
-    id: 'litochoro', region: 'central', ll: [40.102816, 22.5026609], hls: 'https://mediawp.alphastream.eu/enipeas/enipeas/playlist.m3u8',
+    id: 'litochoro', fc: 'eQjL', region: 'central', ll: [40.102816, 22.5026609], hls: 'https://mediawp.alphastream.eu/enipeas/enipeas/playlist.m3u8',
     windy: 1750789009, meteo: 'olympusview', featured: true, dir: 260, alt: 295, pop: [6664, 2021],
     name: { el: 'Λιτόχωρο – Olympus View', en: 'Litochoro – Olympus View' },
     area: { el: 'Πιερία', en: 'Pieria' },
@@ -227,7 +227,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2025/04/olympus-view-olympus-view-litochoro.html'
   },
   {
-    id: 'nokat', region: 'central', ll: [40.261872, 22.5958987], hls: 'https://mediacp.alphastream.eu/katerini/index.m3u8',
+    id: 'nokat', fc: 'Nn3s', region: 'central', ll: [40.261872, 22.5958987], hls: 'https://mediacp.alphastream.eu/katerini/index.m3u8',
     windy: 1592169533, meteo: 'katerini', dir: 90,
     name: { el: 'Ναυτικός Όμιλος Κατερίνης', en: 'Katerini Nautical Club' },
     area: { el: 'Παραλία Κατερίνης', en: 'Paralia Katerinis' },
@@ -243,7 +243,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/naftikos-omilos-katerini-camera.html'
   },
   {
-    id: 'neoiporoi', region: 'central', ll: [39.9784856, 22.6517343], hls: 'https://mediacp.alphastream.eu/neoiporoi/index.m3u8',
+    id: 'neoiporoi', fc: 'F5jN', region: 'central', ll: [39.9784856, 22.6517343], hls: 'https://mediacp.alphastream.eu/neoiporoi/index.m3u8',
     windy: 1687203265, meteo: 'neoiporoi', dir: 305, pop: [733, 2011],
     name: { el: 'Νέοι Πόροι', en: 'Neoi Poroi' },
     area: { el: 'Πιερία', en: 'Pieria' },
@@ -259,7 +259,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2023/06/neoi-poroi-pieria-camera.html'
   },
   {
-    id: 'makrigialos', region: 'central', ll: [40.4107636, 22.6102982], hls: 'https://mediacp.alphastream.eu/makrigialos/index.m3u8',
+    id: 'makrigialos', fc: '99kl', region: 'central', ll: [40.4107636, 22.6102982], hls: 'https://mediacp.alphastream.eu/makrigialos/index.m3u8',
     snap: 'https://cams.elaticam.com/output/makrigialos/webcamimage.jpg', windy: 1658340425, meteo: 'makrigialos', dir: 65, pop: [1851, 2001],
     name: { el: 'Μακρύγιαλος', en: 'Makrygialos' },
     area: { el: 'Πιερία', en: 'Pieria' },
@@ -275,7 +275,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/07/makrigialos-pieria-camera.html'
   },
   {
-    id: 'naousa', region: 'central', ll: [40.6264778, 22.0650719], hls: 'https://mediacp.alphastream.eu/naousa/index.m3u8',
+    id: 'naousa', fc: 'G8uD', region: 'central', ll: [40.6264778, 22.0650719], hls: 'https://mediacp.alphastream.eu/naousa/index.m3u8',
     windy: 1700423980, meteo: 'naousa', dir: 40,
     name: { el: 'Νάουσα', en: 'Naousa' },
     area: { el: 'Ημαθία', en: 'Imathia' },
@@ -291,7 +291,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2023/11/naousa-imathias-camera.html'
   },
   {
-    id: 'derveni', region: 'central', ll: [40.713456, 22.9626469], windy: 1656018135, stillOnly: true, meteo: 'derveni', dir: 70,
+    id: 'derveni', fc: 'XxRT', region: 'central', ll: [40.713456, 22.9626469], windy: 1656018135, stillOnly: true, meteo: 'derveni', dir: 70,
     name: { el: 'Δερβένι', en: 'Derveni' },
     area: { el: 'Θεσσαλονίκη', en: 'Thessaloniki' },
     view: {
@@ -306,7 +306,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/derveni-thessaloniki-camera.html'
   },
   {
-    id: 'noth', region: 'central', ll: [40.5880005, 22.9419695], hls: 'https://mediacp.alphastream.eu/kalamaria/index.m3u8',
+    id: 'noth', fc: '36mf', region: 'central', ll: [40.5880005, 22.9419695], hls: 'https://mediacp.alphastream.eu/kalamaria/index.m3u8',
     snap: 'https://cams.elaticam.com/output/kalamaria/webcamimage.jpg', windy: 1664117000, meteo: 'thessaloniki', dir: 330,
     name: { el: 'Καλαμαριά', en: 'Kalamaria' },
     area: { el: 'Ναυτικός Όμιλος Θεσσαλονίκης', en: 'Thessaloniki Nautical Club' },
@@ -322,7 +322,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/09/thessaloniki-camera-nof.html'
   },
   {
-    id: 'kerkini', region: 'central', ll: [41.1369701, 23.2159981], hls: 'https://mediacp.alphastream.eu/kerkini/index.m3u8',
+    id: 'kerkini', fc: 'wp4f', region: 'central', ll: [41.1369701, 23.2159981], hls: 'https://mediacp.alphastream.eu/kerkini/index.m3u8',
     snap: 'https://cams.elaticam.com/output/kerkini/webcamimage.jpg', windy: 1656959415, meteo: 'kerkini', dir: 30,
     name: { el: 'Λιθότοπος – Κερκίνη', en: 'Lithotopos – Kerkini' },
     area: { el: 'Σέρρες', en: 'Serres' },
@@ -338,7 +338,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/07/kerkini-camera.html'
   },
   {
-    id: 'liti', region: 'central', ll: [40.7504039, 22.9764851], hls: 'https://mediacp.alphastream.eu/liti/index.m3u8',
+    id: 'liti', fc: '0vU4', region: 'central', ll: [40.7504039, 22.9764851], hls: 'https://mediacp.alphastream.eu/liti/index.m3u8',
     snap: 'https://cams.elaticam.com/output/liti/webcamimage.jpg', windy: 1654960490, meteo: 'liti', dir: 100,
     name: { el: 'Λητή', en: 'Liti' },
     area: { el: 'Θεσσαλονίκη', en: 'Thessaloniki' },
@@ -354,7 +354,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/Liti-Thessaloniki-camera.html'
   },
   {
-    id: 'afytos', region: 'central', ll: [40.1006701, 23.437202], hls: 'https://mediacp.alphastream.eu/afytos/index.m3u8',
+    id: 'afytos', fc: 'E8CO', region: 'central', ll: [40.1006701, 23.437202], hls: 'https://mediacp.alphastream.eu/afytos/index.m3u8',
     windy: 1703709525, meteo: 'afytos', dir: 90, pop: [1273, 2011],
     name: { el: 'Άφυτος', en: 'Afytos' },
     area: { el: 'Χαλκιδική', en: 'Chalkidiki' },
@@ -370,7 +370,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2023/12/afytos-halkidiki-camera.html'
   },
   {
-    id: 'palaiochori', region: 'central', ll: [40.4924792, 23.6464073], hls: 'https://mediacp.alphastream.eu/palaiochori/index.m3u8',
+    id: 'palaiochori', fc: 'Kvio', region: 'central', ll: [40.4924792, 23.6464073], hls: 'https://mediacp.alphastream.eu/palaiochori/index.m3u8',
     snap: 'https://cams.elaticam.com/output/palaiochori/webcamimage.jpg', windy: 1710740714, meteo: 'palaiochori', alt: 550, dir: 240,
     name: { el: 'Παλαιοχώρι', en: 'Palaiochori' },
     area: { el: 'Χαλκιδική', en: 'Chalkidiki' },
@@ -386,7 +386,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2024/03/Paleochori.html'
   },
   {
-    id: 'ouranoupoli', region: 'central', ll: [40.3259371, 23.9811678], dir: 215, hls: 'https://mediawp.alphastream.eu/ouranoupoli/ouranoupoli/playlist.m3u8',
+    id: 'ouranoupoli', fc: 'sLLZ', region: 'central', ll: [40.3259371, 23.9811678], dir: 215, hls: 'https://mediawp.alphastream.eu/ouranoupoli/ouranoupoli/playlist.m3u8',
     snap: 'https://cams.elaticam.com/output/ouranoupoli/image.jpg', meteo: 'ouranoupoli',
     name: { el: 'Ουρανούπολη', en: 'Ouranoupoli' },
     area: { el: 'Χαλκιδική', en: 'Chalkidiki' },
@@ -402,7 +402,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2024/04/ouranoupoli-chalkidiki-camera.html'
   },
   {
-    id: 'agiosathanasios', region: 'central', ll: [40.8409702, 21.770073], dir: 10, hls: 'https://mediacp.alphastream.eu/agios/index.m3u8',
+    id: 'agiosathanasios', fc: 'XaWQ', region: 'central', ll: [40.8409702, 21.770073], dir: 10, hls: 'https://mediacp.alphastream.eu/agios/index.m3u8',
     snap: 'https://cams.elaticam.com/output/agios/webcamimage.jpg', meteo: 'agiosathanasios', alt: 1200,
     name: { el: 'Παλιός Άγιος Αθανάσιος', en: 'Old Agios Athanasios' },
     area: { el: 'Καϊμάκτσαλαν, Πέλλα', en: 'Kaimaktsalan, Pella' },
@@ -420,7 +420,7 @@ window.NHE_CAMS = [
 
   // ── Ανατολική Μακεδονία & Θράκη ───────────────────────────────
   {
-    id: 'alexfaros', region: 'east', ll: [40.8452, 25.8775], hls: 'https://mediacp.alphastream.eu/alexandro/index.m3u8',
+    id: 'alexfaros', fc: 'ctgD', region: 'east', ll: [40.8452, 25.8775], hls: 'https://mediacp.alphastream.eu/alexandro/index.m3u8',
     windy: 1686575524, meteo: 'alexandroupolis', dir: 170,
     name: { el: 'Αλεξανδρούπολη – Φάρος', en: 'Alexandroupoli – Lighthouse' },
     area: { el: 'Έβρος', en: 'Evros' },
@@ -436,7 +436,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2023/06/alexandroupolis-thraki-live-camera.html'
   },
   {
-    id: 'alexport', region: 'east', ll: [40.8476765, 25.8744762], hls: 'https://mediawp.alphastream.eu/alexandroupoli/alexandroupoli/playlist.m3u8',
+    id: 'alexport', fc: 'XmPe', region: 'east', ll: [40.8476765, 25.8744762], hls: 'https://mediawp.alphastream.eu/alexandroupoli/alexandroupoli/playlist.m3u8',
     windy: 1762793055, meteo: 'alexandroupoli', dir: 75, pop: [64109, ''],
     name: { el: 'Αλεξανδρούπολη – Λιμάνι', en: 'Alexandroupoli – Port' },
     area: { el: 'Έβρος', en: 'Evros' },
@@ -452,7 +452,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2025/11/Alexandroupolis-Port-Thraki-live-camera.html'
   },
   {
-    id: 'soufli', region: 'east', ll: [41.1943171, 26.2992535], hls: 'https://mediacp.alphastream.eu/soufli/index.m3u8',
+    id: 'soufli', fc: '8uqW', region: 'east', ll: [41.1943171, 26.2992535], hls: 'https://mediacp.alphastream.eu/soufli/index.m3u8',
     snap: 'https://cams.elaticam.com/output/soufli/webcamimage.jpg', windy: 1656527141, meteo: 'soufli', dir: 90,
     name: { el: 'Σουφλί', en: 'Soufli' },
     area: { el: 'Έβρος', en: 'Evros' },
@@ -468,7 +468,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/soufli-evros-camera.html'
   },
   {
-    id: 'dikaia', region: 'east', ll: [41.7058978, 26.2955972], hls: 'https://mediacp.alphastream.eu/dikaia/index.m3u8',
+    id: 'dikaia', fc: 'iLSx', region: 'east', ll: [41.7058978, 26.2955972], hls: 'https://mediacp.alphastream.eu/dikaia/index.m3u8',
     windy: 1656360169, meteo: 'dikaia', dir: 135, pop: [561, 2011],
     name: { el: 'Δίκαια', en: 'Dikaia' },
     area: { el: 'Έβρος', en: 'Evros' },
