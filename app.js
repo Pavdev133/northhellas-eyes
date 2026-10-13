@@ -618,10 +618,9 @@
           <span class="card__fav" role="button" tabindex="0">${starSvg}</span>
           <span class="card__region">${t('regionShort.' + cam.region)}</span>
           <span class="card__play">${playSvg}</span>
-          <span class="card__wx" hidden></span>
           ${cam.dir != null ? `<span class="card__dir" title="${dirName(cam.dir)}"><i style="--dir:${cam.dir}deg"></i></span>` : ''}
         </div>
-        <div class="card__body"><h3></h3><div class="card__meta"><span></span>${cam.alt ? `<span>${num(cam.alt)} ${m()}</span>` : ''}</div>${cardMoon()}</div>`;
+        <div class="card__body"><h3></h3><div class="card__meta"><span></span>${cam.alt ? `<span>${num(cam.alt)} ${m()}</span>` : ''}</div><span class="card__side"><span class="card__wx" hidden></span>${cardMoon()}</span></div>`;
       $('h3', b).textContent = L(cam.name);
       $('.card__meta span', b).textContent = L(cam.area);
       $('.card__img > img', b).alt = L(cam.name);

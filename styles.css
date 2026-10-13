@@ -327,13 +327,17 @@ html[lang="el"] .lang [data-l="el"], html[lang="en"] .lang [data-l="en"] { backg
 .card__dir i, .mini-compass i { display: block; width: 6px; height: 22px; background: linear-gradient(var(--ember) 50%, #dfe7f7 50%); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); transform: rotate(var(--dir)); transition: transform .8s var(--ease); }
 .card:hover .card__dir i { transform: rotate(calc(var(--dir) + 360deg)); }
 .card .badge, .card__region { z-index: 2; }
-.card__wx {
-  position: absolute; left: 12px; bottom: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 5px;
-  padding: 5px 9px 5px 7px; border-radius: 10px; background: rgba(7, 13, 26, .6); border: 1px solid rgba(255, 255, 255, .2);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font: 700 .85rem/1 var(--ui); font-variant-numeric: tabular-nums; color: #fff;
+.card__side {
+  position: absolute; right: 10px; top: 12px; bottom: 10px; width: 40px; display: flex; flex-direction: column;
+  justify-content: space-between; align-items: center; gap: 6px; pointer-events: none;
 }
+.card__wx, .card__moon {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  font: 700 .72rem/1 var(--ui); font-variant-numeric: tabular-nums; color: var(--mist);
+}
+.card__wx { color: var(--snow); font-size: .8rem; }
 .card__wx[hidden] { display: none; }
-.card__wx .wxi { width: 17px; height: 17px; }
+.card__wx .wxi { width: 24px; height: 24px; }
 .fact--wx[hidden] { display: none; }
 .facts--4 { grid-template-columns: repeat(2, 1fr) !important; }
 .fact--wx .wxi { display: block; width: 30px; height: 30px; margin: 0 auto 6px; }
@@ -353,12 +357,9 @@ html[lang="el"] .lang [data-l="el"], html[lang="en"] .lang [data-l="en"] { backg
 .card__fav.is-on svg, .v-fav.is-on svg { fill: var(--dawn); stroke: var(--dawn); }
 .chip[hidden] { display: none; }
 .chip--fav svg { width: 14px; height: 14px; fill: var(--dawn); stroke: var(--dawn); }
-.card__body { position: relative; z-index: 1; padding: 15px 17px 18px; min-height: 64px; }
-.card__moon {
-  position: absolute; right: 10px; bottom: 10px; width: 40px; display: flex; flex-direction: column; align-items: center; gap: 3px;
-  font: 700 .72rem/1 var(--ui); font-variant-numeric: tabular-nums; color: var(--mist); pointer-events: none;
-}
+.card__body { position: relative; z-index: 1; padding: 15px 17px 18px; min-height: 104px; }
 .card__moon svg { width: 26px; height: 26px; }
+.card__side .card__wx:not([hidden]) + .card__moon { margin-top: auto; }
 .card__moon .moon-rim { stroke: rgba(242, 245, 251, .4); stroke-width: 6; }
 .card__body h3, .card__meta { padding-right: 40px; }
 .card__body h3 { font: 600 1.08rem/1.25 var(--ui); margin: 0 0 4px; }
@@ -736,9 +737,11 @@ a.cammap__msg { color: var(--glacier); }
   .search kbd { display: none; }
   .scroll-hint { display: none; }
   .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .card__body { padding: 11px 12px 13px; }
-  .card__moon { width: 30px; right: 6px; bottom: 8px; font-size: .64rem; }
-  .card__moon svg { width: 20px; height: 20px; }
+  .card__body { padding: 11px 12px 13px; min-height: 92px; }
+  .card__side { width: 30px; right: 6px; top: 10px; bottom: 8px; }
+  .card__moon { font-size: .64rem; }
+  .card__wx { font-size: .72rem; }
+  .card__moon svg, .card__wx .wxi { width: 20px; height: 20px; }
   .card__body h3, .card__meta { padding-right: 30px; }
   .card__body h3 { font-size: .95rem; }
   .card__meta { font-size: .76rem; }
@@ -768,7 +771,7 @@ a.cammap__msg { color: var(--glacier); }
 }
 @media (max-width: 380px) {
   .grid { gap: 10px; }
-  .card__body { padding: 10px 10px 12px; }
+  .card__body { padding: 10px 10px 12px; min-height: 92px; }
   .card__body h3 { font-size: .9rem; }
   .nav .brand, header .brand { font-size: .98rem; gap: 8px; }
 }
