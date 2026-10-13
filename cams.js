@@ -45,7 +45,7 @@ window.NHE_CAMS = [
       el: 'Η Καστοριά, χτισμένη σε χερσόνησο της λίμνης Ορεστιάδας, είναι γνωστή για τα βυζαντινά της εκκλησάκια, τα αρχοντικά της και τη γουνοποιία. Η λίμνη φιλοξενεί πλήθος πουλιών και παγώνει τους πιο κρύους χειμώνες.',
       en: 'Kastoria, built on a peninsula in Lake Orestiada, is known for its Byzantine chapels, its old mansions and its fur trade. The lake is home to many birds and freezes over in the coldest winters.'
     },
-    host: { name: 'Hotel Kastoria', url: '' },
+    host: { name: 'Hotel Kastoria', url: 'https://hotel-kastoria.gr/index.php/el/' },
     blog: 'https://northellaseyes.blogspot.com/2023/02/kastoria-kamera.html'
   },
   {
@@ -61,7 +61,7 @@ window.NHE_CAMS = [
       el: 'Η λίμνη Ορεστιάδα περιβάλλει την Καστοριά από τρεις πλευρές. Είναι προστατευόμενη περιοχή Natura 2000, φιλοξενεί πελεκάνους, κύκνους και πολλά άλλα πουλιά και τους πιο κρύους χειμώνες παγώνει.',
       en: 'Lake Orestiada surrounds Kastoria on three sides. It is a protected Natura 2000 area, home to pelicans, swans and many other birds, and it freezes over in the coldest winters.'
     },
-    host: { name: '', url: '' }
+    host: { name: 'Hotel Kastoria', url: 'https://hotel-kastoria.gr/index.php/el/' }
   },
   {
     id: 'nestorio', fc: '1LzK', region: 'west', ll: [40.4094424, 21.0633327], hls: 'https://mediacp.alphastream.eu/nestorio/index.m3u8',
@@ -76,7 +76,7 @@ window.NHE_CAMS = [
       el: 'Το Νεστόριο είναι χωριό της Περιφερειακής Ενότητας Καστοριάς, 25 χλμ. νοτιοδυτικά της Καστοριάς. Χωρίζεται σε Άνω και Κάτω Νεστόριο. Το Κάτω Νεστόριο φτάνει μέχρι τον Αλιάκμονα και βρίσκεται σε πλαγιά του Γράμμου, σε υψόμετρο 890 μέτρων. Κάθε καλοκαίρι φιλοξενεί το γνωστό River Party.',
       en: 'Nestorio is a village in the Kastoria regional unit, 25 km south-west of Kastoria. It is split into Ano and Kato Nestorio. Kato Nestorio reaches down to the Aliakmonas, on a slope of Mount Grammos at 890 m. Every summer it hosts the well-known River Party.'
     },
-    host: { name: '', url: '' },
+    host: { name: 'Ξενώνας Σείριος', url: 'https://www.meteolive.gr/p/nestorio.html' },
     blog: 'https://northellaseyes.blogspot.com/2025/03/blog-post.html'
   },
   {
@@ -124,7 +124,7 @@ window.NHE_CAMS = [
       el: 'Το χωριό είναι καλοχτισμένο και πυκνοκατοικημένο σε μια απότομη πετρώδη πλαγιά με πρόσοψη προς τον βορρά. Η θέση του προσφέρει πανοραμική θέα στην τεχνητή λίμνη Πολυφύτου, με κεντρικό σημείο την Υψηλή Γέφυρα Σερβίων. Το 1995 ένας σεισμός προκάλεσε σοβαρές ζημιές σε πολλά σπίτια του χωριού.',
       en: 'The village is tightly built on a steep, rocky, north-facing slope, with a panoramic view of the man-made Lake Polyfytos and its High Bridge of Servia. In 1995 an earthquake badly damaged many of its houses.'
     },
-    host: { name: '', url: '' },
+    host: { name: 'Μουσειακός Χώρος Καστανιάς', url: 'https://www.meteolive.gr/p/kastania-servion.html' },
     blog: 'https://northellaseyes.blogspot.com/2025/07/Kastania-Servia-Kozani-Camera.html'
   },
   {
@@ -140,7 +140,7 @@ window.NHE_CAMS = [
       el: 'Η Νεράιδα είναι παραλίμνιος οικισμός του Δήμου Σερβίων–Βελβεντού στην Κοζάνη. Βρίσκεται στο κέντρο της λίμνης Πολυφύτου, ψηλά στον λόφο της Νεράιδας, και στα όριά του περνά η γέφυρα Σερβίων–Νεράιδας της εθνικής οδού Λάρισας–Κοζάνης. Απέχει 6 χλμ. από τα Σέρβια.',
       en: 'Neraida is a lakeside settlement in the Servia–Velvento municipality of Kozani. It sits high on Neraida hill in the middle of Lake Polyfytos, right by the Servia–Neraida bridge on the Larissa–Kozani road, 6 km from Servia.'
     },
-    host: { name: 'River Cafe Bar', url: '' },
+    host: { name: 'River Cafe Bar', url: 'https://share.google/M6khIDlo1vt6vAd1W' },
     blog: 'https://northellaseyes.blogspot.com/2022/07/neraida-kozani-camera.html'
   },
 
@@ -223,7 +223,7 @@ window.NHE_CAMS = [
       el: 'Κατεύθυνση και υψόμετρο κάμερας: 300° WNW, 295μ. Το Λιτόχωρο είναι πόλη της Πιερίας με 6.664 κατοίκους (απογραφή 2021). Βρίσκεται στο νότιο τμήμα του νομού, στις ανατολικές απολήξεις του Ολύμπου, 23 χλμ. από την Κατερίνη και 92 χλμ. από τη Θεσσαλονίκη. Είναι η αφετηρία για την ανάβαση στον Όλυμπο και για το μονοπάτι του φαραγγιού του Ενιπέα.',
       en: 'Camera bearing and altitude: 300° WNW, 295 m. Litochoro is a town in Pieria with 6,664 residents (2021 census). It lies in the south of the prefecture on the eastern foothills of Olympus, 23 km from Katerini and 92 km from Thessaloniki, and is the starting point for climbing Olympus and for the Enipeas gorge trail.'
     },
-    host: { name: 'Olympus View', url: '' },
+    host: { name: 'Olympus View Apartments', url: 'https://www.olympusview.gr/' },
     blog: 'https://northellaseyes.blogspot.com/2025/04/olympus-view-olympus-view-litochoro.html'
   },
   {
@@ -255,7 +255,7 @@ window.NHE_CAMS = [
       el: 'Οι Νέοι Πόροι είναι παραθαλάσσιο χωριό της Πιερίας με 733 κατοίκους (απογραφή 2011). Η κύρια ασχολία είναι ο τουρισμός. Είναι χτισμένοι με πολεοδομικό σχέδιο, με μεγάλους δρόμους και πλατείες, 43 χλμ. από την Κατερίνη. Η ακτή τους είναι η νοτιότερη της Πιερίας, δίπλα στον παραδοσιακό οικισμό των Παλαιών Πόρων και στον υδροβιότοπο του βόρειου Δέλτα του Πηνειού.',
       en: 'Neoi Poroi is a seaside village in Pieria with 733 residents (2011 census) that lives mainly from tourism. It is laid out on a town plan with wide streets and squares, 43 km from Katerini. Its beach is the southernmost in Pieria, next to the traditional village of Palaioi Poroi and the wetlands of the northern Pineios delta.'
     },
-    host: { name: 'Πάνω Απ’ Όλα', url: '' },
+    host: { name: 'Πάνω Απ’ Όλα', url: 'https://www.facebook.com/PanoApola/' },
     blog: 'https://northellaseyes.blogspot.com/2023/06/neoi-poroi-pieria-camera.html'
   },
   {
@@ -366,7 +366,7 @@ window.NHE_CAMS = [
       el: 'Η Άφυτος είναι παραθαλάσσιος οικισμός και έδρα ομώνυμης τοπικής κοινότητας στον Δήμο Κασσάνδρας της Χαλκιδικής. Σύμφωνα με την απογραφή του 2011 έχει 1.273 κατοίκους και έκταση 23,46 χμ². Είναι γνωστή για τα πέτρινα σπίτια και τον γραφικό πεζόδρομο πάνω από τη θάλασσα.',
       en: 'Afytos is a seaside village and community seat in the Kassandra municipality of Chalkidiki, with 1,273 residents (2011) over 23.46 km². It is known for its stone houses and its lane above the sea.'
     },
-    host: { name: 'On The Rocks', url: '' },
+    host: { name: 'On The Rocks', url: 'https://kassandra.discoverhalkidiki.com/cafe-snacks/on-the-rocks-cocktail-bar' },
     blog: 'https://northellaseyes.blogspot.com/2023/12/afytos-halkidiki-camera.html'
   },
   {
@@ -414,7 +414,7 @@ window.NHE_CAMS = [
       el: 'Ο Άγιος Αθανάσιος είναι ορεινό χωριό της Πέλλας, πολύ κοντά στα σύνορα με τη Βόρεια Μακεδονία. Είναι χτισμένος σε υψόμετρο 1.200 μέτρων στις πλαγιές του Καϊμάκτσαλαν και έχει χαρακτηριστεί παραδοσιακός οικισμός από το 1992. Τον χειμώνα γεμίζει από επισκέπτες του χιονοδρομικού κέντρου.',
       en: 'Agios Athanasios is a mountain village in Pella, very close to the border with North Macedonia. It is built at 1,200 m on the slopes of Kaimaktsalan and has been a protected traditional settlement since 1992. In winter it fills with visitors to the ski resort.'
     },
-    host: { name: 'Αστέρας του Βορρά', url: '' },
+    host: { name: 'Αστέρας του Βορρά', url: 'https://share.google/4L7w9z1ZewCBjUA3R' },
     blog: 'https://northellaseyes.blogspot.com/2024/05/palios-agios-athanasios-camera.html'
   },
 
@@ -464,7 +464,7 @@ window.NHE_CAMS = [
       el: 'Το Σουφλί, έδρα του ομώνυμου δήμου, βρίσκεται 67 χλμ. βορειοανατολικά της Αλεξανδρούπολης και 47 χλμ. νοτιοδυτικά της Ορεστιάδας, στην ανατολική πλευρά του λόφου του Προφήτη Ηλία, από τα τελευταία υψώματα της Ροδόπης. Το κέντρο απέχει 500 μέτρα από τον Έβρο. Είναι γνωστό για τη βιομηχανία μεταξιού που αναπτύχθηκε από τα μέσα του 19ου αιώνα. Σήμερα δραστηριοποιούνται ξανά 65 σηροτρόφοι και λίγες οικοτεχνίες, που κρατούν ζωντανή την παράδοση.',
       en: 'Soufli, seat of its municipality, lies 67 km north-east of Alexandroupoli and 47 km south-west of Orestiada, on the eastern side of Profitis Ilias hill, one of the last foothills of the Rhodope range. The centre is 500 m from the Evros. It is known for the silk industry that grew here from the mid-19th century; today 65 silkworm farmers and a few workshops keep the tradition alive.'
     },
-    host: { name: 'Δημοτικό Μουσείο Σουφλίου', url: '' },
+    host: { name: 'Δημοτικό Μουσείο Σουφλίου', url: 'https://www.meteolive.gr/p/soufli.html' },
     blog: 'https://northellaseyes.blogspot.com/2022/06/soufli-evros-camera.html'
   },
   {
@@ -480,7 +480,7 @@ window.NHE_CAMS = [
       el: 'Τα Δίκαια είναι οικισμός του Δήμου Ορεστιάδας στον Έβρο, με 561 κατοίκους (2011). Μέχρι το 2011 ήταν έδρα του Δήμου Τριγώνου. Πήραν το όνομά τους από την αρχαία Δίκαια, πόλη του 6ου αιώνα π.Χ. κοντά στη λίμνη Βιστωνίδα, που κατά τον Στέφανο Βυζάντιο ιδρύθηκε από τον Δίκαιο, γιο του Ποσειδώνα, και που αναφέρει ο Ηρόδοτος στην πορεία του στρατού του Ξέρξη το 480 π.Χ.',
       en: 'Dikaia is a village in the Orestiada municipality of Evros, with 561 residents (2011), and was the seat of the Trigono municipality until 2011. It takes its name from ancient Dikaia, a 6th-century BC city near Lake Vistonida which, according to Stephanus of Byzantium, was founded by Dikaios, son of Poseidon, and which Herodotus mentions on the march of Xerxes’ army in 480 BC.'
     },
-    host: { name: 'Χρήστος Ματουσίδης', url: '' },
+    host: { name: 'Χρήστος Ματουσίδης', url: 'https://www.facebook.com/matousidischristos/' },
     blog: 'https://northellaseyes.blogspot.com/2022/06/dikaia-evros-camera.html'
   }
 ];

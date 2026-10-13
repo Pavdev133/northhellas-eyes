@@ -23,6 +23,8 @@ const REGIONS = {
   east: { el: 'Ανατολική Μακεδονία & Θράκη', en: 'Eastern Macedonia & Thrace' }
 };
 
+// Same rule as the site: the host's own site, else a Google Maps search for the place (not for private persons).
+const hostHref = (c) => c.host.url || (c.host.person ? '' : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${c.host.name} ${c.name.el.split(' – ')[0]}`)}`);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const windyImg = (id) => `https://images-webcams.windy.com/${String(id).slice(-2)}/${id}/current/full/${id}.jpg`;
 const stillOf = (c) => c.snap || (c.windy ? windyImg(c.windy) : '');
@@ -129,7 +131,7 @@ function camPage(c) {
     ]
   };
   const host = c.host && c.host.name && c.host.name !== 'meteolive.gr'
-    ? `<p class="host">Η κάμερα φιλοξενείται από ${c.host.url ? `<a href="${esc(c.host.url)}" rel="noopener">${esc(c.host.name)}</a>` : esc(c.host.name)}.</p>`
+    ? `<p class="host">Η κάμερα φιλοξενείται από ${hostHref(c) ? `<a href="${esc(hostHref(c))}" rel="noopener">${esc(c.host.name)}</a>` : esc(c.host.name)}.</p>`
     : '';
   return `${head({ title, desc, canonical, image: still, jsonld })}
   <main class="wrap">
