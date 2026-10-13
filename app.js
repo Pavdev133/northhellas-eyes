@@ -621,7 +621,7 @@
           <span class="card__wx" hidden></span>
           ${cam.dir != null ? `<span class="card__dir" title="${dirName(cam.dir)}"><i style="--dir:${cam.dir}deg"></i></span>` : ''}
         </div>
-        <div class="card__body"><h3></h3><div class="card__meta"><span></span>${cam.alt ? `<span>${num(cam.alt)} ${m()}</span>` : ''}</div></div>`;
+        <div class="card__body"><h3></h3><div class="card__meta"><span></span>${cam.alt ? `<span>${num(cam.alt)} ${m()}</span>` : ''}</div>${cardMoon()}</div>`;
       $('h3', b).textContent = L(cam.name);
       $('.card__meta span', b).textContent = L(cam.area);
       $('.card__img > img', b).alt = L(cam.name);
@@ -1489,6 +1489,13 @@
       + `<g clip-path="url(#mClip)" class="moon-craters">${CRATERS.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>`
       + `<circle cx="100" cy="100" r="90" class="moon-rim"/>`;
   }
+  // Small moon phase + % lit in the corner of every camera card (same moon for all of them).
+  function cardMoon() {
+    const MN = window.NHE_MOON;
+    if (!MN) return '';
+    const m = MN.moonNow();
+    return `<span class="card__moon" title="${t('moon.' + m.phase)}">${moonSvg(m.elong, true)}${Math.round(m.illum * 100)}%</span>`;
+  }
   function renderMoon() {
     const MN = window.NHE_MOON;
     if (!MN || !$('#moon')) return;
@@ -1501,6 +1508,7 @@
     $('#moonAge').textContent = m.age == null ? '–' : m.age.toLocaleString(locale(), { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + ' ' + t('moon.days');
     const day = new Intl.DateTimeFormat(locale(), { timeZone: 'Europe/Athens', weekday: 'short', day: 'numeric', month: 'short' });
     const hm = new Intl.DateTimeFormat(locale(), { timeZone: 'Europe/Athens', hour: '2-digit', minute: '2-digit', hour12: false });
+    $$('#grid .card__moon').forEach((el) => { el.outerHTML = cardMoon(); });
     $('#moonNext').innerHTML = m.next.map((e) => `<li>${moonSvg(e.type * 90, true)}<span><b>${t('moon.' + e.type * 2)}</b><small>${day.format(e.date)} · ${hm.format(e.date)}</small></span></li>`).join('');
   }
 
