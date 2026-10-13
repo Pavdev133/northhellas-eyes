@@ -94,7 +94,7 @@
       'wx.rainy': 'Βροχή', 'wx.snow': 'Χιόνι', 'wx.storm': 'Καταιγίδα', 'wx.thermo': 'Τώρα', 'map.station': 'Μετ. σταθμός',
       'emy.lvl2': 'Κίτρινη προειδοποίηση', 'emy.lvl3': 'Πορτοκαλί προειδοποίηση', 'emy.lvl4': 'Κόκκινη προειδοποίηση',
       'emy.title': 'Προειδοποιήσεις ΕΜΥ', 'emy.more': 'Λεπτομέρειες', 'emy.and': 'και', 'emy.others': 'ακόμα',
-      'emy.from': 'Από', 'emy.until': 'έως', 'emy.cams': 'Κάμερες στην περιοχή', 'emy.source': 'Πηγή: ΕΜΥ (emy.gr) μέσω Meteoalarm. Ενημερώνεται κάθε 10 λεπτά.',
+      'emy.from': 'Από', 'emy.until': 'έως', 'emy.untilCap': 'Έως', 'emy.area1': 'περιοχή', 'emy.areas': 'περιοχές', 'emy.cams': 'Κάμερες στην περιοχή', 'emy.source': 'Πηγή: ΕΜΥ (emy.gr) μέσω Meteoalarm. Ενημερώνεται κάθε 10 λεπτά.',
       'emy.demo': 'Δείγμα: έτσι θα φαίνεται όταν η ΕΜΥ βγάλει προειδοποίηση.', 'emy.hide': 'Απόκρυψη', 'emy.close': 'Κλείσιμο',
       'emy.t1': 'Ισχυροί άνεμοι', 'emy.t2': 'Χιόνια και παγετός', 'emy.t3': 'Καταιγίδες', 'emy.t4': 'Ομίχλη', 'emy.t5': 'Υψηλές θερμοκρασίες',
       'emy.t6': 'Χαμηλές θερμοκρασίες', 'emy.t7': 'Θαλασσοταραχή', 'emy.t8': 'Κίνδυνος πυρκαγιάς', 'emy.t9': 'Χιονοστιβάδες',
@@ -186,7 +186,7 @@
       'wx.rainy': 'Rain', 'wx.snow': 'Snow', 'wx.storm': 'Thunderstorm', 'wx.thermo': 'Now', 'map.station': 'Weather station',
       'emy.lvl2': 'Yellow warning', 'emy.lvl3': 'Orange warning', 'emy.lvl4': 'Red warning',
       'emy.title': 'HNMS weather warnings', 'emy.more': 'Details', 'emy.and': 'and', 'emy.others': 'more',
-      'emy.from': 'From', 'emy.until': 'until', 'emy.cams': 'Cameras in the area', 'emy.source': 'Source: Hellenic National Meteorological Service (emy.gr) via Meteoalarm. Updated every 10 minutes.',
+      'emy.from': 'From', 'emy.until': 'until', 'emy.untilCap': 'Until', 'emy.area1': 'region', 'emy.areas': 'regions', 'emy.cams': 'Cameras in the area', 'emy.source': 'Source: Hellenic National Meteorological Service (emy.gr) via Meteoalarm. Updated every 10 minutes.',
       'emy.demo': 'Sample: this is how it will look when HNMS issues a warning.', 'emy.hide': 'Hide', 'emy.close': 'Close',
       'emy.t1': 'Strong winds', 'emy.t2': 'Snow and ice', 'emy.t3': 'Thunderstorms', 'emy.t4': 'Fog', 'emy.t5': 'High temperatures',
       'emy.t6': 'Low temperatures', 'emy.t7': 'Coastal event', 'emy.t8': 'Forest fire risk', 'emy.t9': 'Avalanches',
@@ -1480,31 +1480,60 @@
           en: 'Locally heavy snowfall, mainly over mountains and hills. Travel disruption is possible. Check conditions before you travel.' } },
       { area: 'GR007', level: 2, type: 3, onset: at(1 * h), expires: at(12 * h),
         text: { el: 'Τοπικές καταιγίδες, κυρίως στα δυτικά και βόρεια. ΕΝΗΜΕΡΩΘΕΙΤΕ. Ιδιαίτερη προσοχή σε εκτεθειμένες περιοχές, όπως τα βουνά, τα δάση και όλοι οι ανοιχτοί χώροι.',
-          en: 'Locally thunderstorms, mainly in the west and north. BE AWARE. Take care in exposed places such as mountains, forests and all open areas.' } }
+          en: 'Locally thunderstorms, mainly in the west and north. BE AWARE. Take care in exposed places such as mountains, forests and all open areas.' } },
+      { area: 'GR007', level: 2, type: 1, onset: at(4 * h), expires: at(18 * h),
+        text: { el: 'Τοπικά θυελλώδεις άνεμοι έντασης 8 μποφόρ κυρίως στα θαλάσσια και παραθαλάσσια. ΕΝΗΜΕΡΩΘΕΙΤΕ για παρασυρόμενα αντικείμενα.',
+          en: 'Locally gale force 8 winds, mainly at sea and on the coast. BE AWARE of flying debris.' } }
     ];
   }
 
   const emyWhen = (iso) => new Date(iso).toLocaleString(locale(), {
     timeZone: 'Europe/Athens', weekday: 'short', day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false
   });
-  const emyLabel = (w) => `${t('emy.t' + w.type)} · ${t('emy.' + w.area)}`;
-  const emyFor = (cam) => emyList.filter((w) => (EMY_AREA[w.area] || []).includes(cam.id));
   const emyIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.2v.01"/></svg>';
   const emyKey = () => emyList.map((w) => `${w.area}${w.type}${w.level}${w.onset}`).join('|');
+  const emySpan = (from, to) => (Date.parse(from) > Date.now()
+    ? `${t('emy.from')} ${emyWhen(from)} ${t('emy.until')} ${emyWhen(to)}`
+    : `${t('emy.untilCap')} ${emyWhen(to)}`);
+
+  // One group per region; back-to-back periods of the same kind become one line at the higher level.
+  function emyGroups() {
+    const areas = new Map();
+    emyList.forEach((w) => {
+      if (!areas.has(w.area)) areas.set(w.area, []);
+      const rows = areas.get(w.area);
+      const prev = rows.find((r) => r.type === w.type && Date.parse(w.onset) <= Date.parse(r.expires) && Date.parse(w.expires) >= Date.parse(r.onset));
+      if (!prev) { rows.push({ ...w, texts: [w.text] }); return; }
+      prev.level = Math.max(prev.level, w.level);
+      if (Date.parse(w.onset) < Date.parse(prev.onset)) prev.onset = w.onset;
+      if (Date.parse(w.expires) > Date.parse(prev.expires)) prev.expires = w.expires;
+    });
+    return [...areas].map(([area, rows]) => {
+      rows.sort((a, b) => b.level - a.level || Date.parse(a.onset) - Date.parse(b.onset));
+      return {
+        area, rows, level: rows[0].level,
+        onset: rows.map((r) => r.onset).sort()[0],
+        expires: rows.map((r) => r.expires).sort().pop()
+      };
+    }).sort((a, b) => b.level - a.level || (EMY_AREA[b.area] || []).length - (EMY_AREA[a.area] || []).length);
+  }
+  const emyKinds = (g) => [...new Set(g.rows.map((r) => r.type))].map((k, i) => (i ? t('emy.t' + k).toLowerCase() : t('emy.t' + k))).join(', ');
 
   function renderEmy() {
     const bar = $('#emyBar');
     let hidden = false;
     try { hidden = !emyDemo && sessionStorage.getItem('nhe-emy-hide') === emyKey(); } catch { /* noop */ }
-    const show = emyList.length > 0 && !hidden;
+    const groups = emyGroups();
+    const show = groups.length > 0 && !hidden;
     bar.hidden = !show;
     document.documentElement.classList.toggle('has-emy', show);
     if (show) {
-      const top = emyList[0];
-      const rest = emyList.length - 1;
+      const top = groups[0];
+      const rest = groups.length - 1;
       bar.dataset.level = top.level;
-      $('#emyText').innerHTML = `<b>${t('emy.lvl' + top.level)}</b> <span>${t('emy.t' + top.type)}</span><span class="emybar__area"> · ${t('emy.' + top.area)}</span>`
-        + (rest ? ` <i>+${rest}<span class="emybar__area"> ${t('emy.others')}</span></i>` : '');
+      $('#emyText').innerHTML = `<b>${t('emy.lvl' + top.level)}</b> <span>${emyKinds(top)}</span><span class="emybar__area"> · ${t('emy.' + top.area)}</span>`;
+      $('#emyRest').hidden = !rest;
+      $('#emyRest').innerHTML = rest ? `+${rest}<span class="emybar__area"> ${t(rest > 1 ? 'emy.areas' : 'emy.area1')}</span>` : '';
       $('#emyMore').textContent = t('emy.more');
     }
     if (viewer.open && current) paintViewerEmy();
@@ -1512,12 +1541,11 @@
 
   function paintViewerEmy() {
     const el = $('#vEmy');
-    const list = current ? emyFor(current) : [];
-    el.hidden = !list.length;
-    if (!list.length) return;
-    const w = list[0];
-    el.dataset.level = w.level;
-    el.innerHTML = `${emyIcon}<span><b>${t('emy.lvl' + w.level)}</b> ${t('emy.t' + w.type).toLowerCase()} ${t('emy.until')} ${emyWhen(w.expires)}</span>`;
+    const g = current && emyGroups().find((x) => (EMY_AREA[x.area] || []).includes(current.id));
+    el.hidden = !g;
+    if (!g) return;
+    el.dataset.level = g.level;
+    el.innerHTML = `${emyIcon}<span><b>${t('emy.lvl' + g.level)}</b> ${emyKinds(g).toLowerCase()} · ${emySpan(g.onset, g.expires).toLowerCase()}</span>`;
   }
 
   function openEmy() {
@@ -1527,12 +1555,14 @@
     $('#emyNote').hidden = !emyDemo;
     $('#emySource').textContent = t('emy.source');
     $('#emyHide').textContent = t('emy.hide');
-    $('#emyList').innerHTML = emyList.map((w) => {
-      const cams = (EMY_AREA[w.area] || []).map(camById).filter(Boolean);
-      return `<li class="emy__item" data-level="${w.level}">
-        <div class="emy__head">${emyIcon}<div><b>${t('emy.lvl' + w.level)}</b><strong>${emyLabel(w)}</strong></div></div>
-        <p class="emy__time">${t('emy.from')} ${emyWhen(w.onset)} ${t('emy.until')} ${emyWhen(w.expires)}</p>
-        ${L(w.text) ? `<p class="emy__text">${escapeHtml(L(w.text))}</p>` : ''}
+    $('#emyList').innerHTML = emyGroups().map((g) => {
+      const cams = (EMY_AREA[g.area] || []).map(camById).filter(Boolean);
+      return `<li class="emy__item" data-level="${g.level}">
+        <div class="emy__head">${emyIcon}<div><b>${t('emy.lvl' + g.level)}</b><strong>${t('emy.' + g.area)}</strong></div></div>
+        ${g.rows.map((r) => `<div class="emy__row" data-level="${r.level}">
+          <p class="emy__kind"><i></i><b>${t('emy.t' + r.type)}</b> <span>${emySpan(r.onset, r.expires)}</span></p>
+          ${r.texts.map((x) => (L(x) ? `<p class="emy__text">${escapeHtml(L(x))}</p>` : '')).join('')}
+        </div>`).join('')}
         ${cams.length ? `<p class="emy__camsh">${t('emy.cams')}</p><div class="emy__cams">${cams.map((c) => `<button type="button" data-cam="${c.id}">${escapeHtml(L(c.name))}</button>`).join('')}</div>` : ''}
       </li>`;
     }).join('');
