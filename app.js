@@ -92,7 +92,7 @@
       'wx.station': 'Μετεωρολογικός σταθμός', 'wx.model': 'Open-Meteo · εκτίμηση για την περιοχή', 'wx.at': 'μέτρηση',
       'wx.sun': 'Αίθριος', 'wx.moon': 'Καθαρός ουρανός', 'wx.partly': 'Λίγα σύννεφα', 'wx.cloud': 'Συννεφιά', 'wx.fog': 'Ομίχλη',
       'wx.rainy': 'Βροχή', 'wx.snow': 'Χιόνι', 'wx.storm': 'Καταιγίδα', 'wx.thermo': 'Τώρα', 'map.station': 'Μετ. σταθμός',
-      'emy.lvl2': 'Κίτρινη προειδοποίηση', 'emy.lvl3': 'Πορτοκαλί προειδοποίηση', 'emy.lvl4': 'Κόκκινη προειδοποίηση',
+      'emy.c2': 'Κίτρινη', 'emy.c3': 'Πορτοκαλί', 'emy.c4': 'Κόκκινη', 'emy.word': 'προειδοποίηση', 'emy.lvl2': 'Κίτρινη προειδοποίηση', 'emy.lvl3': 'Πορτοκαλί προειδοποίηση', 'emy.lvl4': 'Κόκκινη προειδοποίηση',
       'emy.title': 'Προειδοποιήσεις ΕΜΥ', 'emy.more': 'Λεπτομέρειες', 'emy.and': 'και', 'emy.others': 'ακόμα',
       'emy.from': 'Από', 'emy.until': 'έως', 'emy.untilCap': 'Έως', 'emy.area1': 'περιοχή', 'emy.areas': 'περιοχές', 'emy.cams': 'Κάμερες στην περιοχή', 'emy.source': 'Πηγή: ΕΜΥ (emy.gr) μέσω Meteoalarm. Ενημερώνεται κάθε 10 λεπτά.',
       'emy.demo': 'Δείγμα: έτσι θα φαίνεται όταν η ΕΜΥ βγάλει προειδοποίηση.', 'emy.hide': 'Απόκρυψη', 'emy.close': 'Κλείσιμο',
@@ -184,7 +184,7 @@
       'wx.station': 'Weather station', 'wx.model': 'Open-Meteo · estimate for the area', 'wx.at': 'reading',
       'wx.sun': 'Clear', 'wx.moon': 'Clear sky', 'wx.partly': 'Partly cloudy', 'wx.cloud': 'Cloudy', 'wx.fog': 'Fog',
       'wx.rainy': 'Rain', 'wx.snow': 'Snow', 'wx.storm': 'Thunderstorm', 'wx.thermo': 'Now', 'map.station': 'Weather station',
-      'emy.lvl2': 'Yellow warning', 'emy.lvl3': 'Orange warning', 'emy.lvl4': 'Red warning',
+      'emy.c2': 'Yellow', 'emy.c3': 'Orange', 'emy.c4': 'Red', 'emy.word': 'warning', 'emy.lvl2': 'Yellow warning', 'emy.lvl3': 'Orange warning', 'emy.lvl4': 'Red warning',
       'emy.title': 'HNMS weather warnings', 'emy.more': 'Details', 'emy.and': 'and', 'emy.others': 'more',
       'emy.from': 'From', 'emy.until': 'until', 'emy.untilCap': 'Until', 'emy.area1': 'region', 'emy.areas': 'regions', 'emy.cams': 'Cameras in the area', 'emy.source': 'Source: Hellenic National Meteorological Service (emy.gr) via Meteoalarm. Updated every 10 minutes.',
       'emy.demo': 'Sample: this is how it will look when HNMS issues a warning.', 'emy.hide': 'Hide', 'emy.close': 'Close',
@@ -1531,7 +1531,7 @@
       const top = groups[0];
       const rest = groups.length - 1;
       bar.dataset.level = top.level;
-      $('#emyText').innerHTML = `<b>${t('emy.lvl' + top.level)}</b> <span>${emyKinds(top)}</span><span class="emybar__area"> · ${t('emy.' + top.area)}</span>`;
+      $('#emyText').innerHTML = `<b>${t('emy.c' + top.level)}<span class="emybar__area"> ${t('emy.word')}</span></b> · <span>${emyKinds(top)}</span><span class="emybar__area"> · ${t('emy.' + top.area)}</span>`;
       $('#emyRest').hidden = !rest;
       $('#emyRest').innerHTML = rest ? `+${rest}<span class="emybar__area"> ${t(rest > 1 ? 'emy.areas' : 'emy.area1')}</span>` : '';
       $('#emyMore').textContent = t('emy.more');
