@@ -949,7 +949,9 @@ html.lb-open, html.viewer-open, html.qr-open { overflow: hidden; }
 }
 
 /* ── ΕΜΥ warnings: bar under the menu + details card ───── */
-.emybar { --lv: #f5c518; --lv-ink: #1a1400; background: var(--lv); color: var(--lv-ink); }
+/* Sits at the top of the page under the menu and scrolls away with the page. */
+.emybar { --lv: #f5c518; --lv-ink: #1a1400; position: absolute; left: 0; right: 0; top: calc(70px + env(safe-area-inset-top, 0px)); z-index: 99; background: var(--lv); color: var(--lv-ink); }
+.emybar[hidden] { display: none; }
 .emybar[data-level="3"], .emy__item[data-level="3"], .v-emy[data-level="3"] { --lv: #ff8a1f; --lv-ink: #1f0d00; }
 .emybar[data-level="4"], .emy__item[data-level="4"], .v-emy[data-level="4"] { --lv: #e5323e; --lv-ink: #fff; }
 .emybar__btn {
@@ -1012,5 +1014,3 @@ html.lb-open, html.viewer-open, html.qr-open { overflow: hidden; }
 .emy__row[data-level="4"] .emy__kind i { background: #e5323e; }
 .emy__kind span { display: block; margin: 2px 0 0 18px; color: var(--snow); font-weight: 600; font-size: .84rem; opacity: .85; }
 .emy__row .emy__text { margin: 6px 0 0 18px; font-size: .86rem; }
-/* The camera's warning stays in view while the details below it scroll. */
-.v-emy { position: sticky; top: 8px; z-index: 3; box-shadow: 0 8px 24px -8px rgba(0, 0, 0, .7); }
