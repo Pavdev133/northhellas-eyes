@@ -596,6 +596,12 @@ a.cammap__msg { color: var(--glacier); }
 .viewer__stage { position: relative; background: #000; display: flex; align-items: center; min-width: 0; }
 .v-status { z-index: 5; pointer-events: none; }
 .v-status[hidden] { display: none; }
+/* Site logo stamped on the bottom-right corner of the picture itself; app.js places it on the
+   visible image/video rectangle, so letterboxing never pushes it onto the black bars. */
+.v-logo { position: absolute; z-index: 4; right: var(--lr, 12px); bottom: var(--lb, 12px); width: var(--ls, 56px); height: auto; aspect-ratio: 1;
+  border-radius: 50%; opacity: .82; pointer-events: none; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .55)); transition: opacity .3s; }
+.v-logo[hidden] { display: none; }
+@media (hover: hover) { .viewer__stage:hover .v-logo.is-video { opacity: .3; } }
 .viewer__media { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: calc(100dvh - 120px); }
 .viewer__media > * { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: contain; background: #000; }
 .viewer__media > img, .viewer__media > video, .viewer__media > iframe { animation: fadeIn .5s var(--ease); }
