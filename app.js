@@ -548,6 +548,16 @@
     return base ? { ...base, kind: wxKind(base.code, base.day) } : null;
   }
 
+  function paintCardWx(card, cam) {
+    const el = $('.card__wx', card);
+    const w = wxOf(cam);
+    el.hidden = !w;
+    if (w) {
+      el.innerHTML = `${wxIcon(w.kind)}${deg(w.temp)}`;
+      el.title = t('wx.' + w.kind);
+    }
+  }
+
   // Weather sits in the facts row of the open camera, as one more box (like altitude or residents).
   function paintViewerWx() {
     const box = $('#vFacts .fact--wx');
@@ -563,6 +573,7 @@
   }
 
   function paintWeather() {
+    $$('#grid .card').forEach((card) => { const cam = camById(card.dataset.id); if (cam) paintCardWx(card, cam); });
     if (current) paintViewerWx();
   }
 
@@ -607,6 +618,7 @@
           <span class="card__fav" role="button" tabindex="0">${starSvg}</span>
           <span class="card__region">${t('regionShort.' + cam.region)}</span>
           <span class="card__play">${playSvg}</span>
+          <span class="card__wx" hidden></span>
           ${cam.dir != null ? `<span class="card__dir" title="${dirName(cam.dir)}"><i style="--dir:${cam.dir}deg"></i></span>` : ''}
         </div>
         <div class="card__body"><h3></h3><div class="card__meta"><span></span>${cam.alt ? `<span>${num(cam.alt)} ${m()}</span>` : ''}</div></div>`;
@@ -614,6 +626,7 @@
       $('.card__meta span', b).textContent = L(cam.area);
       $('.card__img > img', b).alt = L(cam.name);
       loadImg($('.card__img > img', b), cam);
+      paintCardWx(b, cam);
       const star = $('.card__fav', b);
       paintFavButton(star, cam);
       star.addEventListener('click', (e) => { e.stopPropagation(); toggleFav(cam); });
