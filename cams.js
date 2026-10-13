@@ -77,7 +77,7 @@ window.NHE_CAMS = [
       el: 'Το Νεστόριο είναι χωριό της Περιφερειακής Ενότητας Καστοριάς, 25 χλμ. νοτιοδυτικά της Καστοριάς. Χωρίζεται σε Άνω και Κάτω Νεστόριο. Το Κάτω Νεστόριο φτάνει μέχρι τον Αλιάκμονα και βρίσκεται σε πλαγιά του Γράμμου, σε υψόμετρο 890 μέτρων. Κάθε καλοκαίρι φιλοξενεί το γνωστό River Party.',
       en: 'Nestorio is a village in the Kastoria regional unit, 25 km south-west of Kastoria. It is split into Ano and Kato Nestorio. Kato Nestorio reaches down to the Aliakmonas, on a slope of Mount Grammos at 890 m. Every summer it hosts the well-known River Party.'
     },
-    host: { name: 'Ξενώνας Σείριος', url: 'https://www.meteolive.gr/p/nestorio.html' },
+    host: { name: 'Ξενώνας Σείριος', url: 'https://seiriosnestorio.gr/' },
     blog: 'https://northellaseyes.blogspot.com/2025/03/blog-post.html'
   },
   {
