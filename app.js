@@ -893,9 +893,8 @@
     if (nw && nh) { const k = Math.min(w / nw, h / nh); w = nw * k; h = nh * k; }
     const size = Math.round(Math.min(80, Math.max(34, w * .07)));
     const gap = Math.round(Math.max(8, w * .018));
-    const phone = matchMedia('(max-width: 640px)').matches;
-    // native phone players and the Windy player draw their controls along the bottom
-    const lift = el.tagName === 'IFRAME' ? 44 : (el.tagName === 'VIDEO' && phone ? 40 : 0);
+    // the Windy player draws its controls along the bottom
+    const lift = el.tagName === 'IFRAME' ? 44 : 0;
     logo.style.setProperty('--ls', size + 'px');
     logo.style.setProperty('--lr', Math.round(stage.right - (box.left + (box.width + w) / 2) + gap) + 'px');
     logo.style.setProperty('--lb', Math.round(stage.bottom - (box.top + (box.height + h) / 2) + gap + lift) + 'px');
