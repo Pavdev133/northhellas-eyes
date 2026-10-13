@@ -88,6 +88,10 @@
       'v.host': 'Φιλοξενία', 'v.share': 'Ο σύνδεσμος αντιγράφηκε', 'v.retry': 'Ξανά',
       'f.dir': 'κατεύθυνση', 'f.alt': 'υψόμετρο', 'f.pop': 'κάτοικοι', 'f.region': 'περιοχή',
       'card.live': 'LIVE', 'card.snap': 'ΕΙΚΟΝΑ', 'st.on': 'ONLINE', 'st.off': 'OFFLINE', 'live.now': 'ΖΩΝΤΑΝΑ',
+      'wx.title': 'Καιρός τώρα', 'wx.hum': 'υγρασία', 'wx.wind': 'άνεμος', 'wx.rain': 'βροχή σήμερα', 'wx.feels': 'αίσθηση',
+      'wx.station': 'Μετεωρολογικός σταθμός', 'wx.model': 'Open-Meteo · εκτίμηση για την περιοχή', 'wx.at': 'μέτρηση',
+      'wx.sun': 'Αίθριος', 'wx.moon': 'Καθαρός ουρανός', 'wx.partly': 'Λίγα σύννεφα', 'wx.cloud': 'Συννεφιά', 'wx.fog': 'Ομίχλη',
+      'wx.rainy': 'Βροχή', 'wx.snow': 'Χιόνι', 'wx.storm': 'Καταιγίδα', 'wx.thermo': 'Τώρα', 'map.station': 'Μετ. σταθμός',
       'regionShort.west': 'Δ. Μακεδονία', 'regionShort.central': 'Κ. Μακεδονία', 'regionShort.east': 'Α. Μακ. & Θράκη',
       dirs: ['Β', 'ΒΑ', 'Α', 'ΝΑ', 'Ν', 'ΝΔ', 'Δ', 'ΒΔ']
     },
@@ -168,6 +172,10 @@
       'v.host': 'Hosted by', 'v.share': 'Link copied', 'v.retry': 'Retry',
       'f.dir': 'direction', 'f.alt': 'altitude', 'f.pop': 'residents', 'f.region': 'region',
       'card.live': 'LIVE', 'card.snap': 'IMAGE', 'st.on': 'ONLINE', 'st.off': 'OFFLINE', 'live.now': 'LIVE',
+      'wx.title': 'Weather now', 'wx.hum': 'humidity', 'wx.wind': 'wind', 'wx.rain': 'rain today', 'wx.feels': 'feels like',
+      'wx.station': 'Weather station', 'wx.model': 'Open-Meteo · estimate for the area', 'wx.at': 'reading',
+      'wx.sun': 'Clear', 'wx.moon': 'Clear sky', 'wx.partly': 'Partly cloudy', 'wx.cloud': 'Cloudy', 'wx.fog': 'Fog',
+      'wx.rainy': 'Rain', 'wx.snow': 'Snow', 'wx.storm': 'Thunderstorm', 'wx.thermo': 'Now', 'map.station': 'Weather station',
       'regionShort.west': 'W. Macedonia', 'regionShort.central': 'C. Macedonia', 'regionShort.east': 'E. Mac. & Thrace',
       dirs: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
     }
@@ -497,6 +505,88 @@
     setStatus(cam, st);
   }
 
+  // ── Live weather ────────────────────────────────────────
+  // Every camera gets current conditions for its spot; the three cameras that sit
+  // next to one of the network's own weather stations show that station's reading.
+  const STATIONS = window.NHE_STATIONS || [];
+  const WX_URL = '/weather';
+  const WX_MS = 10 * 60 * 1000;
+  const wx = {};
+  const stWx = {};
+  let lastWx = 0;
+  const wxPaths = {
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M2.5 12h2M19.5 12h2M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+    moon: '<path d="M19.5 14.6A8 8 0 1 1 9.4 4.5a6.4 6.4 0 0 0 10.1 10.1z"/>',
+    partly: '<path d="M8.5 2.5v1.6M3.4 4.9l1.1 1.1M1.8 10h1.6M13.6 4.9l-1.1 1.1"/><path d="M5.2 13.1a3.9 3.9 0 0 1 6.9-4.9"/><path d="M9 20.5h8.5a3.6 3.6 0 0 0 .4-7.2 5.2 5.2 0 0 0-9.8 1.1A3.1 3.1 0 0 0 9 20.5z"/>',
+    cloud: '<path d="M7 19h10.5a4.2 4.2 0 0 0 .5-8.4 6.2 6.2 0 0 0-11.8 1.5A3.5 3.5 0 0 0 7 19z"/>',
+    fog: '<path d="M7 13h10.5a4 4 0 0 0 .5-8 6 6 0 0 0-11.4 1.4A3.3 3.3 0 0 0 7 13z"/><path d="M4 17h16M7 20.5h10"/>',
+    rainy: '<path d="M7 15h10.5a4 4 0 0 0 .5-8 6 6 0 0 0-11.4 1.4A3.3 3.3 0 0 0 7 15z"/><path d="M8.5 18l-1 3M12.5 18l-1 3M16.5 18l-1 3"/>',
+    snow: '<path d="M7 15h10.5a4 4 0 0 0 .5-8 6 6 0 0 0-11.4 1.4A3.3 3.3 0 0 0 7 15z"/><path d="M8 18.5h.01M12 18.5h.01M16 18.5h.01M10 21h.01M14 21h.01"/>',
+    storm: '<path d="M7 15h10.5a4 4 0 0 0 .5-8 6 6 0 0 0-11.4 1.4A3.3 3.3 0 0 0 7 15z"/><path d="M12.8 15.5 10.6 19h3l-2.2 3.5"/>',
+    thermo: '<path d="M10 14.3V5a2 2 0 1 1 4 0v9.3a4 4 0 1 1-4 0z"/><path d="M12 11v5"/>'
+  };
+  const wxKind = (c, day) => (c == null ? 'thermo'
+    : c === 0 ? (day === 0 ? 'moon' : 'sun')
+      : c <= 2 ? 'partly'
+        : c === 3 ? 'cloud'
+          : c <= 48 ? 'fog'
+            : (c >= 71 && c <= 77) || c === 85 || c === 86 ? 'snow'
+              : c >= 95 ? 'storm' : 'rainy');
+  const wxIcon = (kind) => `<svg class="wxi wxi--${kind}" viewBox="0 0 24 24" aria-hidden="true">${wxPaths[kind]}</svg>`;
+  const deg = (v, digits = 0) => `${Number(v).toLocaleString(locale(), { minimumFractionDigits: digits, maximumFractionDigits: digits })}°`;
+  const stationOf = (cam) => STATIONS.find((s) => s.code === cam.station);
+  // A station that has not reported for three hours is treated as down.
+  const freshStation = (code) => {
+    const s = code && stWx[code];
+    return s && typeof s.temp === 'number' && Date.now() / 1000 - s.at < 3 * 3600 ? s : null;
+  };
+
+  function wxOf(cam) {
+    const base = wx[cam.id];
+    const s = freshStation(cam.station);
+    if (s) return { ...(base || {}), ...s, feels: null, kind: wxKind(base && base.code, base && base.day), station: stationOf(cam) };
+    return base ? { ...base, kind: wxKind(base.code, base.day) } : null;
+  }
+
+  // Weather sits in the facts row of the open camera, as one more box (like altitude or residents).
+  function paintViewerWx() {
+    const box = $('#vFacts .fact--wx');
+    const w = current && wxOf(current);
+    if (!box) return;
+    box.hidden = !w;
+    const facts = box.parentNode;
+    facts.classList.toggle('facts--4', [...facts.children].filter((c) => !c.hidden).length === 4);
+    if (!w) return;
+    const wind = `${w.wind} km/h${w.wind && w.wdir != null ? ` ${dirName(w.wdir)}` : ''}`;
+    box.title = w.station ? `${t('wx.station')} · ${L(w.station.name)}` : t('wx.model');
+    box.innerHTML = `${wxIcon(w.kind)}<b>${deg(w.temp, w.station ? 1 : 0)}</b><span>${t('wx.' + w.kind)} · ${wind}</span>`;
+  }
+
+  function paintWeather() {
+    if (current) paintViewerWx();
+  }
+
+  async function getJson(url) {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(r.status);
+    return r.json();
+  }
+
+  function loadWeather() {
+    if (document.visibilityState === 'hidden') return;
+    lastWx = Date.now();
+    const placed = CAMS.filter((c) => c.ll);
+    const ll = placed.map((c) => c.ll.map((n) => n.toFixed(3)).join(',')).join('|');
+    getJson(`${WX_URL}?ll=${encodeURIComponent(ll)}`).then((d) => {
+      (d.ll || []).forEach((w, i) => { if (placed[i] && w && typeof w.temp === 'number') wx[placed[i].id] = w; });
+      paintWeather();
+    }).catch(() => {});
+    const codes = STATIONS.map((s) => s.code).join(',');
+    if (codes) {
+      getJson(`${WX_URL}?st=${codes}`).then((d) => { Object.assign(stWx, d.st || {}); paintWeather(); }).catch(() => {});
+    }
+  }
+
   function renderGrid() {
     const grid = $('#grid');
     const list = visibleCams();
@@ -698,6 +788,7 @@
   function fillViewerText(cam) {
     paintFavButton($('#vFav'), cam);
     paintViewerStatus();
+    paintViewerWx();
     $('#vName').textContent = L(cam.name);
     $('#vArea').textContent = `${L(cam.area)} · ${t('region.' + cam.region)}`;
     const view = $('#vView');
@@ -718,7 +809,12 @@
     }
     if (cam.alt) fact(`<b>${num(cam.alt)} ${m()}</b><span>${t('f.alt')}</span>`);
     if (cam.pop) fact(`<b>${num(cam.pop[0])}</b><span>${t('f.pop')}${typeof cam.pop[1] === 'number' ? ` (${cam.pop[1]})` : ''}</span>`);
-    if (facts.children.length < 3) fact(`<b>${t('regionShort.' + cam.region)}</b><span>${t('f.region')}</span>`);
+    if (facts.children.length < (cam.ll ? 2 : 3)) fact(`<b>${t('regionShort.' + cam.region)}</b><span>${t('f.region')}</span>`);
+    const wxBox = document.createElement('div');
+    wxBox.className = 'fact fact--wx';
+    wxBox.hidden = true;
+    facts.insertBefore(wxBox, facts.children[cam.dir != null ? 1 : 0] || null);
+    paintViewerWx();
     facts.hidden = !facts.children.length;
 
     const meta = $('#vMeta');
@@ -1022,6 +1118,10 @@
     });
   }
 
+  function pinLabel(cam) {
+    return L(cam.name).split(' – ')[0];
+  }
+
   function pinPopup(cam) {
     const box = document.createElement('div');
     box.className = 'mpop';
@@ -1094,7 +1194,7 @@
     const placed = CAMS.filter((c) => c.ll);
     placed.forEach((cam) => {
       const mk = Lf.marker(cam.ll, { icon: pinIcon(Lf, cam), title: L(cam.name), riseOnHover: true }).addTo(map);
-      mk.bindTooltip(L(cam.name).split(' – ')[0], { direction: 'right', className: 'pin-label', permanent: true, opacity: 1 });
+      mk.bindTooltip(pinLabel(cam), { direction: 'right', className: 'pin-label', permanent: true, opacity: 1 });
       mk.on('click', () => {
         // Pins sitting on top of each other: zoom in first so the right one can be picked.
         const at = map.latLngToContainerPoint(cam.ll);
@@ -1123,7 +1223,7 @@
 
   function mapLang() {
     mapPins.forEach(({ mk, cam }) => {
-      mk.setTooltipContent(L(cam.name).split(' – ')[0]);
+      mk.setTooltipContent(pinLabel(cam));
       mk.getElement()?.setAttribute('title', L(cam.name));
     });
     camMap.closePopup();
@@ -1599,9 +1699,11 @@
       if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 4000 }); else setTimeout(go, 2500);
     };
     if (document.readyState === 'complete') startChecks(); else window.addEventListener('load', startChecks, { once: true });
+    loadWeather();
+    setInterval(loadWeather, WX_MS);
     stampRefresh(new Date());
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') { refreshImages(); renderMoon(); if (Date.now() - lastCheck > 60000) checkStatus(); }
+      if (document.visibilityState === 'visible') { refreshImages(); renderMoon(); if (Date.now() - lastCheck > 60000) checkStatus(); if (Date.now() - lastWx > WX_MS) loadWeather(); }
     });
   }
 

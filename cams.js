@@ -8,6 +8,7 @@
  *   meteo  – page slug on meteolive.gr (their own live player)
  *   stillOnly – show only the still image (no time-lapse tab); for cameras without a live stream
  *   ll     – [latitude, longitude] of the camera, from the original Google My Maps camera map
+ *   station – Weathercloud code of the network's own weather station at that spot
  *   dir    – compass bearing the camera looks towards, in degrees
  *   alt    – camera / village altitude in metres
  *   pop    – population and census year
@@ -195,7 +196,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/neos-panteleimonas-camera.html'
   },
   {
-    id: 'katerini', fc: 'XKf9', region: 'central', ll: [40.2742921, 22.5413063], hls: 'https://mediacp.alphastream.eu/peristasi/index.m3u8',
+    id: 'katerini', fc: 'XKf9', station: '1838626896', region: 'central', ll: [40.2742921, 22.5413063], hls: 'https://mediacp.alphastream.eu/peristasi/index.m3u8',
     snap: 'https://cams.elaticam.com/output/peristasi/webcamimage.jpg', windy: 1655651149, meteo: 'peristasi', dir: 250,
     name: { el: 'Κατερίνη', en: 'Katerini' },
     area: { el: 'Περίσταση, Πιερία', en: 'Peristasi, Pieria' },
@@ -227,7 +228,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2025/04/olympus-view-olympus-view-litochoro.html'
   },
   {
-    id: 'nokat', fc: 'Nn3s', region: 'central', ll: [40.261872, 22.5958987], hls: 'https://mediacp.alphastream.eu/katerini/index.m3u8',
+    id: 'nokat', fc: 'Nn3s', station: '2651792394', region: 'central', ll: [40.261872, 22.5958987], hls: 'https://mediacp.alphastream.eu/katerini/index.m3u8',
     windy: 1592169533, meteo: 'katerini', dir: 90,
     name: { el: 'Ναυτικός Όμιλος Κατερίνης', en: 'Katerini Nautical Club' },
     area: { el: 'Παραλία Κατερίνης', en: 'Paralia Katerinis' },
@@ -291,7 +292,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2023/11/naousa-imathias-camera.html'
   },
   {
-    id: 'derveni', fc: 'XxRT', region: 'central', ll: [40.713456, 22.9626469], windy: 1656018135, stillOnly: true, meteo: 'derveni', dir: 70,
+    id: 'derveni', fc: 'XxRT', station: '2599145685', region: 'central', ll: [40.713456, 22.9626469], windy: 1656018135, stillOnly: true, meteo: 'derveni', dir: 70,
     name: { el: 'Δερβένι', en: 'Derveni' },
     area: { el: 'Θεσσαλονίκη', en: 'Thessaloniki' },
     view: {
@@ -483,6 +484,13 @@ window.NHE_CAMS = [
     host: { name: 'Χρήστος Ματουσίδης', url: 'https://www.facebook.com/matousidischristos/' },
     blog: 'https://northellaseyes.blogspot.com/2022/06/dikaia-evros-camera.html'
   }
+];
+
+/* The network's weather stations (positions from the original Google My Maps map). */
+window.NHE_STATIONS = [
+  { code: '2599145685', cam: 'derveni', ll: [40.7053462, 22.9906161], name: { el: 'Δερβένι Θεσσαλονίκης', en: 'Derveni, Thessaloniki' } },
+  { code: '2651792394', cam: 'nokat', ll: [40.2710043, 22.5940042], name: { el: 'Ναυτικός Όμιλος Κατερίνης', en: 'Nautical Club of Katerini' } },
+  { code: '1838626896', cam: 'katerini', ll: [40.2794073, 22.5449565], name: { el: 'Καλλιθέα Πιερίας', en: 'Kallithea, Pieria' } }
 ];
 
 /* Businesses and people that support the network (from the blog sidebar). */
