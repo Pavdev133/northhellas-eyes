@@ -734,7 +734,7 @@
       ['rec.high', 'agiosathanasios', `${num(1200)} ${m()}`],
       ['rec.olympus', 'litochoro', `${num(2918)} ${m()}`],
       ['rec.first', 'liti', '2022'],
-      ['rec.city', 'noth', num(802572), { el: 'Θεσσαλονίκη – Καλαμαριά', en: 'Thessaloniki – Kalamaria' }],
+      ['rec.city', 'noth', num(802573), { el: 'Θεσσαλονίκη – Καλαμαριά', en: 'Thessaloniki – Kalamaria' }],
       ['rec.west', 'psarades', '21°E'],
       ['rec.east', 'soufli', '26°E'],
       ['rec.north', 'dikaia', '41.7°N']

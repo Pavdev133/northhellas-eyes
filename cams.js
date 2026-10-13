@@ -308,7 +308,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'noth', fc: '36mf', region: 'central', ll: [40.5880005, 22.9419695], hls: 'https://mediacp.alphastream.eu/kalamaria/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/kalamaria/webcamimage.jpg', windy: 1664117000, meteo: 'thessaloniki', dir: 330,
+    snap: 'https://cams.elaticam.com/output/kalamaria/webcamimage.jpg', windy: 1664117000, meteo: 'thessaloniki', dir: 330, pop: [802573, ''],
     name: { el: 'Καλαμαριά', en: 'Kalamaria' },
     area: { el: 'Ναυτικός Όμιλος Θεσσαλονίκης', en: 'Thessaloniki Nautical Club' },
     view: {
