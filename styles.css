@@ -1012,3 +1012,5 @@ html.lb-open, html.viewer-open, html.qr-open { overflow: hidden; }
 .emy__row[data-level="4"] .emy__kind i { background: #e5323e; }
 .emy__kind span { display: block; margin: 2px 0 0 18px; color: var(--snow); font-weight: 600; font-size: .84rem; opacity: .85; }
 .emy__row .emy__text { margin: 6px 0 0 18px; font-size: .86rem; }
+/* The camera's warning stays in view while the details below it scroll. */
+.v-emy { position: sticky; top: 8px; z-index: 3; box-shadow: 0 8px 24px -8px rgba(0, 0, 0, .7); }
