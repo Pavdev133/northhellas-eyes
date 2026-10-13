@@ -879,26 +879,23 @@
     return box;
   }
 
-  // Keep the logo on the bottom-right corner of what is actually shown (object-fit: contain
-  // can leave black bars), and above the player's own control bar where there is one.
+  // Logo only on the still image, kept on the bottom-right corner of the picture itself
+  // (object-fit: contain can leave black bars).
   function placeLogo() {
     const logo = $('#vLogo');
     const media = $('#vMedia');
-    const el = media.querySelector(':scope > img, :scope > video, :scope > iframe');
+    const el = media.querySelector(':scope > img');
     if (!el) { logo.hidden = true; return; }
     const stage = $('#vStage').getBoundingClientRect();
     const box = media.getBoundingClientRect();
     let w = box.width, h = box.height;
-    const nw = el.naturalWidth || el.videoWidth, nh = el.naturalHeight || el.videoHeight;
+    const nw = el.naturalWidth, nh = el.naturalHeight;
     if (nw && nh) { const k = Math.min(w / nw, h / nh); w = nw * k; h = nh * k; }
     const size = Math.round(Math.min(80, Math.max(34, w * .07)));
     const gap = Math.round(Math.max(8, w * .018));
-    // the Windy player draws its controls along the bottom
-    const lift = el.tagName === 'IFRAME' ? 44 : 0;
     logo.style.setProperty('--ls', size + 'px');
     logo.style.setProperty('--lr', Math.round(stage.right - (box.left + (box.width + w) / 2) + gap) + 'px');
-    logo.style.setProperty('--lb', Math.round(stage.bottom - (box.top + (box.height + h) / 2) + gap + lift) + 'px');
-    logo.classList.toggle('is-video', el.tagName === 'VIDEO');
+    logo.style.setProperty('--lb', Math.round(stage.bottom - (box.top + (box.height + h) / 2) + gap) + 'px');
     logo.hidden = false;
   }
 
@@ -1692,7 +1689,6 @@
     const media = $('#vMedia');
     new MutationObserver(placeLogo).observe(media, { childList: true });
     media.addEventListener('load', placeLogo, true);
-    media.addEventListener('loadedmetadata', placeLogo, true);
     if ('ResizeObserver' in window) new ResizeObserver(placeLogo).observe($('#vStage'));
     else addEventListener('resize', placeLogo);
     $('#vStage').addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; touchY = e.touches[0].clientY; }, { passive: true });
