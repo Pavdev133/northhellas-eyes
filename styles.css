@@ -947,3 +947,58 @@ html.lb-open, html.viewer-open, html.qr-open { overflow: hidden; }
   .moon__next b { font-size: .78rem; }
   .moon__next small { font-size: .7rem; }
 }
+
+/* ── ΕΜΥ warnings: bar under the menu + details card ───── */
+.emybar { --lv: #f5c518; --lv-ink: #1a1400; background: var(--lv); color: var(--lv-ink); }
+.emybar[data-level="3"], .emy__item[data-level="3"], .v-emy[data-level="3"] { --lv: #ff8a1f; --lv-ink: #1f0d00; }
+.emybar[data-level="4"], .emy__item[data-level="4"], .v-emy[data-level="4"] { --lv: #e5323e; --lv-ink: #fff; }
+.emybar__btn {
+  display: flex; align-items: center; gap: 10px; min-height: 38px; padding: 6px 0; border: 0; background: none; color: inherit;
+  font-size: .86rem; line-height: 1.25; text-align: left;
+}
+.emybar svg, .emy svg, .v-emy svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.emybar__btn > svg { animation: emyPulse 2s ease-in-out infinite; }
+@keyframes emyPulse { 50% { transform: scale(1.15); } }
+.emybar__text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.emybar__text b { font-weight: 700; }
+.emybar__text i { font-style: normal; font-weight: 600; opacity: .8; }
+.emybar__more { flex: none; padding: 4px 10px; border-radius: 999px; background: rgba(0, 0, 0, .14); font-weight: 600; font-size: .8rem; }
+.has-emy .hero { padding-top: calc(168px + env(safe-area-inset-top, 0px)); }
+@media (max-width: 760px) {
+  .has-emy .hero { padding-top: calc(140px + env(safe-area-inset-top, 0px)); }
+  .emybar__text { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .emybar__text i { white-space: nowrap; }
+  .emybar__area { display: none; }
+}
+
+.emy {
+  width: min(440px, 100vw - 32px); max-height: calc(100dvh - 32px); padding: 20px; border: 1px solid var(--line); border-radius: 24px;
+  background: linear-gradient(180deg, #0d1730, #080e1e 70%); color: var(--snow); overflow: hidden auto; box-shadow: 0 50px 140px rgba(0, 0, 0, .85);
+}
+.emy::backdrop { background: rgba(3, 6, 12, .82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.emy[open] { animation: pop .45s var(--ease); }
+.emy__top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.emy__top h2 { flex: 1; margin: 0; font-size: 1.5rem; }
+.emy__close { position: static; flex: none; background: rgba(255, 255, 255, .08); }
+.emy__close svg { stroke-width: 2; }
+.emy__note { margin: 0 0 12px; padding: 8px 12px; border-radius: 10px; background: rgba(78, 171, 232, .14); color: #bfe0f7; font-size: .84rem; }
+.emy__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.emy__item { --lv: #f5c518; --lv-ink: #1a1400; border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); }
+.emy__head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--lv); color: var(--lv-ink); }
+.emy__head b { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+.emy__head strong { display: block; font-size: 1rem; line-height: 1.25; }
+.emy__time { margin: 12px 14px 0; font-weight: 600; font-size: .88rem; }
+.emy__text { margin: 6px 14px 0; color: var(--mist); font-size: .9rem; line-height: 1.5; }
+.emy__camsh { margin: 12px 14px 6px; font-size: .74rem; text-transform: uppercase; letter-spacing: .06em; color: var(--mist); }
+.emy__cams { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 14px; }
+.emy__item > :last-child:not(.emy__cams) { margin-bottom: 14px; }
+.emy__cams button { padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, .05); font-size: .8rem; }
+.emy__cams button:hover { border-color: var(--lv); }
+.emy__source { margin: 14px 0 12px; font-size: .78rem; color: var(--mist); }
+.emy__hide { width: 100%; justify-content: center; padding: 10px; }
+
+.v-emy {
+  --lv: #f5c518; --lv-ink: #1a1400; display: flex; align-items: center; gap: 10px; width: 100%; margin: 0 0 14px; padding: 9px 12px;
+  border: 0; border-radius: 12px; background: var(--lv); color: var(--lv-ink); font-size: .86rem; line-height: 1.3; text-align: left;
+}
+.v-emy[hidden] { display: none; }

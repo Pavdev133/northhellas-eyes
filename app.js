@@ -92,6 +92,14 @@
       'wx.station': 'Μετεωρολογικός σταθμός', 'wx.model': 'Open-Meteo · εκτίμηση για την περιοχή', 'wx.at': 'μέτρηση',
       'wx.sun': 'Αίθριος', 'wx.moon': 'Καθαρός ουρανός', 'wx.partly': 'Λίγα σύννεφα', 'wx.cloud': 'Συννεφιά', 'wx.fog': 'Ομίχλη',
       'wx.rainy': 'Βροχή', 'wx.snow': 'Χιόνι', 'wx.storm': 'Καταιγίδα', 'wx.thermo': 'Τώρα', 'map.station': 'Μετ. σταθμός',
+      'emy.lvl2': 'Κίτρινη προειδοποίηση', 'emy.lvl3': 'Πορτοκαλί προειδοποίηση', 'emy.lvl4': 'Κόκκινη προειδοποίηση',
+      'emy.title': 'Προειδοποιήσεις ΕΜΥ', 'emy.more': 'Λεπτομέρειες', 'emy.and': 'και', 'emy.others': 'ακόμα',
+      'emy.from': 'Από', 'emy.until': 'έως', 'emy.cams': 'Κάμερες στην περιοχή', 'emy.source': 'Πηγή: ΕΜΥ (emy.gr) μέσω Meteoalarm. Ενημερώνεται κάθε 10 λεπτά.',
+      'emy.demo': 'Δείγμα: έτσι θα φαίνεται όταν η ΕΜΥ βγάλει προειδοποίηση.', 'emy.hide': 'Απόκρυψη', 'emy.close': 'Κλείσιμο',
+      'emy.t1': 'Ισχυροί άνεμοι', 'emy.t2': 'Χιόνια και παγετός', 'emy.t3': 'Καταιγίδες', 'emy.t4': 'Ομίχλη', 'emy.t5': 'Υψηλές θερμοκρασίες',
+      'emy.t6': 'Χαμηλές θερμοκρασίες', 'emy.t7': 'Θαλασσοταραχή', 'emy.t8': 'Κίνδυνος πυρκαγιάς', 'emy.t9': 'Χιονοστιβάδες',
+      'emy.t10': 'Έντονες βροχές', 'emy.t12': 'Πλημμύρες', 'emy.t13': 'Βροχές και πλημμύρες',
+      'emy.GR004': 'Θράκη', 'emy.GR005': 'Ανατολική Μακεδονία', 'emy.GR006': 'Δυτική Μακεδονία', 'emy.GR007': 'Κεντρική Μακεδονία', 'emy.GR001': 'Θεσσαλία',
       'regionShort.west': 'Δ. Μακεδονία', 'regionShort.central': 'Κ. Μακεδονία', 'regionShort.east': 'Α. Μακ. & Θράκη',
       dirs: ['Β', 'ΒΑ', 'Α', 'ΝΑ', 'Ν', 'ΝΔ', 'Δ', 'ΒΔ']
     },
@@ -176,6 +184,14 @@
       'wx.station': 'Weather station', 'wx.model': 'Open-Meteo · estimate for the area', 'wx.at': 'reading',
       'wx.sun': 'Clear', 'wx.moon': 'Clear sky', 'wx.partly': 'Partly cloudy', 'wx.cloud': 'Cloudy', 'wx.fog': 'Fog',
       'wx.rainy': 'Rain', 'wx.snow': 'Snow', 'wx.storm': 'Thunderstorm', 'wx.thermo': 'Now', 'map.station': 'Weather station',
+      'emy.lvl2': 'Yellow warning', 'emy.lvl3': 'Orange warning', 'emy.lvl4': 'Red warning',
+      'emy.title': 'HNMS weather warnings', 'emy.more': 'Details', 'emy.and': 'and', 'emy.others': 'more',
+      'emy.from': 'From', 'emy.until': 'until', 'emy.cams': 'Cameras in the area', 'emy.source': 'Source: Hellenic National Meteorological Service (emy.gr) via Meteoalarm. Updated every 10 minutes.',
+      'emy.demo': 'Sample: this is how it will look when HNMS issues a warning.', 'emy.hide': 'Hide', 'emy.close': 'Close',
+      'emy.t1': 'Strong winds', 'emy.t2': 'Snow and ice', 'emy.t3': 'Thunderstorms', 'emy.t4': 'Fog', 'emy.t5': 'High temperatures',
+      'emy.t6': 'Low temperatures', 'emy.t7': 'Coastal event', 'emy.t8': 'Forest fire risk', 'emy.t9': 'Avalanches',
+      'emy.t10': 'Heavy rain', 'emy.t12': 'Flooding', 'emy.t13': 'Rain and flooding',
+      'emy.GR004': 'Thrace', 'emy.GR005': 'East Macedonia', 'emy.GR006': 'West Macedonia', 'emy.GR007': 'Central Macedonia', 'emy.GR001': 'Thessaly',
       'regionShort.west': 'W. Macedonia', 'regionShort.central': 'C. Macedonia', 'regionShort.east': 'E. Mac. & Thrace',
       dirs: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
     }
@@ -801,6 +817,7 @@
     paintFavButton($('#vFav'), cam);
     paintViewerStatus();
     paintViewerWx();
+    paintViewerEmy();
     $('#vName').textContent = L(cam.name);
     $('#vArea').textContent = `${L(cam.area)} · ${t('region.' + cam.region)}`;
     const view = $('#vView');
@@ -1437,6 +1454,120 @@
     setInterval(tick, 15000);
   }
 
+  // ── ΕΜΥ warnings ────────────────────────────────────────
+  // A bar under the top menu, only while ΕΜΥ has a yellow/orange/red warning for a region
+  // where we have cameras. Tapping it opens the details. ?emy=demo shows a sample.
+  const EMY_URL = '/warnings';
+  const EMY_MS = 10 * 60 * 1000;
+  // Which of the ΕΜΥ (Meteoalarm) regions each camera falls in.
+  const EMY_AREA = {
+    GR006: ['psarades', 'kastoria', 'kastorialake', 'nestorio', 'florina', 'xinonero', 'kastania', 'neraida'],
+    GR007: ['fotina', 'panteleimonas', 'platamonas', 'katerini', 'litochoro', 'nokat', 'neoiporoi', 'makrigialos', 'naousa',
+      'derveni', 'noth', 'kerkini', 'liti', 'afytos', 'palaiochori', 'ouranoupoli', 'agiosathanasios'],
+    GR004: ['alexfaros', 'alexport', 'soufli', 'dikaia']
+  };
+  const escapeHtml = (v) => String(v).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const emyDemo = /[?&]emy=demo\b/.test(location.search);
+  let emyList = [];
+  let lastEmy = 0;
+
+  function emySample() {
+    const h = 3600 * 1000;
+    const at = (ms) => new Date(Math.floor((Date.now() + ms) / h) * h).toISOString();
+    return [
+      { area: 'GR006', level: 3, type: 2, onset: at(-2 * h), expires: at(20 * h),
+        text: { el: 'Χιονοπτώσεις κατά τόπους ισχυρές, κυρίως στα ορεινά και ημιορεινά. Πιθανά προβλήματα στις μετακινήσεις. Ενημερωθείτε πριν ταξιδέψετε.',
+          en: 'Locally heavy snowfall, mainly over mountains and hills. Travel disruption is possible. Check conditions before you travel.' } },
+      { area: 'GR007', level: 2, type: 3, onset: at(1 * h), expires: at(12 * h),
+        text: { el: 'Τοπικές καταιγίδες, κυρίως στα δυτικά και βόρεια. ΕΝΗΜΕΡΩΘΕΙΤΕ. Ιδιαίτερη προσοχή σε εκτεθειμένες περιοχές, όπως τα βουνά, τα δάση και όλοι οι ανοιχτοί χώροι.',
+          en: 'Locally thunderstorms, mainly in the west and north. BE AWARE. Take care in exposed places such as mountains, forests and all open areas.' } }
+    ];
+  }
+
+  const emyWhen = (iso) => new Date(iso).toLocaleString(locale(), {
+    timeZone: 'Europe/Athens', weekday: 'short', day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false
+  });
+  const emyLabel = (w) => `${t('emy.t' + w.type)} · ${t('emy.' + w.area)}`;
+  const emyFor = (cam) => emyList.filter((w) => (EMY_AREA[w.area] || []).includes(cam.id));
+  const emyIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.2v.01"/></svg>';
+  const emyKey = () => emyList.map((w) => `${w.area}${w.type}${w.level}${w.onset}`).join('|');
+
+  function renderEmy() {
+    const bar = $('#emyBar');
+    let hidden = false;
+    try { hidden = !emyDemo && sessionStorage.getItem('nhe-emy-hide') === emyKey(); } catch { /* noop */ }
+    const show = emyList.length > 0 && !hidden;
+    bar.hidden = !show;
+    document.documentElement.classList.toggle('has-emy', show);
+    if (show) {
+      const top = emyList[0];
+      const rest = emyList.length - 1;
+      bar.dataset.level = top.level;
+      $('#emyText').innerHTML = `<b>${t('emy.lvl' + top.level)}</b> <span>${t('emy.t' + top.type)}</span><span class="emybar__area"> · ${t('emy.' + top.area)}</span>`
+        + (rest ? ` <i>+${rest}<span class="emybar__area"> ${t('emy.others')}</span></i>` : '');
+      $('#emyMore').textContent = t('emy.more');
+    }
+    if (viewer.open && current) paintViewerEmy();
+  }
+
+  function paintViewerEmy() {
+    const el = $('#vEmy');
+    const list = current ? emyFor(current) : [];
+    el.hidden = !list.length;
+    if (!list.length) return;
+    const w = list[0];
+    el.dataset.level = w.level;
+    el.innerHTML = `${emyIcon}<span><b>${t('emy.lvl' + w.level)}</b> ${t('emy.t' + w.type).toLowerCase()} ${t('emy.until')} ${emyWhen(w.expires)}</span>`;
+  }
+
+  function openEmy() {
+    const dlg = $('#emy');
+    $('#emyTitle').textContent = t('emy.title');
+    $('#emyNote').textContent = emyDemo ? t('emy.demo') : '';
+    $('#emyNote').hidden = !emyDemo;
+    $('#emySource').textContent = t('emy.source');
+    $('#emyHide').textContent = t('emy.hide');
+    $('#emyList').innerHTML = emyList.map((w) => {
+      const cams = (EMY_AREA[w.area] || []).map(camById).filter(Boolean);
+      return `<li class="emy__item" data-level="${w.level}">
+        <div class="emy__head">${emyIcon}<div><b>${t('emy.lvl' + w.level)}</b><strong>${emyLabel(w)}</strong></div></div>
+        <p class="emy__time">${t('emy.from')} ${emyWhen(w.onset)} ${t('emy.until')} ${emyWhen(w.expires)}</p>
+        ${L(w.text) ? `<p class="emy__text">${escapeHtml(L(w.text))}</p>` : ''}
+        ${cams.length ? `<p class="emy__camsh">${t('emy.cams')}</p><div class="emy__cams">${cams.map((c) => `<button type="button" data-cam="${c.id}">${escapeHtml(L(c.name))}</button>`).join('')}</div>` : ''}
+      </li>`;
+    }).join('');
+    if (!dlg.open) dlg.showModal();
+  }
+
+  function initEmy() {
+    const dlg = $('#emy');
+    $('#emyOpen').addEventListener('click', openEmy);
+    $('#vEmy').addEventListener('click', openEmy);
+    $('#emyClose').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) { dlg.close(); return; }
+      const b = e.target.closest('[data-cam]');
+      if (b) { dlg.close(); openViewer(b.dataset.cam); }
+    });
+    $('#emyHide').addEventListener('click', () => {
+      try { sessionStorage.setItem('nhe-emy-hide', emyKey()); } catch { /* noop */ }
+      dlg.close();
+      renderEmy();
+    });
+    loadEmy();
+  }
+
+  function loadEmy() {
+    if (document.visibilityState === 'hidden') return;
+    lastEmy = Date.now();
+    if (emyDemo) { emyList = emySample(); renderEmy(); return; }
+    getJson(EMY_URL).then((d) => {
+      const now = Date.now();
+      emyList = (d.w || []).filter((w) => Date.parse(w.expires) > now && EMY_AREA[w.area]);
+      renderEmy();
+    }).catch(() => {});
+  }
+
   function intro() {
     const el = $('#intro');
     let seen = false;
@@ -1468,6 +1599,7 @@
     if (camMap) mapLang();
     renderGallery();
     renderMoon();
+    if (emyList.length) renderEmy();
     stampRefresh();
   }
 
@@ -1746,9 +1878,11 @@
     if (document.readyState === 'complete') startChecks(); else window.addEventListener('load', startChecks, { once: true });
     loadWeather();
     setInterval(loadWeather, WX_MS);
+    initEmy();
+    setInterval(loadEmy, EMY_MS);
     stampRefresh(new Date());
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') { refreshImages(); renderMoon(); if (Date.now() - lastCheck > 60000) checkStatus(); if (Date.now() - lastWx > WX_MS) loadWeather(); }
+      if (document.visibilityState === 'visible') { refreshImages(); renderMoon(); if (Date.now() - lastCheck > 60000) checkStatus(); if (Date.now() - lastWx > WX_MS) loadWeather(); if (Date.now() - lastEmy > EMY_MS) loadEmy(); }
     });
   }
 
