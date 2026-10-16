@@ -1602,14 +1602,28 @@
     const el = $('#intro');
     let seen = false;
     try { seen = sessionStorage.getItem('nhe-intro') === '1'; sessionStorage.setItem('nhe-intro', '1'); } catch { /* noop */ }
+    if (/[?&]intro=1/.test(location.search)) seen = false;
+    let done = false;
     const finish = () => {
+      if (done) return;
+      done = true;
       el.classList.add('done');
       $('.hero__title').classList.add('in');
       observeReveals();
+      setTimeout(() => el.remove(), 600);
     };
     if (reduced || seen || location.hash.startsWith('#cam/')) { el.remove(); finish(); return; }
-    setTimeout(finish, 1100);
-    setTimeout(() => el.remove(), 1600);
+    // Start the animation once the photo is ready; skip the intro if it is slow to arrive.
+    const pic = $('.intro__pic', el);
+    const wait = setTimeout(finish, 2500);
+    const go = () => {
+      if (done) return;
+      clearTimeout(wait);
+      el.classList.add('go');
+      setTimeout(finish, 2000);
+    };
+    if (pic.complete && pic.naturalWidth) go();
+    else (pic.decode ? pic.decode() : Promise.reject()).then(go, () => pic.addEventListener('load', go, { once: true }));
   }
 
   // ── Language ────────────────────────────────────────────

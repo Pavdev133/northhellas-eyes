@@ -38,17 +38,20 @@
   <link rel="preload" as="font" type="font/woff2" href="/fonts/commissioner-greek-7d3487.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/noto-serif-display-greek-86ce46.woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=20261013n">
+  <link rel="stylesheet" href="styles.css?v=20261016a">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <div class="intro" id="intro" aria-hidden="true">
-    <div class="intro__logo">
+    <img class="intro__bg" src="img/intro.jpg" alt="">
+    <div class="intro__photo">
+      <img class="intro__pic" src="img/intro.jpg" width="784" height="1371" alt="" fetchpriority="high" decoding="async">
+      <span class="intro__cover"></span>
       <span class="intro__ring"></span>
-      <img src="img/logo-256.webp" srcset="img/logo-256.webp 1x, img/logo-512.webp 2x" width="168" height="168" alt="">
+      <span class="intro__logo"><span><img src="img/intro.jpg" alt=""></span></span>
       <span class="intro__shutter"></span>
     </div>
-    <span>Northellas<b>.eyes</b></span>
+    <span class="intro__name">Northellas<b>.eyes</b></span>
   </div>
 
   <div class="progress" id="progress" aria-hidden="true"></div>
@@ -421,6 +424,6 @@
   <script src="cams.js?v=20261013e" defer></script>
   <script src="gallery.js?v=20261009e" defer></script>
   <script src="moon.js?v=20261010a" defer></script>
-  <script src="app.js?v=20261013l" defer></script>
+  <script src="app.js?v=20261016a" defer></script>
 </body>
 </html>
