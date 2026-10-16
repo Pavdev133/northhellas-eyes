@@ -508,7 +508,7 @@ a.cammap__msg { color: var(--glacier); }
   content: ''; position: absolute; left: 7px; top: 6px; width: 2px; height: calc((100% - 12px) * var(--p, 0));
   background: linear-gradient(var(--glacier), var(--dawn), var(--ember));
 }
-.timeline li { position: relative; padding-bottom: 28px; }
+.timeline li { position: relative; padding-bottom: 18px; }
 .timeline li:last-child { padding-bottom: 0; }
 .timeline li::before {
   content: ''; position: absolute; left: -34px; top: 4px; width: 16px; height: 16px; border-radius: 50%;
