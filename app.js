@@ -12,7 +12,9 @@
   // ── i18n ────────────────────────────────────────────────
   const T = {
     el: {
-      'nav.cams': 'Κάμερες', 'nav.regions': 'Περιοχές', 'nav.map': 'Χάρτης', 'nav.weather': 'Καιρός', 'nav.about': 'Η ομάδα', 'nav.contact': 'Επικοινωνία', 'nav.gallery': 'Συλλογή',
+      'nav.cams': 'Κάμερες', 'nav.regions': 'Περιοχές', 'nav.map': 'Χάρτης', 'nav.weather': 'Καιρός', 'nav.about': 'Η ομάδα', 'nav.contact': 'Επικοινωνία', 'nav.gallery': 'Συλλογή', 'nav.news': 'Τα νέα μας',
+      'news.eyebrow': 'Τα νέα μας', 'news.title1': 'Τι ετοιμάζουμε', 'news.title2': 'στο δίκτυο', 'news.soon': 'Ανακοίνωση',
+      'news.1': 'Σύντομα αναβάθμιση της κάμεράς μας στο Λιτόχωρο, με την μοναδική θέα στο φαράγγι του Ενιπέα και την κορυφογραμμή του Ολύμπου!',
       'gal.eyebrow': 'Συλλογή', 'gal.title1': 'Στιγμές', 'gal.title2': 'από τις κάμερές μας',
       'gal.text': 'Χιόνια, καταιγίδες, κεραυνοί, ουράνια τόξα και ανατολές που έπιασαν οι κάμερες του δικτύου. Διάλεξε χρονιά και πάτησε μια φωτογραφία για να τη δεις σε όλη την οθόνη.',
       'gal.photos': 'φωτογραφίες', 'gal.live': 'Δες την κάμερα ζωντανά', 'gal.close': 'Κλείσιμο',
@@ -52,9 +54,9 @@
       'moon.0': 'Νέα Σελήνη', 'moon.1': 'Αύξων μηνίσκος', 'moon.2': 'Πρώτο τέταρτο', 'moon.3': 'Αύξουσα αμφίκυρτη',
       'moon.4': 'Πανσέληνος', 'moon.5': 'Φθίνουσα αμφίκυρτη', 'moon.6': 'Τελευταίο τέταρτο', 'moon.7': 'Φθίνων μηνίσκος',
       'about.eyebrow': 'Η ιστορία μας', 'about.title1': 'Τρεις φίλοι,', 'about.title2': 'μία ιδέα',
-      'about.p1': 'Τον Μάιο του 2022, τρεις φίλοι από τρεις διαφορετικούς επαγγελματικούς κόσμους συνέλαβαν την ιδέα της δημιουργίας ενός ενημερωτικού account στο Facebook, με στόχο τη δωρεάν και live ενημέρωση αγροτών, τουριστών και κάθε άλλου ενδιαφερόμενου για τις μετεωρολογικές συνθήκες στη Βόρεια Ελλάδα σε πραγματικό χρόνο.',
-      'about.p2': 'Με γνώμονα την πρόθεσή τους να στηρίξουν, στο μέτρο που τους αναλογεί, την αγροτική παραγωγή, αλλά και να διευκολύνουν τις τουριστικές εισροές στη χώρα, ξεκίνησαν στις 15 Ιουνίου το «northellas.eyes»: ένα δίκτυο μετεωρολογικών καμερών που εντάσσονται σταδιακά και δίνουν live εικόνα για τον καιρό σε διάφορες περιοχές της Βόρειας Ελλάδας.',
-      'about.p3': 'Η πρώτη κάμερα εγκαταστάθηκε στις 15 Ιουνίου 2022 στη Λητή Θεσσαλονίκης. Σήμερα το δίκτυο έχει 29 κάμερες. Οι κάμερες αποτελούν μέρος του ευρύτερου δικτύου meteolive.gr, με διαχειριστή τον Χρήστο Δημητρούλη.',
+      'about.p1': 'Τον Μάρτιο του 2020, τρεις φίλοι από τρεις διαφορετικούς επαγγελματικούς κόσμους συνέλαβαν την ιδέα της δημιουργίας ενός ενημερωτικού account στο Facebook, με στόχο τη δωρεάν και live ενημέρωση αγροτών, τουριστών και κάθε άλλου ενδιαφερόμενου για τις μετεωρολογικές συνθήκες στη Βόρεια Ελλάδα σε πραγματικό χρόνο.',
+      'about.p2': 'Με γνώμονα την πρόθεσή τους να στηρίξουν, στο μέτρο που τους αναλογεί, την αγροτική παραγωγή, αλλά και να διευκολύνουν τις τουριστικές εισροές στη χώρα, ξεκίνησαν στις 15 Ιουνίου του 2022 το «northellas.eyes»: ένα δίκτυο μετεωρολογικών καμερών που εντάσσονται σταδιακά και δίνουν live εικόνα για τον καιρό σε διάφορες περιοχές της Βόρειας Ελλάδας.',
+      'about.p3': 'Η πρώτη κάμερα εγκαταστάθηκε στις 28 Απριλίου 2020 στη Λητή Θεσσαλονίκης και έπαιξε live σε φιλικό site .... Σήμερα το δίκτυο αριθμεί 29 κάμερες. Οι κάμερες αποτελούν μέρος του ευρύτερου δικτύου meteolive.gr, με διαχειριστή τον Χρήστο Δημητρούλη.',
       'pillar.1t': 'Για τους αγρότες', 'pillar.1': 'Ο καιρός στο χωράφι, πριν βγεις από το σπίτι.',
       'pillar.2t': 'Για τους ταξιδιώτες', 'pillar.2': 'Χιόνι στο βουνό ή ήλιος στη θάλασσα; Δες πριν φύγεις.',
       'pillar.3t': 'Δωρεάν, πάντα', 'pillar.3': 'Χωρίς συνδρομές και χωρίς διαφημίσεις στην εικόνα.',
@@ -125,7 +127,9 @@
       dirs: ['Β', 'ΒΑ', 'Α', 'ΝΑ', 'Ν', 'ΝΔ', 'Δ', 'ΒΔ']
     },
     en: {
-      'nav.cams': 'Cameras', 'nav.regions': 'Regions', 'nav.map': 'Map', 'nav.weather': 'Weather', 'nav.about': 'About', 'nav.contact': 'Contact', 'nav.gallery': 'Gallery',
+      'nav.cams': 'Cameras', 'nav.regions': 'Regions', 'nav.map': 'Map', 'nav.weather': 'Weather', 'nav.about': 'About', 'nav.contact': 'Contact', 'nav.gallery': 'Gallery', 'nav.news': 'News',
+      'news.eyebrow': 'News', 'news.title1': 'What we are', 'news.title2': 'working on', 'news.soon': 'Announcement',
+      'news.1': 'Coming soon: an upgrade to our Litochoro camera, with its unique view of the Enipeas gorge and the Olympus ridge!',
       'gal.eyebrow': 'Gallery', 'gal.title1': 'Moments', 'gal.title2': 'from our cameras',
       'gal.text': 'Snow, storms, lightning, rainbows and sunrises caught by the network\'s cameras. Pick a year and tap a photo to see it full screen.',
       'gal.photos': 'photos', 'gal.live': 'Watch this camera live', 'gal.close': 'Close',
@@ -165,9 +169,9 @@
       'moon.0': 'New Moon', 'moon.1': 'Waxing crescent', 'moon.2': 'First quarter', 'moon.3': 'Waxing gibbous',
       'moon.4': 'Full Moon', 'moon.5': 'Waning gibbous', 'moon.6': 'Last quarter', 'moon.7': 'Waning crescent',
       'about.eyebrow': 'Our story', 'about.title1': 'Three friends,', 'about.title2': 'one idea',
-      'about.p1': 'In May 2022, three friends from three different walks of life came up with the idea of a Facebook page offering free, live, real-time weather updates for Northern Greece, for farmers, tourists and anyone else who needs them.',
-      'about.p2': 'Wanting to support farming in whatever way they could, and to make travel to the region easier, they launched “northellas.eyes” on 15 June: a network of weather cameras, added one by one, that gives a live picture of the weather across Northern Greece.',
-      'about.p3': 'The first camera went up on 15 June 2022 in Liti, Thessaloniki. Today the network has 29 cameras. They are part of the wider meteolive.gr network run by Christos Dimitroulis.',
+      'about.p1': 'In March 2020, three friends from three different walks of life came up with the idea of a Facebook page offering free, live, real-time weather updates for Northern Greece, for farmers, tourists and anyone else who needs them.',
+      'about.p2': 'Wanting to support farming in whatever way they could, and to make travel to the region easier, they launched “northellas.eyes” on 15 June 2022: a network of weather cameras, added one by one, that gives a live picture of the weather across Northern Greece.',
+      'about.p3': 'The first camera went up on 28 April 2020 in Liti, Thessaloniki, and streamed live on a friend’s website .... Today the network has 29 cameras. They are part of the wider meteolive.gr network run by Christos Dimitroulis.',
       'pillar.1t': 'For farmers', 'pillar.1': 'The weather over your fields before you leave the house.',
       'pillar.2t': 'For travellers', 'pillar.2': 'Snow on the mountain or sun at the beach? Check before you go.',
       'pillar.3t': 'Always free', 'pillar.3': 'No subscriptions and no ads over the picture.',
@@ -803,7 +807,7 @@
     const recs = [
       ['rec.high', 'agiosathanasios', `${num(1200)} ${m()}`],
       ['rec.olympus', 'litochoro', `${num(2918)} ${m()}`],
-      ['rec.first', 'liti', '2022'],
+      ['rec.first', 'liti', '2020'],
       ['rec.city', 'noth', num(802573), { el: 'Θεσσαλονίκη – Καλαμαριά', en: 'Thessaloniki – Kalamaria' }],
       ['rec.west', 'psarades', '21°E'],
       ['rec.east', 'soufli', '26°E'],

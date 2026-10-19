@@ -348,8 +348,8 @@ window.NHE_CAMS = [
       en: 'The camera faces east. Far left are Mount Vertiskos and Lagkadas, and on the right Mount Chortiatis.'
     },
     about: {
-      el: 'Η πρώτη κάμερα του δικτύου, από τις 15 Ιουνίου 2022. Η Λητή χτίστηκε πάνω στα ερείπια της ομώνυμης αρχαίας πόλης, στο κεντρικό τμήμα του νομού Θεσσαλονίκης. Την άποψη ότι η αρχαία πόλη βρισκόταν βορειοανατολικά της Θεσσαλονίκης ενισχύει και η λεγόμενη Ληταία Πύλη στα δυτικά τείχη της πόλης.',
-      en: 'The network’s first camera, running since 15 June 2022. Liti was built on the ruins of the ancient city of the same name, in the middle of Thessaloniki prefecture. The Litaia Gate in Thessaloniki’s western walls supports the view that the ancient city lay north-east of Thessaloniki.'
+      el: 'Η πρώτη κάμερα του δικτύου, από τις 28 Απριλίου 2020. Η Λητή χτίστηκε πάνω στα ερείπια της ομώνυμης αρχαίας πόλης, στο κεντρικό τμήμα του νομού Θεσσαλονίκης. Την άποψη ότι η αρχαία πόλη βρισκόταν βορειοανατολικά της Θεσσαλονίκης ενισχύει και η λεγόμενη Ληταία Πύλη στα δυτικά τείχη της πόλης.',
+      en: 'The network’s first camera, running since 28 April 2020. Liti was built on the ruins of the ancient city of the same name, in the middle of Thessaloniki prefecture. The Litaia Gate in Thessaloniki’s western walls supports the view that the ancient city lay north-east of Thessaloniki.'
     },
     host: { name: 'meteolive.gr', url: 'https://www.meteolive.gr/' },
     blog: 'https://northellaseyes.blogspot.com/2022/06/Liti-Thessaloniki-camera.html'

@@ -38,7 +38,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/fonts/commissioner-greek-7d3487.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/noto-serif-display-greek-86ce46.woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=20261016a">
+  <link rel="stylesheet" href="styles.css?v=20261019a">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -65,6 +65,7 @@
         <a href="#map" data-i18n="nav.map">Χάρτης</a>
         <a href="#gallery" data-i18n="nav.gallery">Συλλογή</a>
         <a href="#weather" data-i18n="nav.weather">Καιρός</a>
+        <a href="#news" data-i18n="nav.news">Τα νέα μας</a>
         <a href="#about" data-i18n="nav.about">Η ομάδα</a>
         <a href="#contact" data-i18n="nav.contact">Επικοινωνία</a>
       </nav>
@@ -225,15 +226,33 @@
       </div>
     </section>
 
+    <!-- ═════════ NEWS ═════════ -->
+    <section class="section news" id="news">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="news.eyebrow">Τα νέα μας</p>
+            <h2><span data-i18n="news.title1">Τι ετοιμάζουμε</span> <em data-i18n="news.title2">στο δίκτυο</em></h2>
+          </div>
+        </div>
+        <ul class="news__list">
+          <li class="news__item reveal">
+            <span class="news__tag" data-i18n="news.soon">Ανακοίνωση</span>
+            <p data-i18n="news.1">Σύντομα αναβάθμιση της κάμεράς μας στο Λιτόχωρο, με την μοναδική θέα στο φαράγγι του Ενιπέα και την κορυφογραμμή του Ολύμπου!</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ═════════ ABOUT ═════════ -->
     <section class="section" id="about">
       <div class="wrap about">
         <div class="about__text reveal">
           <p class="eyebrow" data-i18n="about.eyebrow">Η ιστορία μας</p>
           <h2><span data-i18n="about.title1">Τρεις φίλοι,</span> <em data-i18n="about.title2">μία ιδέα</em></h2>
-          <p class="about__lead" data-i18n="about.p1">Τον Μάιο του 2022, τρεις φίλοι από τρεις διαφορετικούς επαγγελματικούς κόσμους συνέλαβαν την ιδέα της δημιουργίας ενός ενημερωτικού account στο Facebook, με στόχο τη δωρεάν και live ενημέρωση αγροτών, τουριστών και κάθε άλλου ενδιαφερόμενου για τις μετεωρολογικές συνθήκες στη Βόρεια Ελλάδα σε πραγματικό χρόνο.</p>
-          <p data-i18n="about.p2">Με γνώμονα την πρόθεσή τους να στηρίξουν, στο μέτρο που τους αναλογεί, την αγροτική παραγωγή, αλλά και να διευκολύνουν τις τουριστικές εισροές στη χώρα, ξεκίνησαν στις 15 Ιουνίου το «northellas.eyes»: ένα δίκτυο μετεωρολογικών καμερών που εντάσσονται σταδιακά και δίνουν live εικόνα για τον καιρό σε διάφορες περιοχές της Βόρειας Ελλάδας.</p>
-          <p data-i18n="about.p3">Η πρώτη κάμερα εγκαταστάθηκε στις 15 Ιουνίου 2022 στη Λητή Θεσσαλονίκης. Σήμερα το δίκτυο έχει 29 κάμερες. Οι κάμερες αποτελούν μέρος του ευρύτερου δικτύου meteolive.gr, με διαχειριστή τον Χρήστο Δημητρούλη.</p>
+          <p class="about__lead" data-i18n="about.p1">Τον Μάρτιο του 2020, τρεις φίλοι από τρεις διαφορετικούς επαγγελματικούς κόσμους συνέλαβαν την ιδέα της δημιουργίας ενός ενημερωτικού account στο Facebook, με στόχο τη δωρεάν και live ενημέρωση αγροτών, τουριστών και κάθε άλλου ενδιαφερόμενου για τις μετεωρολογικές συνθήκες στη Βόρεια Ελλάδα σε πραγματικό χρόνο.</p>
+          <p data-i18n="about.p2">Με γνώμονα την πρόθεσή τους να στηρίξουν, στο μέτρο που τους αναλογεί, την αγροτική παραγωγή, αλλά και να διευκολύνουν τις τουριστικές εισροές στη χώρα, ξεκίνησαν στις 15 Ιουνίου του 2022 το «northellas.eyes»: ένα δίκτυο μετεωρολογικών καμερών που εντάσσονται σταδιακά και δίνουν live εικόνα για τον καιρό σε διάφορες περιοχές της Βόρειας Ελλάδας.</p>
+          <p data-i18n="about.p3">Η πρώτη κάμερα εγκαταστάθηκε στις 28 Απριλίου 2020 στη Λητή Θεσσαλονίκης και έπαιξε live σε φιλικό site .... Σήμερα το δίκτυο αριθμεί 29 κάμερες. Οι κάμερες αποτελούν μέρος του ευρύτερου δικτύου meteolive.gr, με διαχειριστή τον Χρήστο Δημητρούλη.</p>
           <div class="pillars">
             <div class="pillar reveal"><svg viewBox="0 0 24 24"><path d="M12 22c4-4 7-7.5 7-11a7 7 0 0 0-14 0c0 3.5 3 7 7 11z"/><path d="M12 7v6M9 10h6"/></svg><b data-i18n="pillar.1t">Για τους αγρότες</b><span data-i18n="pillar.1">Ο καιρός στο χωράφι, πριν βγεις από το σπίτι.</span></div>
             <div class="pillar reveal"><svg viewBox="0 0 24 24"><path d="M3 20l6-12 4 7 3-4 5 9z"/><circle cx="17" cy="6" r="2"/></svg><b data-i18n="pillar.2t">Για τους ταξιδιώτες</b><span data-i18n="pillar.2">Χιόνι στο βουνό ή ήλιος στη θάλασσα; Δες πριν φύγεις.</span></div>
@@ -439,9 +458,9 @@
 
   <div class="toast" id="toast" role="status"></div>
 
-  <script src="cams.js?v=20261013e" defer></script>
+  <script src="cams.js?v=20261019a" defer></script>
   <script src="gallery.js?v=20261009e" defer></script>
   <script src="moon.js?v=20261010a" defer></script>
-  <script src="app.js?v=20261016a" defer></script>
+  <script src="app.js?v=20261019a" defer></script>
 </body>
 </html>
