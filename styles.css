@@ -535,6 +535,29 @@ a.cammap__msg { color: var(--glacier); }
 .partners__cta a { color: var(--dawn); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
 
 /* ── News ──────────────────────────────────────────────── */
+.news { overflow: hidden; isolation: isolate; }
+.news > .wrap { position: relative; }
+.news .section__head, .news .news__list { max-width: min(44%, 560px); }
+.news h2 { text-shadow: 0 2px 18px rgba(6, 10, 22, .8); }
+.news { min-height: clamp(420px, 38vw, 620px); }
+.news::before {
+  content: ''; position: absolute; z-index: -1; top: 0; right: 0; bottom: 0; width: min(68%, 1100px);
+  background: url(img/news/gnome.webp) 50% 30% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 38%), linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent, #000 38%), linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent); mask-composite: intersect;
+}
+.news::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(6, 10, 22, .55), rgba(6, 10, 22, .1) 60%, transparent); pointer-events: none; }
+.news .news__item { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); background: radial-gradient(120% 140% at 0% 0%, rgba(255, 178, 74, .14), transparent 60%), rgba(14, 22, 44, .78); }
+@media (max-width: 860px) {
+  .news { padding-top: calc(56vw + 36px); min-height: 0; }
+  .news .section__head, .news .news__list { max-width: none; }
+  .news::before {
+    width: 100%; bottom: auto; height: calc(56vw + 90px); background-image: url(img/news/gnome-sm.webp); background-position: 50% 20%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent); mask-image: linear-gradient(to bottom, #000 62%, transparent);
+    -webkit-mask-composite: source-over; mask-composite: add;
+  }
+  .news::after { display: none; }
+}
 .news__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; max-width: 820px; }
 .news__item {
   position: relative; padding: clamp(20px, 4vw, 30px) clamp(20px, 4vw, 34px); border-radius: var(--radius);
