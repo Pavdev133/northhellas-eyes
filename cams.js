@@ -18,7 +18,7 @@
 window.NHE_CAMS = [
   // ── Δυτική Μακεδονία ──────────────────────────────────────────
   {
-    id: 'psarades', fc: '21fb', region: 'west', ll: [40.8285759, 21.0292886], dir: 285, hls: 'https://mediacp.alphastream.eu/psarades/index.m3u8',
+    id: 'psarades', fc: '21fb', region: 'west', alt: 873, ll: [40.8285759, 21.0292886], dir: 285, hls: 'https://mediacp.alphastream.eu/psarades/index.m3u8',
     snap: 'https://cams.elaticam.com/output/psarades/webcamimage.jpg', windy: 1683478857, meteo: 'psarades', pop: [100, 'καλοκαίρι'],
     name: { el: 'Ψαράδες – Πρέσπες', en: 'Psarades – Prespes' },
     area: { el: 'Φλώρινα', en: 'Florina' },
@@ -51,7 +51,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'kastorialake', fc: 'Qk0F', region: 'west', ll: [40.5125, 21.279], hls: 'https://mediawp.alphastream.eu/kastoria/kastoria/playlist.m3u8',
-    windy: 1760738363, meteo: 'kastoria',
+    windy: 1760738363, meteo: 'kastoria', alt: 642,
     name: { el: 'Λίμνη Καστοριάς', en: 'Lake Kastoria' },
     area: { el: 'Καστοριά', en: 'Kastoria' },
     view: {
@@ -388,7 +388,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'ouranoupoli', fc: 'sLLZ', region: 'central', ll: [40.3259371, 23.9811678], dir: 215, hls: 'https://mediawp.alphastream.eu/ouranoupoli/ouranoupoli/playlist.m3u8',
-    snap: 'https://cams.elaticam.com/output/ouranoupoli/image.jpg', meteo: 'ouranoupoli',
+    snap: 'https://cams.elaticam.com/output/ouranoupoli/image.jpg',windy: 1712506934, meteo: 'ouranoupoli',
     name: { el: 'Ουρανούπολη', en: 'Ouranoupoli' },
     area: { el: 'Χαλκιδική', en: 'Chalkidiki' },
     view: {
@@ -404,7 +404,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'agiosathanasios', fc: 'XaWQ', region: 'central', ll: [40.8409702, 21.770073], dir: 10, hls: 'https://mediacp.alphastream.eu/agios/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/agios/webcamimage.jpg', meteo: 'agiosathanasios', alt: 1200,
+    snap: 'https://cams.elaticam.com/output/agios/webcamimage.jpg',windy: 1715542193, meteo: 'agiosathanasios', alt: 1200,
     name: { el: 'Παλιός Άγιος Αθανάσιος', en: 'Old Agios Athanasios' },
     area: { el: 'Καϊμάκτσαλαν, Πέλλα', en: 'Kaimaktsalan, Pella' },
     view: {
