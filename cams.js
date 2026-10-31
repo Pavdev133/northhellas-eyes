@@ -130,7 +130,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'neraida', fc: 'YdV2', region: 'west', ll: [40.2391024, 21.9674823], hls: 'https://mediacp.alphastream.eu/neraidacam/index.m3u8',
-    windy: 1657478253, meteo: 'neraida', dir: 125,
+    windy: 1657478253, meteo: 'neraida',alt: 384, dir: 125,
     name: { el: 'Νεράιδα', en: 'Neraida' },
     area: { el: 'Λίμνη Πολυφύτου, Κοζάνη', en: 'Lake Polyfytos, Kozani' },
     view: {
