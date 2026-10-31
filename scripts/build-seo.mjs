@@ -7,8 +7,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://northellaseyes.gr';
 const BRAND = 'Northellas.eyes';
 const today = new Date().toISOString().slice(0, 10);
