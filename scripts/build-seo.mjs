@@ -44,7 +44,7 @@ const fmt = (n) => Number(n).toLocaleString('el-GR');
 const url = (c) => `/kameres/${c.id}/`;
 const hasVideo = (c) => !!c.hls;
 
-const head = ({ title, desc, canonical, image, jsonld }) => `<!doctype html>
+const head = ({ title, desc, canonical, image, jsonld, manifest = '/manifest.webmanifest' }) => `<!doctype html>
 <html lang="el">
 <head>
   <meta charset="utf-8">
@@ -69,7 +69,7 @@ const head = ({ title, desc, canonical, image, jsonld }) => `<!doctype html>
   <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="manifest" href="${manifest}">
 ${image ? `  <link rel="preload" as="image" href="${esc(image)}">\n` : ''}  <link rel="preload" as="font" type="font/woff2" href="/fonts/commissioner-greek-7d3487.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/noto-serif-display-greek-86ce46.woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css?v=1">
@@ -133,7 +133,7 @@ function camPage(c) {
   const host = c.host && c.host.name && c.host.name !== 'meteolive.gr'
     ? `<p class="host">Η κάμερα φιλοξενείται από ${hostHref(c) ? `<a href="${esc(hostHref(c))}" rel="noopener">${esc(c.host.name)}</a>` : esc(c.host.name)}.</p>`
     : '';
-  return `${head({ title, desc, canonical, image: still, jsonld })}
+  return `${head({ title, desc, canonical, image: still, jsonld, manifest: `/kameres/${c.id}/manifest.webmanifest` })}
   <main class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Αρχική</a> › <a href="/kameres/">Κάμερες</a> › <span>${esc(name)}</span></nav>
     <h1>${esc(name)} <em>ζωντανή κάμερα</em></h1>
@@ -223,7 +223,24 @@ const write = (rel, s) => {
   fs.writeFileSync(f, s);
 };
 
-for (const c of CAMS) write(`kameres/${c.id}/index.html`, camPage(c));
+for (const c of CAMS) {
+  write(`kameres/${c.id}/index.html`, camPage(c));
+  write(`kameres/${c.id}/manifest.webmanifest`, JSON.stringify({
+    id: `/kameres/${c.id}/`,
+    name: `${c.name.el} · ${BRAND}`,
+    short_name: c.name.el.split(' – ')[0].slice(0, 12),
+    start_url: `/#cam/${c.id}`,
+    scope: '/',
+    display: 'standalone',
+    background_color: '#070d1a',
+    theme_color: '#070d1a',
+    icons: [
+      { src: '/img/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: '/img/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: '/img/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+    ]
+  }, null, 2));
+}
 write('kameres/index.html', listPage());
 
 const urls = [['/', '1.0', 'daily'], ['/kameres/', '0.9', 'daily'], ...CAMS.map((c) => [url(c), '0.8', 'daily'])];
