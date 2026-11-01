@@ -65,7 +65,7 @@ window.NHE_CAMS = [
     host: { name: 'Hotel Kastoria', url: 'https://hotel-kastoria.gr/index.php/el/' }
   },
   {
-    id: 'nestorio', fc: '1LzK', region: 'west', ll: [40.4094424, 21.0633327], hls: 'https://mediacp.alphastream.eu/nestorio/index.m3u8',
+    id: 'nestorio', fc: '1LzK', region: 'west', ll: [40.4094424, 21.0633327], hls: 'https://mediawp.alphastream.eu/nestorio/nestorio/playlist.m3u8',
     snap: 'https://cams.elaticam.com/output/nestorio/webcamimage.jpg', meteo: 'nestorio', dir: 45, alt: 890,
     name: { el: 'Νεστόριο', en: 'Nestorio' },
     area: { el: 'Καστοριά', en: 'Kastoria' },
@@ -212,7 +212,7 @@ window.NHE_CAMS = [
     blog: 'https://northellaseyes.blogspot.com/2022/06/Peristasi-Pieria-Camera.html'
   },
   {
-    id: 'litochoro', fc: 'eQjL', region: 'central', ll: [40.102816, 22.5026609], hls: 'https://mediawp.alphastream.eu/enipeas/enipeas/playlist.m3u8',
+    id: 'litochoro', fc: 'eQjL', region: 'central', ll: [40.102816, 22.5026609], hls: 'https://mediacp.alphastream.eu/enipeas/index.m3u8',
     windy: 1750789009, meteo: 'olympusview', featured: true, dir: 260, alt: 295, pop: [6664, 2021],
     name: { el: 'Λιτόχωρο – Olympus View', en: 'Litochoro – Olympus View' },
     area: { el: 'Πιερία', en: 'Pieria' },
