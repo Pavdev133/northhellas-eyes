@@ -35,7 +35,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'kastoria', fc: 'sOow', region: 'west', ll: [40.5218713, 21.2738511], hls: 'https://mediacp.alphastream.eu/kastoria/index.m3u8',
-    windy: 1675614049, meteo: 'kastoria', dir: 315,
+    windy: 1675614049, meteo: 'kastoria', dir: 315, alt: 660,
     name: { el: 'Ντολτσό Καστοριάς', en: 'Doltso, Kastoria' },
     area: { el: 'Καστοριά', en: 'Kastoria' },
     view: {
@@ -148,7 +148,7 @@ window.NHE_CAMS = [
   // ── Κεντρική Μακεδονία ────────────────────────────────────────
   {
     id: 'fotina', fc: 'Con9', region: 'central', ll: [40.2204401, 22.3138468], hls: 'https://mediacp.alphastream.eu/foteina/index.m3u8',
-    windy: 1656105641, snap: 'https://cams.elaticam.com/output/fotina/webcamimage.jpg', meteo: 'fotina',
+    windy: 1656105641, snap: 'https://cams.elaticam.com/output/fotina/webcamimage.jpg', meteo: 'fotina', alt: 301,  
     dir: 155, pop: [396, 2011],
     name: { el: 'Όλυμπος – Φωτεινά', en: 'Olympus – Fotina' },
     area: { el: 'Πιερία', en: 'Pieria' },
@@ -165,7 +165,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'panteleimonas', fc: '02cU', region: 'central', ll: [40.0034254, 22.5898999], hls: 'https://mediacp.alphastream.eu/panteleimonas2/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/panteleimonas/webcamimage.jpg', windy: 1656359959, meteo: 'panteleimonas', dir: 0,
+    snap: 'https://cams.elaticam.com/output/panteleimonas/webcamimage.jpg', windy: 1656359959, meteo: 'panteleimonas', dir: 0, alt: 137, 
     name: { el: 'Όλυμπος Νότια', en: 'Olympus South' },
     area: { el: 'Νέος Παντελεήμονας, Πιερία', en: 'Neos Panteleimonas, Pieria' },
     view: {
@@ -181,7 +181,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'platamonas', fc: 'wGgT', region: 'central', ll: [40.0034254, 22.5915], hls: 'https://mediacp.alphastream.eu/penteleimonas1/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/panteleimonasb/webcamimage.jpg', windy: 1656360060, meteo: 'panteleimonas', dir: 70,
+    snap: 'https://cams.elaticam.com/output/panteleimonasb/webcamimage.jpg', windy: 1656360060, meteo: 'panteleimonas', dir: 70, alt: 137,
     name: { el: 'Κάστρο Πλαταμώνα', en: 'Platamonas Castle' },
     area: { el: 'Νέος Παντελεήμονας, Πιερία', en: 'Neos Panteleimonas, Pieria' },
     view: {
@@ -197,7 +197,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'katerini', fc: 'XKf9', station: '1838626896', region: 'central', ll: [40.2742921, 22.5413063], hls: 'https://mediacp.alphastream.eu/peristasi/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/peristasi/webcamimage.jpg', windy: 1655651149, meteo: 'peristasi', dir: 250,
+    snap: 'https://cams.elaticam.com/output/peristasi/webcamimage.jpg', windy: 1655651149, meteo: 'peristasi', dir: 250, alt: 23,
     name: { el: 'Κατερίνη', en: 'Katerini' },
     area: { el: 'Περίσταση, Πιερία', en: 'Peristasi, Pieria' },
     view: {
@@ -229,7 +229,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'nokat', fc: 'Nn3s', station: '2651792394', region: 'central', ll: [40.261872, 22.5958987], hls: 'https://mediacp.alphastream.eu/katerini/index.m3u8',
-    windy: 1592169533, meteo: 'katerini', dir: 90,
+    windy: 1592169533, meteo: 'katerini', dir: 90, alt: 5, 
     name: { el: 'Ναυτικός Όμιλος Κατερίνης', en: 'Katerini Nautical Club' },
     area: { el: 'Παραλία Κατερίνης', en: 'Paralia Katerinis' },
     view: {
@@ -245,7 +245,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'neoiporoi', fc: 'F5jN', region: 'central', ll: [39.9784856, 22.6517343], hls: 'https://mediacp.alphastream.eu/neoiporoi/index.m3u8',
-    windy: 1687203265, meteo: 'neoiporoi', dir: 305, pop: [733, 2011],
+    windy: 1687203265, meteo: 'neoiporoi', dir: 305, pop: [733, 2011], alt: 8,
     name: { el: 'Νέοι Πόροι', en: 'Neoi Poroi' },
     area: { el: 'Πιερία', en: 'Pieria' },
     view: {
@@ -261,7 +261,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'makrigialos', fc: '99kl', region: 'central', ll: [40.4107636, 22.6102982], hls: 'https://mediacp.alphastream.eu/makrigialos/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/makrigialos/webcamimage.jpg', windy: 1658340425, meteo: 'makrigialos', dir: 65, pop: [1851, 2001],
+    snap: 'https://cams.elaticam.com/output/makrigialos/webcamimage.jpg', windy: 1658340425, meteo: 'makrigialos', dir: 65, pop: [1851, 2001], alt: 5,
     name: { el: 'Μακρύγιαλος', en: 'Makrygialos' },
     area: { el: 'Πιερία', en: 'Pieria' },
     view: {
@@ -277,7 +277,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'naousa', fc: 'G8uD', region: 'central', ll: [40.6264778, 22.0650719], hls: 'https://mediacp.alphastream.eu/naousa/index.m3u8',
-    windy: 1700423980, meteo: 'naousa', dir: 40,
+    windy: 1700423980, meteo: 'naousa', dir: 40, alt: 378, 
     name: { el: 'Νάουσα', en: 'Naousa' },
     area: { el: 'Ημαθία', en: 'Imathia' },
     view: {
@@ -308,7 +308,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'noth', fc: '36mf', region: 'central', ll: [40.5880005, 22.9419695], hls: 'https://mediacp.alphastream.eu/kalamaria/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/kalamaria/webcamimage.jpg', windy: 1664117000, meteo: 'thessaloniki', dir: 330, pop: [802573, ''],
+    snap: 'https://cams.elaticam.com/output/kalamaria/webcamimage.jpg', windy: 1664117000, meteo: 'thessaloniki', dir: 330, pop: [802573, ''], alt: 5,
     name: { el: 'Καλαμαριά', en: 'Kalamaria' },
     area: { el: 'Ναυτικός Όμιλος Θεσσαλονίκης', en: 'Thessaloniki Nautical Club' },
     view: {
@@ -324,7 +324,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'kerkini', fc: 'wp4f', region: 'central', ll: [41.1369701, 23.2159981], hls: 'https://mediacp.alphastream.eu/kerkini/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/kerkini/webcamimage.jpg', windy: 1656959415, meteo: 'kerkini', dir: 30,
+    snap: 'https://cams.elaticam.com/output/kerkini/webcamimage.jpg', windy: 1656959415, meteo: 'kerkini', dir: 30, alt: 106,
     name: { el: 'Λιθότοπος – Κερκίνη', en: 'Lithotopos – Kerkini' },
     area: { el: 'Σέρρες', en: 'Serres' },
     view: {
@@ -340,7 +340,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'liti', fc: '0vU4', region: 'central', ll: [40.7504039, 22.9764851], hls: 'https://mediacp.alphastream.eu/liti/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/liti/webcamimage.jpg', windy: 1654960490, meteo: 'liti', dir: 100,
+    snap: 'https://cams.elaticam.com/output/liti/webcamimage.jpg', windy: 1654960490, meteo: 'liti', dir: 100, alt: 128,
     name: { el: 'Λητή', en: 'Liti' },
     area: { el: 'Θεσσαλονίκη', en: 'Thessaloniki' },
     view: {
@@ -356,7 +356,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'afytos', fc: 'E8CO', region: 'central', ll: [40.1006701, 23.437202], hls: 'https://mediacp.alphastream.eu/afytos/index.m3u8',
-    windy: 1703709525, meteo: 'afytos', dir: 90, pop: [1273, 2011],
+    windy: 1703709525, meteo: 'afytos', dir: 90, pop: [1273, 2011], alt: 46,
     name: { el: 'Άφυτος', en: 'Afytos' },
     area: { el: 'Χαλκιδική', en: 'Chalkidiki' },
     view: {
@@ -388,7 +388,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'ouranoupoli', fc: 'sLLZ', region: 'central', ll: [40.3259371, 23.9811678], dir: 215, hls: 'https://mediawp.alphastream.eu/ouranoupoli/ouranoupoli/playlist.m3u8',
-    snap: 'https://cams.elaticam.com/output/ouranoupoli/image.jpg',windy: 1712506934, meteo: 'ouranoupoli',
+    snap: 'https://cams.elaticam.com/output/ouranoupoli/image.jpg',windy: 1712506934, meteo: 'ouranoupoli', alt: 40,
     name: { el: 'Ουρανούπολη', en: 'Ouranoupoli' },
     area: { el: 'Χαλκιδική', en: 'Chalkidiki' },
     view: {
@@ -422,7 +422,7 @@ window.NHE_CAMS = [
   // ── Ανατολική Μακεδονία & Θράκη ───────────────────────────────
   {
     id: 'alexfaros', fc: 'ctgD', region: 'east', ll: [40.8452, 25.8775], hls: 'https://mediacp.alphastream.eu/alexandro/index.m3u8',
-    windy: 1686575524, meteo: 'alexandroupolis', dir: 170,
+    windy: 1686575524, meteo: 'alexandroupolis', dir: 170, alt: 12, 
     name: { el: 'Αλεξανδρούπολη – Φάρος', en: 'Alexandroupoli – Lighthouse' },
     area: { el: 'Έβρος', en: 'Evros' },
     view: {
@@ -454,7 +454,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'soufli', fc: '8uqW', region: 'east', ll: [41.1943171, 26.2992535], hls: 'https://mediacp.alphastream.eu/soufli/index.m3u8',
-    snap: 'https://cams.elaticam.com/output/soufli/webcamimage.jpg', windy: 1656527141, meteo: 'soufli', dir: 90,
+    snap: 'https://cams.elaticam.com/output/soufli/webcamimage.jpg', windy: 1656527141, meteo: 'soufli', dir: 90, alt: 67,
     name: { el: 'Σουφλί', en: 'Soufli' },
     area: { el: 'Έβρος', en: 'Evros' },
     view: {
@@ -470,7 +470,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'dikaia', fc: 'iLSx', region: 'east', ll: [41.7058978, 26.2955972], hls: 'https://mediacp.alphastream.eu/dikaia/index.m3u8',
-    windy: 1656360169, meteo: 'dikaia', dir: 135, pop: [561, 2011],
+    windy: 1656360169, meteo: 'dikaia', dir: 135, pop: [561, 2011], alt: 50,
     name: { el: 'Δίκαια', en: 'Dikaia' },
     area: { el: 'Έβρος', en: 'Evros' },
     view: {
