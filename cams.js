@@ -66,7 +66,7 @@ window.NHE_CAMS = [
   },
   {
     id: 'nestorio', fc: '1LzK', region: 'west', ll: [40.4094424, 21.0633327], hls: 'https://mediawp.alphastream.eu/nestorio/nestorio/playlist.m3u8',
-    snap: 'https://cams.elaticam.com/output/nestorio/webcamimage.jpg', meteo: 'nestorio', dir: 45, alt: 890,
+    windy: 1741533006, meteo: 'nestorio', dir: 45, alt: 890,
     name: { el: 'Νεστόριο', en: 'Nestorio' },
     area: { el: 'Καστοριά', en: 'Kastoria' },
     view: {
