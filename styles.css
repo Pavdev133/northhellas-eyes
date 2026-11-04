@@ -635,8 +635,13 @@ a.cammap__msg { color: var(--glacier); }
 .viewer svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .viewer__body { display: grid; grid-template-columns: minmax(0, 1fr) 360px; min-height: 0; flex: 1; }
 .viewer__stage { position: relative; background: #000; display: flex; align-items: center; min-width: 0; }
-.v-status { z-index: 5; pointer-events: none; }
-.v-status[hidden] { display: none; }
+/* The ONLINE/OFFLINE badge sits next to the camera name in the bar, never on the picture,
+   so it can't cover the player's own buttons (fullscreen, menu) on any phone or browser. */
+.viewer__sub { display: flex; align-items: center; gap: 8px; min-width: 0; margin-top: 3px; }
+.viewer__sub #vArea { min-width: 0; }
+.viewer__title .v-status { position: static; flex: none; display: inline-flex; color: #fff; font-size: .6rem; padding: 3px 7px; pointer-events: none; overflow: visible; }
+.viewer__title .v-status[hidden] { display: none; }
+.viewer__title .badge--off { color: #d5dae5; }
 /* Site logo stamped on the bottom-right corner of the still image (Εικόνα tab); app.js places it on the
    visible picture, so letterboxing never pushes it onto the black bars. */
 .v-logo { position: absolute; z-index: 4; right: var(--lr, 12px); bottom: var(--lb, 12px); width: var(--ls, 56px); height: auto; aspect-ratio: 1;
@@ -799,9 +804,6 @@ a.cammap__msg { color: var(--glacier); }
   .viewer__tabs button { flex: 1; }
   .viewer__media { aspect-ratio: auto; height: max(260px, 56.25vw); max-height: none; }
   .viewer__nav { width: 34px; height: 34px; }
-  /* On phones the native player draws its buttons in the top-left corner, so the badge sits
-     bottom-right, in the empty strip just left of the player's ⋯ menu. */
-  .v-status { top: auto; left: auto; right: 52px; bottom: 9px; padding: 4px 8px; font-size: .62rem; }
   .viewer__actions button { width: 36px; height: 36px; }
   .stage-msg { font-size: .9rem; }
   .stage-msg .btn { padding: 8px 12px; font-size: .85rem; }

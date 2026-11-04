@@ -38,7 +38,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/fonts/commissioner-greek-7d3487.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/noto-serif-display-greek-86ce46.woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=20261101a">
+  <link rel="stylesheet" href="styles.css?v=20261104a">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -380,7 +380,7 @@
     <div class="viewer__bar">
       <div class="viewer__title">
         <strong id="vName"></strong>
-        <span id="vArea"></span>
+        <div class="viewer__sub"><span class="badge v-status" id="vStatus" hidden></span><span id="vArea"></span></div>
       </div>
       <div class="viewer__tabs" id="vTabs" role="tablist"></div>
       <div class="viewer__actions">
@@ -392,7 +392,6 @@
     </div>
     <div class="viewer__body">
       <div class="viewer__stage" id="vStage">
-        <span class="badge v-status" id="vStatus" hidden></span>
         <button type="button" class="viewer__nav viewer__nav--prev" id="vPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg></button>
         <div class="viewer__media" id="vMedia"></div>
         <img class="v-logo" id="vLogo" src="img/logo-128.webp" srcset="img/logo-128.webp 1x, img/logo-256.webp 2x" width="64" height="64" alt="" hidden>
