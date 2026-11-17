@@ -13,7 +13,7 @@ export async function onRequest({ request }) {
   for (const id of ids) {
     try {
       const r = await fetch(`https://s01.flagcounter.com/${page}/${id}`, { headers: { 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36' } });
-      out.push(`##### ${id} (${r.status})\n` + strip(await r.text()));
+      const t = strip(await r.text()); const from = +(u.searchParams.get('from') || 0); out.push(`##### ${id} (${r.status}) len=${t.length}\n` + t.slice(from, from + 6000));
     } catch (e) { out.push(`##### ${id} ERROR ${e}`); }
   }
   return new Response(out.join('\n\n'), { headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' } });
